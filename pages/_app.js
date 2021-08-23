@@ -1,7 +1,24 @@
-import '../styles/globals.css'
+import { ThemeProvider } from "styled-components";
+import { RecoilRoot } from "recoil";
 
-function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />
+import GlobalStyle from "styles/GlobalStyle"
+import theme from "styles/theme"
+
+import Layout from "components/Layout"
+
+
+const MyApp = ({ Component, pageProps }) => {
+  return <>
+    <GlobalStyle />
+
+    <RecoilRoot>
+      <ThemeProvider theme={theme}>
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
+      </ThemeProvider>
+    </RecoilRoot>
+  </>
 }
 
 export default MyApp
