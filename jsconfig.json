@@ -15,7 +15,11 @@
       ],
       "@/pages/*": [
         "pages/*"
+      ],
+      "@/shared/*": [
+        "shared/*"
       ]
+
     }
   },
   "exclude": [
