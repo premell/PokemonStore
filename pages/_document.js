@@ -1,4 +1,4 @@
-import Document, { Html, Head, Main, NextScript } from "next/document"
+import Document, { Html, Head, Main, NextScript } from "next/document";
 
 export default class MyDocument extends Document {
   render() {
@@ -6,12 +6,12 @@ export default class MyDocument extends Document {
       <Html>
         <Head />
         <body>
-          <Main />
           <div id="scrollToTop" />
+          <div id="favoritesPopup" />
+          <Main />
           <NextScript />
         </body>
       </Html>
-    )
+    );
   }
 }
-

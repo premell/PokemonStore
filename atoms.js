@@ -1,7 +1,7 @@
 import { atom, selector } from "recoil";
 import { recoilPersist } from "recoil-persist";
 
-import { SORTING_METHODS, STATS } from "@/shared/constants"
+import { SORTING_METHODS, STATS } from "@/shared/constants";
 
 const { persistAtom } = recoilPersist();
 
@@ -14,7 +14,6 @@ const { persistAtom } = recoilPersist();
 //   },
 // });
 
-
 // export const numberOfMatchedPokemon = atom({
 //   key: "numberOfMatchedPokemon",
 //   default: 0
@@ -22,12 +21,12 @@ const { persistAtom } = recoilPersist();
 
 export const pokemonPerPage = atom({
   key: "pokemonPerPage",
-  default: 20
+  default: 20,
 });
 
 export const currentPage = atom({
   key: "currentPage",
-  default: 1
+  default: 1,
 });
 
 export const priceFilter = atom({
@@ -119,15 +118,14 @@ export const statsFilter = atom({
         max: 200,
       },
       isFiltering: false,
-    }
+    },
   },
 });
 
 export const typeFilter = atom({
   key: "typeFilter",
   default: {
-    types: [
-    ],
+    types: [],
     isFiltering: false,
   },
 });
@@ -135,50 +133,46 @@ export const typeFilter = atom({
 export const abilityFilter = atom({
   key: "abilityFilter",
   default: {
-    abilities: [
-    ],
+    abilities: [],
     isFiltering: false,
   },
 });
 
 export const anyFilterActive = selector({
-  key: 'anyFilterActive',
+  key: "anyFilterActive",
   get: ({ get }) => {
-    let isFiltering = false
-    if (get(abilityFilter).isFiltering) isFiltering = true
-    else if (get(typeFilter).isFiltering) isFiltering = true
-    else if (get(priceFilter).isFiltering) isFiltering = true
-    const localStatsFilter = get(statsFilter)
+    let isFiltering = false;
+    if (get(abilityFilter).isFiltering) isFiltering = true;
+    else if (get(typeFilter).isFiltering) isFiltering = true;
+    else if (get(priceFilter).isFiltering) isFiltering = true;
+    const localStatsFilter = get(statsFilter);
     Object.keys(localStatsFilter).forEach((key) => {
-      if (localStatsFilter[key].isFiltering) isFiltering = true
-    })
-    return isFiltering
-  }
+      if (localStatsFilter[key].isFiltering) isFiltering = true;
+    });
+    return isFiltering;
+  },
 });
 
 export const searchQuery = atom({
   key: "searchQuery",
-  default: ""
+  default: "",
 });
 
 export const sortingMethod = atom({
   key: "sortingMethod",
-  default: SORTING_METHODS.RELEASE_OLDEST_FIRST
-
-})
+  default: SORTING_METHODS.RELEASE_OLDEST_FIRST,
+});
 
 // export const sortedPokemon = atom({
 //   key: "sortedPokemon ",
 //   default: []
 // })
 
-
 export const favorites = atom({
   key: "favorites",
   default: {
-    pokemon: {
-    },
-  }
+    pokemon: [],
+  },
 });
 
 export const cart = atom({
@@ -186,9 +180,8 @@ export const cart = atom({
   default: {
     pokemon: [],
     total: 0,
-  }
+  },
 });
-
 
 // export const generalModalMessage = atom({
 //   key: "generalModalMessage ",
@@ -202,24 +195,29 @@ export const cart = atom({
 export const numberOfMatchedPokemon = atom({
   key: "numberOfMatchedPokemon",
   default: 1000,
-})
+});
 
 export const showModalTemporarily = atom({
   key: "showModalTemporarily",
-  default: false
-})
+  default: false,
+});
 
 export const showModalWithTimer = atom({
   key: "showModalWithTimer",
-  default: false
-})
+  default: false,
+});
 
 export const showCartModal = atom({
   key: "showCartModal",
-  default: false
-})
+  default: false,
+});
 
 export const showCartModalInstantly = atom({
   key: "showCartModalInstantly",
-  default: true
-})
+  default: true,
+});
+
+export const showFavorites = atom({
+  key: "showFavorites",
+  default: false,
+});

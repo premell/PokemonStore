@@ -1,5 +1,5 @@
 import { createGlobalStyle, ThemeProvider } from "styled-components";
-import RegularLato from "./fonts/Lato-Regular.ttf"
+import RegularLato from "./fonts/Lato-Regular.ttf";
 
 const GlobalStyle = createGlobalStyle`
   @font-face {
@@ -15,7 +15,9 @@ html{
   padding:0;
   height:100%;
   width:100%;
+  overflow-x:hidden;
 }
+
 body{
   margin:0;
   padding:0;
@@ -32,4 +34,4 @@ p{
     }
 `;
 
-export default GlobalStyle
+export default GlobalStyle;

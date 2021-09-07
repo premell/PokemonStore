@@ -24,7 +24,8 @@ export const useEscapeButtonListener = (handleEscapeClick) => {
 export const useClickOutside = (ref, handleClickOutside) => {
   useEffect(() => {
     const checkIfClickedOutside = (e) => {
-      if (!ref.current.contains(e.target)) {
+      if (ref.current === null) return;
+      else if (!ref.current.contains(e.target)) {
         handleClickOutside();
       }
     };
