@@ -190,7 +190,7 @@ const HeartIcon = styled.div`
   color: ${(p) => (p.isFavorited ? "red" : p.theme.colors.gray_80)};
 `;
 
-export const FavoritesHeart = ({ pokemon }) => {
+export const FavoritesHeart = ({ pokemon, size = 25 }) => {
   const [favorites, setFavorites] = useRecoilState(favoritesAtoms);
   const [isFavorited, setIsFavorited] = useState(false);
   const [isHovering, setIsHovering] = useState(false);
@@ -213,10 +213,6 @@ export const FavoritesHeart = ({ pokemon }) => {
     setFavorites({ ...favorites, pokemon: newPokemon });
   };
 
-  useEffect(() => {
-    console.log(isHovering);
-  }, [isHovering]);
-
   return (
     <div onClick={handleClick}>
       {!isFavorited ? (
@@ -226,9 +222,9 @@ export const FavoritesHeart = ({ pokemon }) => {
           onMouseLeave={() => setIsHovering(false)}
         >
           {isHovering ? (
-            <AiFillHeart size={25} />
+            <AiFillHeart size={size} />
           ) : (
-            <AiOutlineHeart size={25} />
+            <AiOutlineHeart size={size} />
           )}
         </HeartIcon>
       ) : (
@@ -237,7 +233,7 @@ export const FavoritesHeart = ({ pokemon }) => {
           onMouseEnter={() => setIsHovering(true)}
           onMouseLeave={() => setIsHovering(false)}
         >
-          <AiFillHeart size={25} />
+          <AiFillHeart size={size} />
         </HeartIcon>
       )}
     </div>

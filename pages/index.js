@@ -31,6 +31,8 @@ const AppContainer = styled.div`
 
   box-sizing: border-box;
 `;
+
+//overflow: hidden;
 let pokemonObjects;
 const Home = ({ pokemonObjects }) => {
   return (

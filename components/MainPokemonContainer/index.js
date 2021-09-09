@@ -4,6 +4,7 @@ import {
   ScrollToTopButton,
   Divider,
 } from "./Styles.js";
+
 import PokemonList from "./PokemonList";
 import FilterPanel from "./FilterPanel";
 import PageNavigator from "./PageNavigator";
@@ -27,11 +28,14 @@ const MainContainer = ({ allPokemon }) => {
   );
   const [scrollPosition, setScrollPosition] = useState(0);
 
-  const containerRef = useRef(null);
-  const hej = useRef(null);
-
-  const handleScroll = () => setScrollPosition(window.pageYOffset);
+  const handleScroll = () => {
+    setScrollPosition(window.pageYOffset);
+  };
   useScrollPosition(handleScroll);
+
+  useEffect(() => {
+    console.log(scrollPosition);
+  }, [scrollPosition]);
 
   const handleScrollClick = () => {
     window.scrollTo({
@@ -40,13 +44,10 @@ const MainContainer = ({ allPokemon }) => {
     });
   };
 
-  const marginB = 100;
-
   return (
     <Container>
       {scrollPosition >= 400 ? (
-        <ScrollToTopButton marginB={marginB} onClick={handleScrollClick}>
-          {" "}
+        <ScrollToTopButton marginB={100} onClick={handleScrollClick}>
           <AiOutlineArrowUp size={20} />
         </ScrollToTopButton>
       ) : null}

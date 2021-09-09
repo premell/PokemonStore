@@ -11,11 +11,16 @@ import { useEffect, useState } from "react";
 const PokemonPageContainer = ({ pokemon }) => {
   const { image_urls } = pokemon;
 
-  const [selectedImage, setSelectedImage] = useState(image_urls[0]);
+  const [selectedImage, setSelectedImage] = useState(pokemon.image_urls[0]);
 
   useEffect(() => {
-    setSelectedImage(pokemon.image_urls[0]);
+    console.log("HELLO2");
+    setSelectedImage(image_urls[0]);
   }, [pokemon]);
+
+  useEffect(() => {
+    console.log("HELLO");
+  }, [selectedImage]);
 
   return (
     <MainContainer>
@@ -25,7 +30,11 @@ const PokemonPageContainer = ({ pokemon }) => {
           images={image_urls}
           selectedImage={selectedImage}
         />
-        <MainImage image={selectedImage} />
+        <MainImage
+          defaultImage={image_urls[0]}
+          image={selectedImage}
+          pokemon={pokemon}
+        />
         <PokemonInformation pokemon={pokemon} />
       </MainContent>
     </MainContainer>

@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { useRouter } from "next/router";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 
@@ -9,6 +9,8 @@ import { useCartModal } from "shared/hooks";
 
 import { useRecoilState } from "recoil";
 import { showFavorites as showFavoritesAtoms } from "atoms.js";
+
+import { useScrollPosition } from "shared/hooks";
 
 import {
   disableBodyScroll,
@@ -22,16 +24,17 @@ const MainContainer = styled.div`
   justify-content: center;
   align-items: center;
   background-color: ${(p) => p.theme.colors.gray_10};
-
-  overflow-x: hidden;
 `;
 
 const MainContent = styled.div`
   width: 100%;
   max-width: 1900px;
   margin-top: 76px;
-  overflow: hidden;
 `;
+
+//overflow-x: hidden;
+//overflow: hidden;
+
 const Layout = ({ children }) => {
   const router = useRouter();
 
@@ -39,10 +42,9 @@ const Layout = ({ children }) => {
 
   const { hideWithTimer, hideTemporarly, hideInstantly } = useCartModal();
 
-  //disabled scrolling when modal is open
   useEffect(() => {
-    // if (showFavorites) document.body.classList.add("modal-open");
-    // else document.body.classList.remove("modal-open");
+    if (showFavorites) document.body.classList.add("modal-open");
+    else document.body.classList.remove("modal-open");
   }, [showFavorites]);
 
   useEffect(() => {

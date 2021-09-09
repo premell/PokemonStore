@@ -18,6 +18,8 @@ html{
   overflow-x:hidden;
 }
 
+
+
 body{
   margin:0;
   padding:0;
@@ -26,7 +28,8 @@ body{
 
 }
 
-  body.modal-open{
+  .modal-open{
+    overflow:hidden;
   }
 
 p{
@@ -35,5 +38,7 @@ p{
     font-weight: 400;
     }
 `;
+
+//overflow-x:hidden;
 
 export default GlobalStyle;

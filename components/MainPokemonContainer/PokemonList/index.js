@@ -1,10 +1,10 @@
-import PokemonCard from "./PokemonCard"
+import PokemonCard from "./PokemonCard";
 
-import { NoPokemonFound } from "../Styles"
+import { NoPokemonFound } from "../Styles";
 
-import { useEffect, useLayoutEffect, useMemo, useState } from "react"
+import { useEffect, useLayoutEffect, useMemo, useState } from "react";
 
-import { getAllPokemons } from "@/shared/javascript"
+import { getAllPokemons } from "@/shared/javascript";
 
 import { useRecoilState } from "recoil";
 import { typeFilter as typeFilterAtoms } from "atoms.js";
@@ -19,10 +19,17 @@ import { numberOfMatchedPokemon as numberOfMatchedPokemonAtoms } from "atoms.js"
 import { pokemonPerPage as pokemonPerPageAtoms } from "atoms.js";
 import { currentPage as currentPageAtoms } from "atoms.js";
 
-import { getTypeFilteredPokemon, getAbilityFilteredPokemon, getPriceFilteredPokemon, getStatFilteredPokemon, getSearchFilteredPokemon, getPokemonToDisplay, getSortedPokemon } from "./helperFunctions"
+import {
+  getTypeFilteredPokemon,
+  getAbilityFilteredPokemon,
+  getPriceFilteredPokemon,
+  getStatFilteredPokemon,
+  getSearchFilteredPokemon,
+  getPokemonToDisplay,
+  getSortedPokemon,
+} from "./helperFunctions";
 
-
-let pokemonToDisplay = []
+let pokemonToDisplay = [];
 const PokemonList = ({ allPokemon }) => {
   const [typeFilter, setTypeFilter] = useRecoilState(typeFilterAtoms);
   const [abilityFilter, setAbilityFilter] = useRecoilState(abilityFilterAtoms);
@@ -30,42 +37,69 @@ const PokemonList = ({ allPokemon }) => {
   const [statsFilter, setStatsFilter] = useRecoilState(statsFilterAtoms);
   const [searchQuery, setSearchQuery] = useRecoilState(searchQueryAtoms);
   const [sortingMethod, setSortingMethod] = useRecoilState(sortingMethodAtoms);
-  const [numberOfMatchedPokemon, setNumberOfMatchedPokemon] = useRecoilState(numberOfMatchedPokemonAtoms);
+  const [numberOfMatchedPokemon, setNumberOfMatchedPokemon] = useRecoilState(
+    numberOfMatchedPokemonAtoms
+  );
 
+  const [pokemonToDisplay, setPokemonToDisplay] = useState([]);
 
-  const [pokemonToDisplay, setPokemonToDisplay] = useState([])
-
-  const [pokemonPerPage, setPokemonPerPage] = useRecoilState(pokemonPerPageAtoms);
+  const [pokemonPerPage, setPokemonPerPage] =
+    useRecoilState(pokemonPerPageAtoms);
   const [currentPage, setCurrentPage] = useRecoilState(currentPageAtoms);
 
-  const typeFilteredPokemon = useMemo(() => getTypeFilteredPokemon(allPokemon, typeFilter.types), [allPokemon, typeFilter.types])
-  const abilityFilteredPokemon = useMemo(() => getAbilityFilteredPokemon(typeFilteredPokemon, abilityFilter.abilities), [typeFilteredPokemon, abilityFilter.abilities])
-  const priceFilteredPokemon = useMemo(() => getPriceFilteredPokemon(abilityFilteredPokemon, priceFilter.currentRange, priceFilter.isFiltering), [abilityFilteredPokemon, priceFilter.currentRange, priceFilter.isFiltering])
-  const statFilteredPokemon = useMemo(() => getStatFilteredPokemon(priceFilteredPokemon, statsFilter), [priceFilteredPokemon, statsFilter])
-  const searchFilteredPokemon = useMemo(() => getSearchFilteredPokemon(statFilteredPokemon, searchQuery), [statFilteredPokemon, searchQuery])
+  const typeFilteredPokemon = useMemo(
+    () => getTypeFilteredPokemon(allPokemon, typeFilter.types),
+    [allPokemon, typeFilter.types]
+  );
+  const abilityFilteredPokemon = useMemo(
+    () =>
+      getAbilityFilteredPokemon(typeFilteredPokemon, abilityFilter.abilities),
+    [typeFilteredPokemon, abilityFilter.abilities]
+  );
+  const priceFilteredPokemon = useMemo(
+    () =>
+      getPriceFilteredPokemon(
+        abilityFilteredPokemon,
+        priceFilter.currentRange,
+        priceFilter.isFiltering
+      ),
+    [abilityFilteredPokemon, priceFilter.currentRange, priceFilter.isFiltering]
+  );
+  const statFilteredPokemon = useMemo(
+    () => getStatFilteredPokemon(priceFilteredPokemon, statsFilter),
+    [priceFilteredPokemon, statsFilter]
+  );
+  const searchFilteredPokemon = useMemo(
+    () => getSearchFilteredPokemon(statFilteredPokemon, searchQuery),
+    [statFilteredPokemon, searchQuery]
+  );
 
   useEffect(() => {
-    const localSortedPokemon = getSortedPokemon(searchFilteredPokemon, sortingMethod)
+    const localSortedPokemon = getSortedPokemon(
+      searchFilteredPokemon,
+      sortingMethod
+    );
 
-    setNumberOfMatchedPokemon(localSortedPokemon.length)
-    setPokemonToDisplay(getPokemonToDisplay(localSortedPokemon, pokemonPerPage, currentPage))
-  }, [searchFilteredPokemon, sortingMethod, currentPage, pokemonPerPage])
+    setNumberOfMatchedPokemon(localSortedPokemon.length);
+    setPokemonToDisplay(
+      getPokemonToDisplay(localSortedPokemon, pokemonPerPage, currentPage)
+    );
+  }, [searchFilteredPokemon, sortingMethod, currentPage, pokemonPerPage]);
 
   useEffect(() => {
-    setCurrentPage(1)
-  }, [numberOfMatchedPokemon])
-
+    setCurrentPage(1);
+  }, [numberOfMatchedPokemon]);
 
   if (pokemonToDisplay.length === 0) {
+    return <NoPokemonFound />;
+  } else
     return (
-      <NoPokemonFound />
-    )
-  }
-  else return (
-    <>
-      {pokemonToDisplay.map((pokemon) => <PokemonCard key={pokemon.name} pokemon={pokemon} />)}
-    </>
-  )
-}
+      <>
+        {pokemonToDisplay.map((pokemon) => (
+          <PokemonCard key={pokemon.name} pokemon={pokemon} />
+        ))}
+      </>
+    );
+};
 
-export default PokemonList
+export default PokemonList;

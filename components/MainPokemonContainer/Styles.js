@@ -20,8 +20,9 @@ const StyledContainer = styled.div`
   flex-direction: column;
   padding: 10px;
   box-sizing: border-box;
-  overflow: hidden;
 `;
+//overflow: hidden;
+
 const OuterContainer = styled.div`
   max-width: 1600px;
   width: 100%;
@@ -344,12 +345,13 @@ export const ScrollToTopButton = styled.div`
   height: 60px;
   background-color: ${(p) => p.theme.colors.aqua_blue};
   border-radius: 50%;
-  z-index: 250px;
+
+  z-index: 400;
+  top: 85%;
+  left: 90%;
 
   position: sticky;
 
-  left: 90%;
-  top: 90%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -361,6 +363,7 @@ export const ScrollToTopButton = styled.div`
     background-color: ${(p) => p.theme.colors.dark_aqua_blue};
   }
 `;
+//position: sticky;
 
 export const HeartContainer = styled.div`
   position: absolute;

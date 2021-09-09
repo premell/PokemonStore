@@ -294,6 +294,8 @@ export const NoPokemonFoundContainer = ({ children }) => {
 };
 
 export const BackgroundBlur = styled.div`
+  pointer-events: auto;
+
   z-index: 900;
   height: 100vh;
   width: 100vw;
@@ -367,8 +369,6 @@ const FavoritePokemonCardContainer = styled.div`
   border-radius: 10px;
   align-items: center;
 
-  cursor: pointer;
-
   position: relative;
 `;
 
@@ -393,25 +393,27 @@ export const FavoritePokemonCard = ({ pokemon }) => {
   const handleButtonClick = () => {};
   return (
     <div>
-      <Link as={`/pokemon/${name}`} href="/pokemon/[pokemonName]">
-        <div>
-          <FavoritePokemonCardContainer>
-            <Image quality={100} width={200} height={200} src={image_url} />
-            <InformationContainer>
-              <BoldRegularText>{name}</BoldRegularText>
-              <TypeContainer>
-                {types.map((type) => (
-                  <TypeFlair key={type} type={type} />
-                ))}
-              </TypeContainer>
-            </InformationContainer>
-            <Subheading2>{formatAsUSDWithoutTrailingZeros(price)}</Subheading2>
-            <FavoriteHeartContainer>
-              <FavoritesHeart pokemon={pokemon} />
-            </FavoriteHeartContainer>
-          </FavoritePokemonCardContainer>
-        </div>
-      </Link>
+      <div>
+        <FavoritePokemonCardContainer>
+          <div style={{ cursor: "pointer" }}>
+            <Link as={`/pokemon/${name}`} href="/pokemon/[pokemonName]">
+              <Image quality={100} width={200} height={200} src={image_url} />
+            </Link>
+          </div>
+          <InformationContainer>
+            <BoldRegularText>{name}</BoldRegularText>
+            <TypeContainer>
+              {types.map((type) => (
+                <TypeFlair key={type} type={type} />
+              ))}
+            </TypeContainer>
+          </InformationContainer>
+          <Subheading2>{formatAsUSDWithoutTrailingZeros(price)}</Subheading2>
+          <FavoriteHeartContainer>
+            <FavoritesHeart pokemon={pokemon} />
+          </FavoriteHeartContainer>
+        </FavoritePokemonCardContainer>
+      </div>
     </div>
   );
 };
