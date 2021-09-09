@@ -306,44 +306,66 @@ export const BackgroundBlur = styled.div`
   justify-content: center;
   align-items: flex-start;
   padding-top: 15%;
+  overflow-y: hidden;
 
   visibility: ${(p) => (p.show === true ? "visible" : "visible")};
 `;
 
-export const StyledFavoritesPopupContainer = styled.div`
+const StyledFavoritesPopupContainer = styled.div`
   width: 500px;
-  padding: 20px;
+  padding-top: 15px;
+  padding-left: 11px;
+  padding-bottom: 15px;
+
   background-color: white;
   box-sizing: border-box;
   min-height: 450px;
   max-height: 800px;
+  position: relative;
+  overflow: hidden;
 
+  box-sizing: border-box;
   border-radius: 15px;
+`;
+//padding: 20px;
+
+const StyledFavoritesPopupContent = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
+  min-height: 450px;
+  max-height: 770px;
 
-  overflow-y: auto; /* Hide scrollbars */
+
+  overflow-y: scroll;
+  scrollbar-color: transparent transparent;
+
+  box-sizing: border-box;
+
+
+  &: hover{
+  scrollbar-color: ${(p) => p.theme.colors.gray_60} transparent; 
 `;
 
 export const FavoritesPopupContainer = ({ children, setShow }) => {
-  const test = useRef(null);
-  const handleClickOutside = () => console.log("ITS WORKING");
+  const styledContainer = useRef(null);
 
-  useClickOutside(test, () => setShow(false));
+  useClickOutside(styledContainer, () => setShow(false));
 
   return (
-    <StyledFavoritesPopupContainer ref={test}>
-      {children}
+    <StyledFavoritesPopupContainer ref={styledContainer}>
+      <StyledFavoritesPopupContent>{children}</StyledFavoritesPopupContent>
     </StyledFavoritesPopupContainer>
   );
 };
 
 const FavoritePokemonCardContainer = styled.div`
   margin: 10px;
+  padding-right: 20px;
   display: flex;
   background-color: ${(p) => p.theme.colors.gray_10};
   border-radius: 10px;
+  align-items: center;
 
   cursor: pointer;
 
@@ -352,8 +374,17 @@ const FavoritePokemonCardContainer = styled.div`
 
 const FavoriteHeartContainer = styled.div`
   position: absolute;
-  right: 15px;
-  top: 15px;
+  right: 25px;
+  top: 25px;
+`;
+
+const InformationContainer = styled.div`
+  width: 80px;
+  margin: 0 70px 50px 50px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
 `;
 
 export const FavoritePokemonCard = ({ pokemon }) => {
@@ -361,24 +392,26 @@ export const FavoritePokemonCard = ({ pokemon }) => {
 
   const handleButtonClick = () => {};
   return (
-    <FavoritePokemonCardContainer>
+    <div>
       <Link as={`/pokemon/${name}`} href="/pokemon/[pokemonName]">
         <div>
-          <Image quality={100} width={200} height={200} src={image_url} />
-          <div>
-            <BoldRegularText>{name}</BoldRegularText>
-            <TypeContainer>
-              {types.map((type) => (
-                <TypeFlair key={type} type={type} />
-              ))}
-            </TypeContainer>
-          </div>
-          <Subheading2>{formatAsUSDWithoutTrailingZeros(price)}</Subheading2>
+          <FavoritePokemonCardContainer>
+            <Image quality={100} width={200} height={200} src={image_url} />
+            <InformationContainer>
+              <BoldRegularText>{name}</BoldRegularText>
+              <TypeContainer>
+                {types.map((type) => (
+                  <TypeFlair key={type} type={type} />
+                ))}
+              </TypeContainer>
+            </InformationContainer>
+            <Subheading2>{formatAsUSDWithoutTrailingZeros(price)}</Subheading2>
+            <FavoriteHeartContainer>
+              <FavoritesHeart pokemon={pokemon} />
+            </FavoriteHeartContainer>
+          </FavoritePokemonCardContainer>
         </div>
       </Link>
-      <FavoriteHeartContainer>
-        <FavoritesHeart pokemon={pokemon} />
-      </FavoriteHeartContainer>
-    </FavoritePokemonCardContainer>
+    </div>
   );
 };

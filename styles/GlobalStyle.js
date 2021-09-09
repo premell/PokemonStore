@@ -23,10 +23,12 @@ body{
   padding:0;
   height:100%;
   width:100%;
-}
-  a{
 
+}
+
+  body.modal-open{
   }
+
 p{
     font-family: "LatoRegular";
     font-size:14px;

@@ -24,9 +24,9 @@ const FavoritesPopup = ({ show, setShow }) => {
                 <FavoritePokemonCard pokemon={pokemon} />
               ))
             ) : (
-              <div style={{ marginTop: "20px" }}>
-                You have no favorited pokemon
-              </div>
+              <p style={{ marginTop: "60px", fontSize: "18px" }}>
+                Save your favorite pokemon
+              </p>
             )}
           </FavoritesPopupContainer>
         </BackgroundBlur>
