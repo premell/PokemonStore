@@ -18,19 +18,21 @@ html{
   overflow-x:hidden;
 }
 
-
-
 body{
   margin:0;
   padding:0;
   height:100%;
   width:100%;
-
 }
 
-  .modal-open{
-    overflow:hidden;
-  }
+.modal-open{
+  overflow:hidden;
+}
+
+a:visited{
+    background-color:inherit;
+    color:inherit;
+}
 
 p{
     font-family: "LatoRegular";
@@ -38,6 +40,9 @@ p{
     font-weight: 400;
     }
 `;
+// a{
+//     color:white;
+// }
 
 //overflow-x:hidden;
 

@@ -14,13 +14,8 @@ const PokemonPageContainer = ({ pokemon }) => {
   const [selectedImage, setSelectedImage] = useState(pokemon.image_urls[0]);
 
   useEffect(() => {
-    console.log("HELLO2");
     setSelectedImage(image_urls[0]);
   }, [pokemon]);
-
-  useEffect(() => {
-    console.log("HELLO");
-  }, [selectedImage]);
 
   return (
     <MainContainer>

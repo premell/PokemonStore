@@ -15,6 +15,7 @@ export const MainContainer = styled.div`
   overflow-y: scroll;
   background-color: ${(p) => p.theme.colors.gray_10};
   margin-bottom: 50px;
+  margin-top: 10px;
 
   scrollbar-color: transparent transparent;
   scrollbar-width: thin;

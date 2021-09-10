@@ -76,6 +76,7 @@ export const RightSubContainer = styled.div`
   align-items: center;
   justify-content: flex-end;
   transform-style: preserve-3d;
+  margin-right: 20px;
 `;
 
 const SearchBarContainer = styled.div`
@@ -131,11 +132,10 @@ export const StyledCartButton = styled.div`
   position: relative;
   height: 51px;
   width: 130px;
-  margin-right: 50px;
+  margin-right: 10px;
 
   display: flex;
   align-items: center;
-  justify-content: space-between;
 
   font-size: ${(p) => p.theme.font_size.regular};
   cursor: pointer;
@@ -417,3 +417,8 @@ export const FavoritePokemonCard = ({ pokemon }) => {
     </div>
   );
 };
+
+export const DarkmodeContainer = styled.div`
+  margin-left: 15px;
+  cursor: pointer;
+`;

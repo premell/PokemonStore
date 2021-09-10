@@ -117,11 +117,11 @@ export const RegularText = styled.p`
 `;
 
 export const StyledNotImplemented = styled.div`
-  padding: 5px;
+  padding: 3px;
   display: flex;
   align-items: center;
-  width: 100px;
   height: 30px;
+  margin-right: 10px;
   border-radius: 4px;
   cursor: not-allowed;
   &:hover {
@@ -132,16 +132,17 @@ export const StyledNotImplemented = styled.div`
 export const NotImplemented = ({ defaultText, children }) => {
   const [text, setText] = useState(defaultText);
 
-  const handleMouseEnter = () => setText("unavailable");
+  //e.g "unavailabe" or "not implemented", I choose to not change it
+  const unavailableText = defaultText;
+
+  const handleMouseEnter = () => setText(defaultText);
   const handleMouseLeave = () => setText(defaultText);
 
   return (
     <div onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
       <StyledNotImplemented>
-        <BoldRegularText>
-          <div style={{ marginRight: "8px" }}>{children}</div>
-          {text}
-        </BoldRegularText>
+        <div style={{ marginRight: "8px" }}>{children}</div>
+        <BoldRegularText>{text}</BoldRegularText>
       </StyledNotImplemented>
     </div>
   );
@@ -160,26 +161,37 @@ const StyledLinksContainer = styled.div`
   align-items: center;
   justify-content: center;
 
-  color: white;
+  color: ${(p) => (p.backgroundColor === "black" ? "white" : "black")};
+
+  & * {
+    margin: ${(p) => p.spaceBetween};
+  }
 
   & svg {
     cursor: pointer;
   }
-  color: ${(p) => (p.background_color === "dark" ? "white" : "black")};
 `;
 
-export const Links = ({ background_color }) => {
+export const Links = ({
+  backgroundColor = "black",
+  size = 35,
+  spaceBetween = "0px",
+}) => {
   return (
-    <StyledLinksContainer background_color="dark">
-      <Link href="https://github.com/premell" passHref={true}>
-        <AiFillGithub size={35} />
-      </Link>
-      <Link
+    <StyledLinksContainer
+      backgroundColor={backgroundColor}
+      spaceBetween={spaceBetween}
+    >
+      <a target="_blank" href="https://github.com/premell" passHref={true}>
+        <AiFillGithub size={size} />
+      </a>
+      <a
+        target="_blank"
         href="https://www.linkedin.com/in/elmer-lingest%C3%A5l-3571021a8/"
         passHref={true}
       >
-        <AiFillLinkedin size={35} />
-      </Link>
+        <AiFillLinkedin size={size} />
+      </a>
     </StyledLinksContainer>
   );
 };

@@ -2,6 +2,7 @@ import SearchBar from "./SearchBar";
 import Cart from "./Cart";
 import Favorites from "./Favorites";
 import Login from "./Login";
+import DarkMode from "./DarkMode";
 import {
   MainContainer,
   ContentContainer,
@@ -9,6 +10,8 @@ import {
   HideAnimationContainer,
   RightSubContainer,
 } from "./Styles";
+
+import { Links } from "shared/components";
 import { useRouter } from "next/router";
 
 import { useRecoilState, useResetRecoilState } from "recoil";
@@ -52,6 +55,8 @@ const Navbar = () => {
             <Login />
             <Favorites />
             <Cart />
+            <Links backgroundColor="white" size={30} />
+            <DarkMode />
           </RightSubContainer>
         </HideAnimationContainer>
       </ContentContainer>
