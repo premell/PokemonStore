@@ -12,7 +12,7 @@ import {
 } from "@/shared/components";
 import Image from "next/image";
 import Link from "next/link";
-import TypeFlair from "@/shared/TypeFlair";
+import { TypeFlair } from "shared/components";
 import { formatAsUSDWithoutTrailingZeros } from "shared/javascript";
 
 import { FavoritesHeart } from "shared/components";

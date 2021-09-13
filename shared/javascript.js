@@ -1,4 +1,5 @@
-import { BASE_URL } from "@/shared/constants"
+import { BASE_URL } from "shared/constants";
+import { TYPES } from "shared/constants";
 
 export const fetchData = async (url) => {
   const res = await fetch(url);
@@ -20,9 +21,11 @@ export const formatAsUSD = (number) => {
 };
 
 export const formatAsUSDWithoutTrailingZeros = (number) => {
-  const numberWithCommas = number.toString().replace(/([0-9])([0-9]{3})/g, "$1,$2")
+  const numberWithCommas = number
+    .toString()
+    .replace(/([0-9])([0-9]{3})/g, "$1,$2");
 
-  return `$${numberWithCommas}`
+  return `$${numberWithCommas}`;
 };
 export const stringToInteger = (string) => {
   const removeLetters = string.replace(/[^0-9]/g, "");
@@ -32,7 +35,6 @@ export const stringToInteger = (string) => {
 };
 
 export const getPokemonPricing = (name) => {
-
   const characterValues = {
     a: "1",
     b: "2",
@@ -62,4 +64,67 @@ export const getPokemonPricing = (name) => {
     z: "26",
   };
   return name.length * 5 * characterValues[name[Math.min(3, name.length - 1)]];
-}
+};
+
+export const getTypeColor = (type) => {
+  let flairColor;
+  switch (type) {
+    case TYPES.NORMAL:
+      flairColor = "#A8A878";
+      break;
+    case TYPES.FIRE:
+      flairColor = "#F08030";
+      break;
+    case TYPES.WATER:
+      flairColor = "#6890F0";
+      break;
+    case TYPES.GRASS:
+      flairColor = "#78C850";
+      break;
+    case TYPES.ELECTRIC:
+      flairColor = "#f8d030";
+      break;
+    case TYPES.ICE:
+      flairColor = "#98D8D8";
+      break;
+    case TYPES.FIGHTING:
+      flairColor = "#C03028";
+      break;
+    case TYPES.POISON:
+      flairColor = "#A040A0";
+      break;
+    case TYPES.GROUND:
+      flairColor = "#E0C068";
+      break;
+    case TYPES.FLYING:
+      flairColor = "#A890F0";
+      break;
+    case TYPES.PSYCHIC:
+      flairColor = "#F85888";
+      break;
+    case TYPES.BUG:
+      flairColor = "#A8B820";
+      break;
+    case TYPES.ROCK:
+      flairColor = "#B8A038";
+      break;
+    case TYPES.GHOST:
+      flairColor = "#705898";
+      break;
+    case TYPES.DARK:
+      flairColor = "#705848";
+      break;
+    case TYPES.DRAGON:
+      flairColor = "#7038F8";
+      break;
+    case TYPES.STEEL:
+      flairColor = "#B8B8D0";
+      break;
+    case TYPES.FAIRY:
+      flairColor = "#F0B6BC";
+      break;
+    default:
+      flairColor = "#808080";
+  }
+  return flairColor;
+};

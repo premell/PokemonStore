@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from "react";
+import { getTypeColor } from "shared/javascript";
 import styled, { css } from "styled-components";
 import {
   AiFillGithub,
@@ -121,13 +122,14 @@ export const StyledNotImplemented = styled.div`
   display: flex;
   align-items: center;
   height: 30px;
-  margin-right: 10px;
+  padding-right: 20px;
   border-radius: 4px;
   cursor: not-allowed;
   &:hover {
     background-color: ${(p) => p.theme.colors.gray_60};
   }
 `;
+//margin-right: 10px;
 
 export const NotImplemented = ({ defaultText, children }) => {
   const [text, setText] = useState(defaultText);
@@ -249,5 +251,43 @@ export const FavoritesHeart = ({ pokemon, size = 25 }) => {
         </HeartIcon>
       )}
     </div>
+  );
+};
+
+export const StyledFlair = styled.div`
+  ${(p) => css`
+    width: ${p.width};
+    height: ${p.height};
+    color: ${p.theme.colors.gray_0};
+    font-size: ${p.font_size ? p.font_size : p.theme.font_size.regular};
+  `}
+  background-color: ${(p) => p.color};
+  border-radius: 10px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  & p {
+    color: #fdfef4 !important;
+  }
+`;
+
+export const TypeFlair = ({
+  type,
+  font_size,
+  width = "80px",
+  height = "30px",
+}) => {
+  const color = getTypeColor(type);
+  return (
+    <StyledFlair
+      font_size={font_size}
+      width={width}
+      height={height}
+      color={color}
+    >
+      <p> {type}</p>
+    </StyledFlair>
   );
 };

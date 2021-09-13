@@ -9,7 +9,7 @@ import {
   Button,
   FavoritesHeart,
 } from "shared/components";
-import TypeFlair from "shared/TypeFlair";
+import { TypeFlair } from "shared/components";
 
 import { RiDeleteBinLine } from "react-icons/ri";
 import { BiSearch } from "react-icons/bi";
@@ -54,7 +54,7 @@ const StyledHideAnimationContainer = styled.div`
   transform-style: preserve-3d;
 `;
 const WhiteBox = styled.div`
-  background-color: white;
+  background-color: ${(p) => p.theme.colors.gray_0};
   height: 80px;
   width: 800px;
   position: absolute;
@@ -72,7 +72,7 @@ export const HideAnimationContainer = ({ children }) => {
 
 export const RightSubContainer = styled.div`
   display: flex;
-  background-color: white;
+  background-color: ${(p) => p.theme.colors.gray_0};
   align-items: center;
   justify-content: flex-end;
   transform-style: preserve-3d;

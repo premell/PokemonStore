@@ -25,6 +25,10 @@ const MainContainer = styled.div`
   justify-content: center;
   align-items: center;
   background-color: ${(p) => p.theme.colors.gray_10};
+
+  & p {
+    color: ${(p) => (p.darkThemeEnabled ? "#fdfef4" : "black")};
+  }
 `;
 
 const MainContent = styled.div`
@@ -73,7 +77,7 @@ const Layout = ({ children }) => {
 
   return (
     <ThemeProvider theme={theme}>
-      <MainContainer theme={theme}>
+      <MainContainer darkThemeEnabled={darkThemeEnabled}>
         <Navbar />
         <MainContent>{children}</MainContent>
         <Footer />

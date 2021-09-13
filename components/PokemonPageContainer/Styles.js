@@ -6,7 +6,7 @@ import {
   Subheading2,
   Button,
 } from "shared/components";
-import TypeFlair from "shared/TypeFlair";
+import { TypeFlair } from "shared/components";
 import { STATS } from "shared/constants";
 import { formatAsUSDWithoutTrailingZeros } from "shared/javascript";
 import { useCart, useCartModal } from "shared/hooks";
