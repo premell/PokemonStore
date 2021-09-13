@@ -222,7 +222,7 @@ export const showFavorites = atom({
   default: false,
 });
 
-export const darkTheme = atom({
-  key: "darkTheme ",
-  default: false,
+export const darkThemeEnabled = atom({
+  key: "darkThemeEnabled",
+  default: true,
 });

@@ -1,3 +1,4 @@
+import { ThemeProvider } from "styled-components";
 import styled from "styled-components";
 import { useRouter } from "next/router";
 
@@ -34,8 +35,25 @@ const MainContent = styled.div`
 
 //overflow-x: hidden;
 //overflow: hidden;
+import themes from "styles/theme";
+import { darkThemeEnabled as darkThemeEnabledAtoms } from "atoms.js";
 
 const Layout = ({ children }) => {
+  const [darkThemeEnabled, setDarkThemeEnabled] = useRecoilState(
+    darkThemeEnabledAtoms
+  );
+
+  const [theme, setTheme] = useState(themes.light);
+
+  useEffect(() => {
+    console.log("THEEME WAS CHANGED");
+    if (darkThemeEnabled) {
+      setTheme(themes.dark);
+    } else {
+      setTheme(themes.light);
+    }
+  }, [darkThemeEnabled]);
+
   const router = useRouter();
 
   const [showFavorites, setShowFavorites] = useRecoilState(showFavoritesAtoms);
@@ -54,11 +72,13 @@ const Layout = ({ children }) => {
   }, [router.asPath]);
 
   return (
-    <MainContainer>
-      <Navbar />
-      <MainContent>{children}</MainContent>
-      <Footer />
-    </MainContainer>
+    <ThemeProvider theme={theme}>
+      <MainContainer theme={theme}>
+        <Navbar />
+        <MainContent>{children}</MainContent>
+        <Footer />
+      </MainContainer>
+    </ThemeProvider>
   );
 };
 export default Layout;
