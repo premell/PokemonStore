@@ -200,7 +200,8 @@ const HeartIcon = styled.div`
   cursor: pointer;
 
   & svg {
-    color: ${(p) => (p.isFavorited ? "red" : p.theme.font_color)} !important;
+    color: ${(p) =>
+      p.isFavorited || p.hovering ? "red" : p.theme.font_color} !important;
   }
 `;
 
@@ -234,6 +235,7 @@ export const FavoritesHeart = ({ pokemon, size = 25 }) => {
           isFavorited={isFavorited}
           onMouseEnter={() => setIsHovering(true)}
           onMouseLeave={() => setIsHovering(false)}
+          hovering={isHovering}
         >
           {isHovering ? (
             <AiFillHeart size={size} />

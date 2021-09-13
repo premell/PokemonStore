@@ -197,7 +197,7 @@ const DropdownItem = styled.div`
 
   &:hover {
     background-color: ${(p) =>
-      p.inlist ? p.theme.colors.aqua_blue : p.theme.colors.gray_40};
+      p.selected ? p.theme.colors.gray_40 : p.theme.colors.aqua_blue};
   }
 `;
 
@@ -225,7 +225,6 @@ export const Dropdown = ({
   useClickOutside(dropdown, handleClickOutside);
 
   useEffect(() => {
-    // 
     setSelected(defaultSelected);
   }, [defaultSelected]);
 
@@ -236,15 +235,9 @@ export const Dropdown = ({
     setShowDropdown(false);
   };
 
-  // useEffect(() => {
-  //   
-  //     selected
-  //   )
-  // }, [selected])
-
   return (
     <div style={{ marginLeft: "12px", position: "relative" }} ref={dropdown}>
-      <DropdownItem onClick={() => setShowDropdown(!showDropdown)}>
+      <DropdownItem onClick={() => setShowDropdown(!showDropdown)} selected>
         <p>
           {labelPrefix}
           {selected.label}
@@ -255,7 +248,6 @@ export const Dropdown = ({
         {showDropdown
           ? list.map((item) => (
               <DropdownItem
-                inlist
                 key={item.label}
                 onClick={() => handleNewSelected(item.value)}
               >
@@ -577,7 +569,7 @@ export const HeartContainer = styled.div`
 //   useClickOutside(dropdown, handleClickOutside)
 //
 //   useEffect(() => {
-//     
+//
 //     setSelected(defaultSelected)
 //   }, [defaultSelected])
 //

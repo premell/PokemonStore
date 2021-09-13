@@ -15,7 +15,6 @@ const NumberRangeContainer = React.memo(
 
     const [localMaxVal, setLocalMaxVal] = useState(0);
 
-    //const dragging = useRef({ currentlyDragging: false, target: "min" });
     const [dragging, setDragging] = useState({
       currentlyDragging: false,
       target: "min",
@@ -34,11 +33,9 @@ const NumberRangeContainer = React.memo(
 
     useEffect(() => {
       const handlePointerMove = (e) => {
-        
         const rect = sliderRef.current.getBoundingClientRect();
         const percentage = (e.clientX - rect.x) / 180;
         let newValue = percentage * max;
-
         if (dragging.target === "min") {
           if (newValue < 0) newValue = 0;
           else if (newValue > maxVal) newValue = maxVal - 1;
@@ -167,6 +164,7 @@ const NumberRangeContainer = React.memo(
     }, [minVal, maxVal]);
 
     const handleRangeClick = (e, minVal, maxVal) => {
+      console.log("HEJSAN");
       const rect = sliderRef.current.getBoundingClientRect();
       let percentageClick = (e.clientX - rect.x) / 180;
 

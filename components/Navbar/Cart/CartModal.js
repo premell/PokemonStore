@@ -41,6 +41,7 @@ const CartModal = ({
         {cartPokemon.length !== 0 ? (
           cartPokemon.map((pokemon) => (
             <ModalPokemonCard
+              key={pokemon.name}
               pokemon={pokemon}
               handleRouteClick={() => handleRouteClick(pokemon)}
               handleDeleteClick={() => handleDeleteClick(pokemon)}

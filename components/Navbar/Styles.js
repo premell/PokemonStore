@@ -152,7 +152,7 @@ export const StyledCartModal = styled.div`
   width: 400px;
   left: -250px;
   top: -640px;
-  background-color: white;
+  background-color: ${(p) => p.theme.colors.gray_0};
   padding-top: 60px;
   border: 1px solid;
   border-color: ${(p) => p.theme.colors.gray_40};
@@ -319,7 +319,7 @@ const StyledFavoritesPopupContainer = styled.div`
   padding-left: 11px;
   padding-bottom: 15px;
 
-  background-color: white;
+  background-color: ${(p) => p.theme.colors.gray_0};
   box-sizing: border-box;
   min-height: 450px;
   max-height: 800px;
@@ -397,7 +397,9 @@ export const FavoritePokemonCard = ({ pokemon }) => {
         <FavoritePokemonCardContainer>
           <div style={{ cursor: "pointer" }}>
             <Link as={`/pokemon/${name}`} href="/pokemon/[pokemonName]">
-              <Image quality={100} width={200} height={200} src={image_url} />
+              <a>
+                <Image quality={100} width={200} height={200} src={image_url} />
+              </a>
             </Link>
           </div>
           <InformationContainer>

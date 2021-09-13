@@ -21,7 +21,7 @@ const FavoritesPopup = ({ show, setShow }) => {
           <FavoritesPopupContainer setShow={setShow}>
             {favorites.pokemon.length !== 0 ? (
               favorites.pokemon.map((pokemon) => (
-                <FavoritePokemonCard pokemon={pokemon} />
+                <FavoritePokemonCard key={pokemon.name} pokemon={pokemon} />
               ))
             ) : (
               <p style={{ marginTop: "60px", fontSize: "18px" }}>

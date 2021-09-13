@@ -37,15 +37,13 @@ const PokemonCard = ({ pokemon }) => {
     showWithTimer();
   };
 
-  const handleMouseOver = () => 
-
   return (
     <StyledPokemonCard>
       <HeartContainer>
         <FavoritesHeart pokemon={pokemon} />
       </HeartContainer>
       <Link as={`/pokemon/${name}`} href="/pokemon/[pokemonName]">
-        <StyledPokemonMain onMouseOver={handleMouseOver}>
+        <StyledPokemonMain>
           <Image quality={100} width={150} height={150} src={image_url} />
           <BoldRegularText>{name}</BoldRegularText>
           <TypeContainer>

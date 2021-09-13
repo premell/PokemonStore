@@ -62,10 +62,9 @@ const Layout = ({ children }) => {
   }, [darkThemeEnabled]);
 
   const router = useRouter();
+  const { hideWithTimer, hideTemporarly, hideInstantly } = useCartModal();
 
   const [showFavorites, setShowFavorites] = useRecoilState(showFavoritesAtoms);
-
-  const { hideWithTimer, hideTemporarly, hideInstantly } = useCartModal();
 
   useEffect(() => {
     if (showFavorites) document.body.classList.add("modal-open");
@@ -76,6 +75,7 @@ const Layout = ({ children }) => {
     hideWithTimer();
     hideTemporarly();
     hideInstantly();
+    setShowFavorites(false);
   }, [router.asPath]);
 
   return (
