@@ -32,7 +32,6 @@ const getSortingItem = (sortingMethod) => {
       sortingMethodObject = item;
     }
   });
-  console.log(sortingMethodObject);
   return sortingMethodObject;
 };
 const getPokemonPerPageItem = (pokemonPerPage) => {
@@ -180,7 +179,7 @@ export default ViewPanel;
 //
 //
 //   useEffect(() => {
-//     console.log(sortingMethod)
+//     
 //     sorting_list.forEach((item) => {
 //       if (item.value === sortingMethod) {
 //         setDefaultSortingMethod(item)
@@ -191,7 +190,7 @@ export default ViewPanel;
 //   }, [sortingMethod])
 //
 //   useEffect(() => {
-//     console.log(pokemonPerPage)
+//     
 //     pokemon_per_page_list.forEach((number) => {
 //       if (number.value === pokemonPerPage) {
 //         setDefaultPokemonPerPage(number)

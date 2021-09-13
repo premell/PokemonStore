@@ -32,6 +32,7 @@ const lightColors = {
     gray_90: "#282b30;",
     gray_100: "#282b30",
   },
+  font_color: "black",
 };
 
 const darkColors = {
@@ -54,6 +55,7 @@ const darkColors = {
     gray_90: "#12151a",
     gray_100: "#12151a",
   },
+  font_color: "#fdfef4",
 };
 
 const lightTheme = { ...baseTheme, ...lightColors };

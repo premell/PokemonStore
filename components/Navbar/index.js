@@ -26,11 +26,17 @@ import {
   useShowCartModalOnCartUpdate,
 } from "@/shared/hooks";
 
+import { darkThemeEnabled as darkThemeEnabledAtoms } from "atoms.js";
+
 const Navbar = () => {
   const defaultPriceFilter = useResetRecoilState(priceFilterAtoms);
   const defaultStatsFilter = useResetRecoilState(statsFilterAtoms);
   const defaultTypeFilter = useResetRecoilState(typeFilterAtoms);
   const defaultAbilityFilter = useResetRecoilState(abilityFilterAtoms);
+
+  const [darkThemeEnabled, setDarkThemeEnabled] = useRecoilState(
+    darkThemeEnabledAtoms
+  );
 
   const router = useRouter();
   const handleGoToHome = () => {
@@ -55,7 +61,7 @@ const Navbar = () => {
             <Login />
             <Favorites />
             <Cart />
-            <Links backgroundColor="white" size={30} />
+            <Links darkBackground={darkThemeEnabled} size={30} />
             <DarkMode />
           </RightSubContainer>
         </HideAnimationContainer>

@@ -1,5 +1,5 @@
 import React from "react";
-import { BsMoon } from "react-icons/bs";
+import { BiMoon } from "react-icons/bi";
 import { FiSun } from "react-icons/fi";
 
 import { DarkmodeContainer } from "./Styles";
@@ -14,7 +14,7 @@ const DarkMode = () => {
   const handleClick = () => setDarkThemeEnabled(!darkThemeEnabled);
   return (
     <DarkmodeContainer onClick={handleClick}>
-      {darkThemeEnabled ? <FiSun size={30} /> : <BsMoon size={30} />}
+      {darkThemeEnabled ? <FiSun size={30} /> : <BiMoon size={30} />}
     </DarkmodeContainer>
   );
 };

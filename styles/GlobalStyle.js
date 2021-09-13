@@ -3,10 +3,6 @@ import RegularLato from "./fonts/Lato-Regular.ttf";
 
 const GlobalStyle = createGlobalStyle`
   @font-face {
-    font-family: "BrooklineCondensed";
-    src: url(./fonts/BrooklineCondensed-nRL3M.ttf)
-  }
-  @font-face {
     font-family: "LatoRegular";
     src: url(${RegularLato})
   }

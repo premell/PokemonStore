@@ -61,7 +61,6 @@ const StyledImageContainer = styled.div`
 `;
 
 const ImageContainer = ({ image, selected, handleClick }) => {
-  console.log(selected);
   return (
     <StyledImageContainer onClick={handleClick} selected={selected}>
       <Image quality={100} width={100} height={100} src={image} />
@@ -70,13 +69,11 @@ const ImageContainer = ({ image, selected, handleClick }) => {
 };
 
 export const ImageList = ({ images, selectedImage, handleNewSelected }) => {
-  console.log(selectedImage);
-
-  console.log(images);
   return (
     <StyledImageList>
       {images.map((image) => (
         <ImageContainer
+          key={image}
           handleClick={() => handleNewSelected(image)}
           image={image}
           selected={image === selectedImage}
@@ -212,6 +209,7 @@ export const PokemonInformation = ({ pokemon }) => {
         <ItemContainer style={{ marginBottom: "20px" }}>
           {types.map((type) => (
             <TypeFlair
+              key={type}
               font_size="15px"
               type={type}
               width="100px"
@@ -222,7 +220,7 @@ export const PokemonInformation = ({ pokemon }) => {
         <Subheading1>Abilities</Subheading1>
         <ItemContainer>
           {abilities.map((ability) => (
-            <Ability>{ability}</Ability>
+            <Ability key={ability}>{ability}</Ability>
           ))}
         </ItemContainer>
         <Subheading1>Stats</Subheading1>
@@ -230,6 +228,7 @@ export const PokemonInformation = ({ pokemon }) => {
           {stats.map((stat) => {
             return (
               <Stat
+                key={Object.keys(stat)[0]}
                 statName={Object.keys(stat)[0]}
                 value={Object.values(stat)[0]}
               />

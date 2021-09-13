@@ -1,29 +1,37 @@
-import { FiShoppingCart } from 'react-icons/fi';
+import { FiShoppingCart } from "react-icons/fi";
 import { StyledCartButton } from "../Styles";
 
-import { BoldRegularText } from "shared/components"
-import { useRouter } from 'next/router'
+import { BoldRegularText } from "shared/components";
+import { useRouter } from "next/router";
 
+import CartModal from "./CartModal";
 
-import CartModal from "./CartModal"
-
-const CartButton = ({ handleClick, handleMouseEnter, handleMouseLeave, children }) => {
-
-  const router = useRouter()
-  const handleGoToCart = () => router.push("/cart")
-
+const CartButton = ({
+  handleClick,
+  handleMouseEnter,
+  handleMouseLeave,
+  children,
+}) => {
+  const router = useRouter();
+  const handleGoToCart = () => router.push("/cart");
 
   return (
-    <div style={{
-      transformStyle: "preserve-3d",
-    }}>
-      <StyledCartButton onClick={handleGoToCart} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
-        <FiShoppingCart size={20} style={{ stroke: "black", strokeWidth: "2" }} />
+    <div
+      style={{
+        transformStyle: "preserve-3d",
+      }}
+    >
+      <StyledCartButton
+        onClick={handleGoToCart}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+      >
+        <FiShoppingCart size={20} style={{ strokeWidth: "2" }} />
         <BoldRegularText>Shopping cart</BoldRegularText>
       </StyledCartButton>
       {children}
-    </div >
-  )
-}
+    </div>
+  );
+};
 
-export default CartButton
+export default CartButton;

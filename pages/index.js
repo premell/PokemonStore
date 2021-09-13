@@ -86,7 +86,7 @@ export async function getServerSideProps() {
 }
 
 // const Home = ({ pokemonObjects }) => {
-//   console.log(pokemonObjects)
+//   
 //   return (
 //     <AppContainer>
 //       <SideFilterPanel />

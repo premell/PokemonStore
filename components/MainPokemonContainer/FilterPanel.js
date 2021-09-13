@@ -99,11 +99,16 @@ const FilterPanel = () => {
       )}
       {typeFilter.isFiltering &&
         typeFilter.types.map((type) => (
-          <FilterBox handleClick={() => removeType(type)} text={type} />
+          <FilterBox
+            key={type}
+            handleClick={() => removeType(type)}
+            text={type}
+          />
         ))}
       {abilityFilter.isFiltering &&
         abilityFilter.abilities.map((ability) => (
           <FilterBox
+            key={ability}
             handleClick={() => removeAbility(ability)}
             text={ability}
           />
@@ -112,6 +117,7 @@ const FilterPanel = () => {
         if (statsFilter[key].isFiltering)
           return (
             <FilterBox
+              key={key}
               handleClick={() => removeStat(key)}
               text={`${statsFilter[key].name}: ${statsFilter[key].currentRange.min} - ${statsFilter[key].currentRange.max}`}
             />

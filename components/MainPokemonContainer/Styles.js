@@ -82,9 +82,7 @@ export const FilterBox = ({ handleClick, text }) => {
   return (
     <StyledFilterBox onClick={handleClick}>
       <p style={{ position: "relative" }}>{text}</p>
-      <p>
-        <Cross />
-      </p>
+      <Cross />
     </StyledFilterBox>
   );
 };
@@ -140,18 +138,14 @@ export const NumberFilterFlair = ({ min, max, name }) => {
   );
 };
 
-const StyledAbilityFilterFlair = styled.div``;
+//const StyledAbilityFilterFlair = styled.div``;
+
 export const AbilityFilterFlair = ({ ability }) => {
-  return (
-    <StyledAbilityFilterFlair>
-      <p>{ability}</p>
-    </StyledAbilityFilterFlair>
-  );
+  return <p>{ability}</p>;
 };
 
 const StyledPageArrow = styled.div`
   cursor: pointer;
-
   &:hover {
     background-color: ${(p) => p.theme.colors.gray_40};
   }
@@ -231,7 +225,7 @@ export const Dropdown = ({
   useClickOutside(dropdown, handleClickOutside);
 
   useEffect(() => {
-    // console.log(defaultSelected)
+    // 
     setSelected(defaultSelected);
   }, [defaultSelected]);
 
@@ -243,7 +237,7 @@ export const Dropdown = ({
   };
 
   // useEffect(() => {
-  //   console.log(
+  //   
   //     selected
   //   )
   // }, [selected])
@@ -583,7 +577,7 @@ export const HeartContainer = styled.div`
 //   useClickOutside(dropdown, handleClickOutside)
 //
 //   useEffect(() => {
-//     console.log(defaultSelected)
+//     
 //     setSelected(defaultSelected)
 //   }, [defaultSelected])
 //

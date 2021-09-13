@@ -34,7 +34,7 @@ const NumberRangeContainer = React.memo(
 
     useEffect(() => {
       const handlePointerMove = (e) => {
-        console.log("DRAGGING");
+        
         const rect = sliderRef.current.getBoundingClientRect();
         const percentage = (e.clientX - rect.x) / 180;
         let newValue = percentage * max;

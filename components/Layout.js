@@ -27,7 +27,11 @@ const MainContainer = styled.div`
   background-color: ${(p) => p.theme.colors.gray_10};
 
   & p {
-    color: ${(p) => (p.darkThemeEnabled ? "#fdfef4" : "black")};
+    color: ${(p) => p.theme.font_color};
+  }
+
+  & svg {
+    color: ${(p) => p.theme.font_color};
   }
 `;
 
@@ -50,7 +54,6 @@ const Layout = ({ children }) => {
   const [theme, setTheme] = useState(themes.light);
 
   useEffect(() => {
-    console.log("THEEME WAS CHANGED");
     if (darkThemeEnabled) {
       setTheme(themes.dark);
     } else {

@@ -9,7 +9,7 @@ import PokemonList from "./PokemonList";
 import FilterPanel from "./FilterPanel";
 import PageNavigator from "./PageNavigator";
 import ViewPanel from "./ViewPanel";
-import { Seperator } from "shared/components";
+import { Seperator, IconThemeProvider } from "shared/components";
 
 import { useRecoilState } from "recoil";
 import { anyFilterActive as anyFilterActiveAtoms } from "atoms.js";
@@ -34,7 +34,7 @@ const MainContainer = ({ allPokemon }) => {
   useScrollPosition(handleScroll);
 
   useEffect(() => {
-    console.log(scrollPosition);
+    
   }, [scrollPosition]);
 
   const handleScrollClick = () => {
@@ -48,7 +48,9 @@ const MainContainer = ({ allPokemon }) => {
     <Container>
       {scrollPosition >= 400 ? (
         <ScrollToTopButton marginB={100} onClick={handleScrollClick}>
-          <AiOutlineArrowUp size={20} />
+          <IconThemeProvider>
+            <AiOutlineArrowUp size={20} />
+          </IconThemeProvider>
         </ScrollToTopButton>
       ) : null}
       <ViewPanel />

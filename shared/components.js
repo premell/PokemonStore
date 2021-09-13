@@ -163,34 +163,32 @@ const StyledLinksContainer = styled.div`
   align-items: center;
   justify-content: center;
 
-  color: ${(p) => (p.backgroundColor === "black" ? "white" : "black")};
-
   & * {
     margin: ${(p) => p.spaceBetween};
   }
 
   & svg {
     cursor: pointer;
+    color: ${(p) => (p.darkBackground ? "white" : "black")} !important;
   }
 `;
 
 export const Links = ({
-  backgroundColor = "black",
+  darkBackground = true,
   size = 35,
   spaceBetween = "0px",
 }) => {
   return (
     <StyledLinksContainer
-      backgroundColor={backgroundColor}
+      darkBackground={darkBackground}
       spaceBetween={spaceBetween}
     >
-      <a target="_blank" href="https://github.com/premell" passHref={true}>
+      <a target="_blank" href="https://github.com/premell">
         <AiFillGithub size={size} />
       </a>
       <a
         target="_blank"
         href="https://www.linkedin.com/in/elmer-lingest%C3%A5l-3571021a8/"
-        passHref={true}
       >
         <AiFillLinkedin size={size} />
       </a>
@@ -201,7 +199,9 @@ export const Links = ({
 const HeartIcon = styled.div`
   cursor: pointer;
 
-  color: ${(p) => (p.isFavorited ? "red" : p.theme.colors.gray_80)};
+  & svg {
+    color: ${(p) => (p.isFavorited ? "red" : p.theme.font_color)} !important;
+  }
 `;
 
 export const FavoritesHeart = ({ pokemon, size = 25 }) => {
@@ -291,3 +291,7 @@ export const TypeFlair = ({
     </StyledFlair>
   );
 };
+
+export const IconThemeProvider = styled.div`
+  color: ${(p) => p.theme.font_color} !important;
+`;
