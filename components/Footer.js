@@ -3,10 +3,13 @@ import { Links, BoldRegularText } from "shared/components";
 import styled from "styled-components";
 
 const StyledFooter = styled.div`
-  color: white;
   background-color: ${(p) => p.theme.colors.gray_100};
   height: 300px;
   width: 100%;
+
+  & p {
+    color: #fdfef4 !important;
+  }
 `;
 
 const Footer = () => {

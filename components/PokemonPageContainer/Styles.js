@@ -71,14 +71,17 @@ const ImageContainer = ({ image, selected, handleClick }) => {
 export const ImageList = ({ images, selectedImage, handleNewSelected }) => {
   return (
     <StyledImageList>
-      {images.map((image) => (
-        <ImageContainer
-          key={image}
-          handleClick={() => handleNewSelected(image)}
-          image={image}
-          selected={image === selectedImage}
-        />
-      ))}
+      {images.map(
+        (image) =>
+          image !== null && (
+            <ImageContainer
+              key={image}
+              handleClick={() => handleNewSelected(image)}
+              image={image}
+              selected={image === selectedImage}
+            />
+          )
+      )}
     </StyledImageList>
   );
 };

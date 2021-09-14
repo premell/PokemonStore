@@ -88,7 +88,8 @@ const PokemonList = ({ allPokemon }) => {
 
   useEffect(() => {
     setCurrentPage(1);
-  }, [numberOfMatchedPokemon]);
+    window.scrollTo(0, 0);
+  }, [numberOfMatchedPokemon, sortingMethod]);
 
   if (pokemonToDisplay.length === 0) {
     return <NoPokemonFound />;

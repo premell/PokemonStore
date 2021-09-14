@@ -54,7 +54,6 @@ const PageNavigator = () => {
   );
 
   const goToPage = (newPage) => {
-    
     if (newPage <= 0 && newPage > maxPages) setCurrentPage(1);
     else setCurrentPage(newPage);
   };

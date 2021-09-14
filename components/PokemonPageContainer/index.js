@@ -10,6 +10,7 @@ import { useEffect, useState } from "react";
 
 const PokemonPageContainer = ({ pokemon }) => {
   const { image_urls } = pokemon;
+  console.log(image_urls);
 
   const [selectedImage, setSelectedImage] = useState(pokemon.image_urls[0]);
 

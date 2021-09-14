@@ -53,7 +53,7 @@ export default Home;
 
 export async function getServerSideProps() {
   const defaultPokemonRefs = await fetchData(
-    BASE_URL + "pokemon?offset=0&limit=100"
+    BASE_URL + "pokemon?offset=0&limit=2000"
   );
   const defaultPokemonObjects = await Promise.all(
     defaultPokemonRefs.results.map(async (pokemon) => {
@@ -86,7 +86,7 @@ export async function getServerSideProps() {
 }
 
 // const Home = ({ pokemonObjects }) => {
-//   
+//
 //   return (
 //     <AppContainer>
 //       <SideFilterPanel />

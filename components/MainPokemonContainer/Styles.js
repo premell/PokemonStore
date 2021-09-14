@@ -146,6 +146,8 @@ export const AbilityFilterFlair = ({ ability }) => {
 
 const StyledPageArrow = styled.div`
   cursor: pointer;
+  padding: 5px;
+  padding-top: 11px;
   &:hover {
     background-color: ${(p) => p.theme.colors.gray_40};
   }
@@ -199,6 +201,11 @@ const DropdownItem = styled.div`
     background-color: ${(p) =>
       p.selected ? p.theme.colors.gray_40 : p.theme.colors.aqua_blue};
   }
+
+  & p {
+    color: ${(p) =>
+      p.selected ? p.theme.colors.font_color : "#fdfef4"} !important;
+  }
 `;
 
 const DropdownList = styled.div`
@@ -207,7 +214,6 @@ const DropdownList = styled.div`
   left: 0px;
   position: absolute;
   background-color: ${(p) => p.theme.colors.gray_90};
-  color: white;
   z-index: 30;
 `;
 

@@ -33,10 +33,6 @@ const MainContainer = ({ allPokemon }) => {
   };
   useScrollPosition(handleScroll);
 
-  useEffect(() => {
-    
-  }, [scrollPosition]);
-
   const handleScrollClick = () => {
     window.scrollTo({
       top: 0,

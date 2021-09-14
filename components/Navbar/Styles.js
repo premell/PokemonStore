@@ -187,7 +187,7 @@ const IconContainer = styled.div`
   margin-top: 30px;
   margin-right: 20px;
   cursor: pointer;
-  &:hover {
+  &:hover svg {
     color: red;
   }
 `;
