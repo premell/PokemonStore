@@ -26,11 +26,13 @@ const PokemonPageContainer = ({ pokemon }) => {
           images={image_urls}
           selectedImage={selectedImage}
         />
-        <MainImage
-          defaultImage={image_urls[0]}
-          image={selectedImage}
-          pokemon={pokemon}
-        />
+        {selectedImage !== null ? (
+          <MainImage
+            defaultImage={image_urls[0]}
+            image={selectedImage}
+            pokemon={pokemon}
+          />
+        ) : null}
         <PokemonInformation pokemon={pokemon} />
       </MainContent>
     </MainContainer>

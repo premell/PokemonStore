@@ -10,7 +10,7 @@ import { TypeFlair } from "shared/components";
 import { STATS } from "shared/constants";
 import { formatAsUSDWithoutTrailingZeros } from "shared/javascript";
 import { useCart, useCartModal } from "shared/hooks";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import { useRecoilState } from "recoil";
 import { cart as cartAtoms } from "atoms.js";
@@ -69,19 +69,30 @@ const ImageContainer = ({ image, selected, handleClick }) => {
 };
 
 export const ImageList = ({ images, selectedImage, handleNewSelected }) => {
+  const anyImageAvailable = useRef(true);
+  useEffect(() => {
+    let allImagesNull = true;
+    images.forEach((image) => {
+      if (image !== null) allImagesNull = false;
+    });
+    if (allImagesNull) anyImageAvailable.current = false;
+  }, []);
+
   return (
     <StyledImageList>
-      {images.map(
-        (image) =>
-          image !== null && (
-            <ImageContainer
-              key={image}
-              handleClick={() => handleNewSelected(image)}
-              image={image}
-              selected={image === selectedImage}
-            />
+      {anyImageAvailable.current
+        ? images.map(
+            (image) =>
+              image !== null && (
+                <ImageContainer
+                  key={image}
+                  handleClick={() => handleNewSelected(image)}
+                  image={image}
+                  selected={image === selectedImage}
+                />
+              )
           )
-      )}
+        : null}
     </StyledImageList>
   );
 };
