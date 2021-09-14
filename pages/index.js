@@ -4,7 +4,7 @@ import SideFilterPanel from "components/SideFilterPanel";
 import MainPokemonContainer from "components/MainPokemonContainer";
 
 import { fetchData, getPokemonPricing } from "@/shared/javascript";
-import { BASE_URL } from "@/shared/constants";
+import { BASE_URL, POKEMON_TO_EXCLUDE } from "@/shared/constants";
 import { useEffect } from "react";
 
 const Divider = styled.div`
@@ -55,8 +55,11 @@ export async function getServerSideProps() {
   const defaultPokemonRefs = await fetchData(
     BASE_URL + "pokemon?offset=0&limit=2000"
   );
+  const filteredPokemonRefs = defaultPokemonRefs.results.filter(
+    (pokemonRef) => !POKEMON_TO_EXCLUDE.includes(pokemonRef.name)
+  );
   const defaultPokemonObjects = await Promise.all(
-    defaultPokemonRefs.results.map(async (pokemon) => {
+    filteredPokemonRefs.map(async (pokemon) => {
       const data = await fetchData(pokemon.url);
       return data;
     })

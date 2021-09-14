@@ -27,8 +27,8 @@ export const SORTING_METHODS = {
   RELEASE_NEWEST_FIRST: "RELEASE_NEWEST_FIRST",
   RELEASE_OLDEST_FIRST: "RELEASE_OLDEST_FIRST",
   ALPHABETICALLY_A_FIRST: "ALPHABETICALLY_A_FIRST",
-  ALPHABETICALLY_Z_FIRST: "ALPHABETICALLY_Z_FIRST"
-}
+  ALPHABETICALLY_Z_FIRST: "ALPHABETICALLY_Z_FIRST",
+};
 
 export const ABILITIES = {
   ADAPTABILITY: "adaptability",
@@ -43,7 +43,7 @@ export const ABILITIES = {
   TRUANT: "truant",
   STATIC: "static",
   OVERGROW: "overgrow",
-}
+};
 
 export const STATS = {
   SPECIAL_ATTACK: "special-attack",
@@ -51,5 +51,13 @@ export const STATS = {
   SPEED: "speed",
   HP: "hp",
   ATTACK: "attack",
-  DEFENSE: "defense"
-}
+  DEFENSE: "defense",
+};
+
+export const POKEMON_TO_EXCLUDE = [
+  "araquanid-totem",
+  "kommo-o-totem",
+  "lurantis-totem",
+  "salazzle-totem",
+  "togedemaru-totem",
+];

@@ -4,7 +4,7 @@ import Link from "next/link";
 import PokemonPageContainer from "components/PokemonPageContainer";
 
 import { fetchData, getPokemonPricing } from "@/shared/javascript";
-import { BASE_URL } from "@/shared/constants";
+import { BASE_URL, POKEMON_TO_EXCLUDE } from "@/shared/constants";
 
 const pokemon = ({ pokemon }) => {
   return <PokemonPageContainer pokemon={pokemon} />;
@@ -18,15 +18,8 @@ export const getStaticPaths = async () => {
 
   //The totem pokemon have no images available on the api
   //If it was a bigger problem I would do it programmatically intead of manually
-  const pokemonToExclude = [
-    "araquanid-totem",
-    "kommo-o-totem",
-    "lurantis-totem",
-    "salazzle-totem",
-    "togedemaru-totem",
-  ];
   const filteredPokemonRefs = defaultPokemonRefs.results.filter(
-    (pokemonRef) => !pokemonToExclude.includes(pokemonRef.name)
+    (pokemonRef) => !POKEMON_TO_EXCLUDE.includes(pokemonRef.name)
   );
 
   return {
