@@ -33,7 +33,7 @@ const AppContainer = styled.div`
 `;
 
 //overflow: hidden;
-let pokemonObjects;
+//let pokemonObjects;
 const Home = ({ pokemonObjects }) => {
   return (
     <>
@@ -51,7 +51,7 @@ const Home = ({ pokemonObjects }) => {
 
 export default Home;
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
   const defaultPokemonRefs = await fetchData(
     BASE_URL + "pokemon?offset=0&limit=2000"
   );
