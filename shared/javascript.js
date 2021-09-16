@@ -21,6 +21,7 @@ export const formatAsUSD = (number) => {
 };
 
 export const formatAsUSDWithoutTrailingZeros = (number) => {
+  console.log(number);
   const numberWithCommas = number
     .toString()
     .replace(/([0-9])([0-9]{3})/g, "$1,$2");
@@ -36,34 +37,35 @@ export const stringToInteger = (string) => {
 
 export const getPokemonPricing = (name) => {
   const characterValues = {
-    a: "1",
-    b: "2",
-    c: "3",
-    d: "4",
-    e: "5",
-    f: "6",
-    g: "7",
-    h: "8",
-    i: "9",
-    j: "10",
-    k: "11",
-    l: "12",
-    m: "13",
-    n: "14",
-    o: "15",
-    p: "16",
-    q: "17",
-    r: "18",
-    s: "19",
-    t: "20",
-    u: "21",
-    v: "22",
-    w: "23",
-    x: "24",
-    y: "25",
-    z: "26",
+    a: 1,
+    b: 2,
+    c: 3,
+    d: 4,
+    e: 5,
+    f: 6,
+    g: 7,
+    h: 8,
+    i: 9,
+    j: 10,
+    k: 11,
+    l: 12,
+    m: 13,
+    n: 14,
+    o: 15,
+    p: 16,
+    q: 17,
+    r: 18,
+    s: 19,
+    t: 20,
+    u: 21,
+    v: 22,
+    w: 23,
+    x: 24,
+    y: 25,
+    z: 26,
   };
-  return name.length * 5 * characterValues[name[Math.min(3, name.length - 1)]];
+  const salt = characterValues[name[Math.min(3, name.length - 1)]] ?? 7;
+  return name.length * 5 * salt;
 };
 
 export const getTypeColor = (type) => {
