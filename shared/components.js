@@ -48,6 +48,10 @@ const StyledButton = styled.div`
         `;
     }};
   }
+
+  & p {
+    color: ${(p) => p.theme.specific_font_colors.light_font_color} !important;
+  }
 `;
 
 export const Button = ({
@@ -64,31 +68,45 @@ export const Button = ({
       width={width}
       type={type}
     >
-      {" "}
-      {innerText}
+      <p>{innerText}</p>
     </StyledButton>
   );
 };
 
 export const NavButton = styled.div`
   cursor: pointer;
-  margin-right: 10px;
-  width: 100px;
+  width: ${(p) => p.width ?? "95px"};
   display: flex;
   align-items: center;
+  padding: 2px;
+  padding-left: 4px;
+  display: flex;
+  align-items: center;
+  height: 30px;
+  padding-right: 5px;
+  border-radius: 4px;
 
+  &:hover {
+    background-color: ${(p) => p.theme.colors.gray_20};
+  }
   & * {
     padding: 3px;
   }
 `;
 
 export const Title2 = styled.p`
+  width: 285px;
   display: flex;
   align-items: center;
   font-weight: 900;
   font-size: ${(props) => props.theme.font_size.Subheading2};
   font-family: ${(props) => props.theme.font_families.titles};
-  color: ${(p) => p.theme.colors.aqua_blue};
+  color: ${(p) => p.theme.colors.accent_color};
+  padding-right: 20px;
+
+  @media (max-width: 850px) {
+    display: none;
+  }
 `;
 
 export const Subheading1 = styled.p`
@@ -125,10 +143,10 @@ export const StyledNotImplemented = styled.div`
   padding-right: 20px;
   border-radius: 4px;
   cursor: not-allowed;
-  &:hover {
-    background-color: ${(p) => p.theme.colors.gray_60};
-  }
 `;
+// &:hover {
+//   background-color: ${(p) => p.theme.colors.gray_60};
+// }
 //margin-right: 10px;
 
 export const NotImplemented = ({ defaultText, children }) => {
@@ -143,7 +161,7 @@ export const NotImplemented = ({ defaultText, children }) => {
   return (
     <div onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
       <StyledNotImplemented>
-        <div style={{ marginRight: "8px" }}>{children}</div>
+        <div>{children}</div>
         <BoldRegularText>{text}</BoldRegularText>
       </StyledNotImplemented>
     </div>
@@ -297,3 +315,64 @@ export const TypeFlair = ({
 export const IconThemeProvider = styled.div`
   color: ${(p) => p.theme.font_color} !important;
 `;
+
+//Checkbox
+const CheckboxContainer = styled.div`
+  display: inline-block;
+  vertical-align: middle;
+  cursor: pointer;
+
+  & > input:focus div {
+    box-shadow: 0 0 0 3px pink;
+  }
+`;
+
+const Icon = styled.svg`
+  fill: none;
+  stroke: white;
+  stroke-width: 2px;
+`;
+
+const HiddenCheckbox = styled.input.attrs({ type: "checkbox" })`
+  border: 0;
+  clip: rect(0 0 0 0);
+  clippath: inset(50%);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+`;
+
+const StyledCheckbox = styled.div`
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  background: ${(props) =>
+    props.checked
+      ? props.theme.colors.accent_color
+      : props.theme.colors.gray_0};
+  border-radius: 3px;
+  border: 1px solid ${(p) => p.theme.colors.gray_40};
+  transition: all 150ms;
+  }
+
+  ${Icon} {
+    visibility: ${(props) => (props.checked ? "visible" : "hidden")};
+  }
+`;
+
+export const Checkbox = ({ checked, handleClick }) => {
+  return (
+    <CheckboxContainer onClick={() => handleClick(checked)}>
+      <HiddenCheckbox />
+      <StyledCheckbox checked={checked}>
+        <Icon viewBox="0 0 24 24">
+          <polyline points="20 6 9 17 4 12" />
+        </Icon>
+      </StyledCheckbox>
+    </CheckboxContainer>
+  );
+};

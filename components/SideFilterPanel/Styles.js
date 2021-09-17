@@ -4,21 +4,25 @@ import { IoIosArrowUp, IoIosArrowDown } from "react-icons/io";
 import { Subheading2 } from "shared/components";
 
 export const MainContainer = styled.div`
-  width: 300px;
+  width: 250px;
+  flex: 0 0 auto;
+
   height: 100vh;
-  padding-left: 24px;
   flex-direction: column;
   display: flex;
   position: sticky;
-  box-sizing: border-box;
   top: 76px;
   overflow-y: scroll;
   background-color: ${(p) => p.theme.colors.gray_10};
-  margin-bottom: 50px;
+  margin-bottom: 20px;
   margin-top: 10px;
 
   scrollbar-color: transparent transparent;
   scrollbar-width: thin;
+
+  @media (max-width: 550px) {
+    display: none;
+  }
 
   &:hover {
     scrollbar-color: ${(p) => p.theme.colors.gray_60} transparent;
@@ -26,8 +30,11 @@ export const MainContainer = styled.div`
 `;
 
 export const StyledInnerContainer = styled.div`
+  padding-left: 24px;
+  padding-right: 10px;
   height: 100%;
   position: relative;
+  box-sizing: border-box;
 `;
 export const TypeBox = styled.div`
   display: flex;

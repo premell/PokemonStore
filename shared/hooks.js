@@ -137,3 +137,11 @@ export const useScrollPosition = (handleScroll) => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 };
+
+export const useWindowSize = (handleResize) => {
+  useEffect(() => {
+    window.addEventListener("resize", handleResize);
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+};

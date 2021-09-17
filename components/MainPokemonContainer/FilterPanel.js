@@ -3,6 +3,8 @@ import { priceFilter as priceFilterAtoms } from "atoms.js";
 import { statsFilter as statsFilterAtoms } from "atoms.js";
 import { typeFilter as typeFilterAtoms } from "atoms.js";
 import { abilityFilter as abilityFilterAtoms } from "atoms.js";
+import { searchQuery as searchQueryAtoms } from "atoms.js";
+import { anyFilterActive as anyFilterActiveAtoms } from "atoms.js";
 
 import {
   PriceFilterFlair,
@@ -23,16 +25,22 @@ const FilterPanel = () => {
   const [statsFilter, setStatsFilter] = useRecoilState(statsFilterAtoms);
   const [typeFilter, setTypeFilter] = useRecoilState(typeFilterAtoms);
   const [abilityFilter, setAbilityFilter] = useRecoilState(abilityFilterAtoms);
+  const [searchQuery, setSearchQuery] = useRecoilState(searchQueryAtoms);
+
+  const [anyFilterActive, setAnyFilterActive] =
+    useRecoilState(anyFilterActiveAtoms);
 
   const defaultPriceFilter = useResetRecoilState(priceFilterAtoms);
   const defaultStatsFilter = useResetRecoilState(statsFilterAtoms);
   const defaultTypeFilter = useResetRecoilState(typeFilterAtoms);
   const defaultAbilityFilter = useResetRecoilState(abilityFilterAtoms);
+  const defaultSearchQuery = useResetRecoilState(searchQueryAtoms);
   const removeAllFilters = () => {
     defaultPriceFilter();
     defaultStatsFilter();
     defaultTypeFilter();
     defaultAbilityFilter();
+    defaultSearchQuery();
   };
 
   const removePrice = () => {
@@ -69,22 +77,10 @@ const FilterPanel = () => {
     setAbilityFilter({ abilities: updatedAbilities, isFiltering: isFiltering });
   };
 
-  const getIsAnyFilterActive = () => {
-    let isActive = false;
-    if (abilityFilter.isFiltering) isActive = true;
-    else if (typeFilter.isFiltering) isActive = true;
-    else if (priceFilter.isFiltering) isActive = true;
-
-    Object.keys(statsFilter).forEach((key) => {
-      if (statsFilter[key].isFiltering) isActive = true;
-    });
-    return isActive;
+  const removeSearchQuery = () => {
+    defaultSearchQuery();
   };
 
-  const isAnyFilterActive = getIsAnyFilterActive();
-
-  //return <RegularText style={{ margin: 0 }}>{`Price: ${formatAsUSDWithoutTrailingZeros(min)} - ${formatAsUSDWithoutTrailingZeros(max)}`}</RegularText>
-  //<Cross handleClick={removePrice} />
   return (
     <StyledFilterContainer>
       {priceFilter.isFiltering && (
@@ -113,6 +109,9 @@ const FilterPanel = () => {
             text={ability}
           />
         ))}
+      {searchQuery.length !== 0 && (
+        <FilterBox handleClick={removeSearchQuery} text={searchQuery} />
+      )}
       {Object.keys(statsFilter).map((key) => {
         if (statsFilter[key].isFiltering)
           return (
@@ -123,7 +122,7 @@ const FilterPanel = () => {
             />
           );
       })}
-      {isAnyFilterActive ? (
+      {anyFilterActive ? (
         <RemoveAllFilters handleClick={removeAllFilters} />
       ) : null}
     </StyledFilterContainer>

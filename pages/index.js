@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 import SideFilterPanel from "components/SideFilterPanel";
 import MainPokemonContainer from "components/MainPokemonContainer";
+import PageNavigator from "components/PageNavigator";
 
 import { fetchData, getPokemonPricing } from "@/shared/javascript";
 import { BASE_URL, POKEMON_TO_EXCLUDE } from "@/shared/constants";
@@ -43,6 +44,7 @@ const Home = ({ pokemonObjects }) => {
         <SideFilterPanel />
         <MainPokemonContainer allPokemon={pokemonObjects} />
       </AppContainer>
+      <PageNavigator />
     </>
   );
 };
@@ -53,7 +55,7 @@ export default Home;
 
 export async function getStaticProps() {
   const defaultPokemonRefs = await fetchData(
-    BASE_URL + "pokemon?offset=0&limit=2000"
+    BASE_URL + "pokemon?offset=0&limit=100"
   );
   const filteredPokemonRefs = defaultPokemonRefs.results.filter(
     (pokemonRef) => !POKEMON_TO_EXCLUDE.includes(pokemonRef.name)

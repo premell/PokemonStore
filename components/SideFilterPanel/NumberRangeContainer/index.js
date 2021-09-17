@@ -264,7 +264,7 @@ const NumberRangeContainer = React.memo(
             ></div>
           </div>
         </div>
-        <div style={{ marginTop: "14px" }}>
+        <div style={{ marginTop: "5px" }}>
           <input
             className={NumberRangeContainerCss.left_text_input}
             onChange={handleMinChange}

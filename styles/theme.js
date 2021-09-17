@@ -10,12 +10,16 @@ const baseTheme = {
     titles: "BrooklineCondensed",
     text: "LatoRegular",
   },
+  specific_font_colors: {
+    light_font_color: "white",
+    dark_font_color: "black",
+  },
 };
 
 const lightColors = {
   colors: {
-    aqua_blue: "#3584e4",
-    dark_aqua_blue: "#134c90",
+    accent_color: "#eb145f",
+    dark_accent_color: "#134c90",
     green_light: "#0abf46",
     green_hover: "#0ba13c",
     green_active: "#0a8a34",
@@ -37,8 +41,8 @@ const lightColors = {
 
 const darkColors = {
   colors: {
-    aqua_blue: "#3584e4",
-    dark_aqua_blue: "#134c90",
+    accent_color: "#eb145f",
+    dark_accent_color: "#134c90",
     green_light: "#0b9639",
     green_hover: "#0b8733",
     green_active: "#08732b",

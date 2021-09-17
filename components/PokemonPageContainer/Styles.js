@@ -54,9 +54,9 @@ const StyledImageContainer = styled.div`
 
   transition: border-color 0.2s;
   &:hover {
-    border-color: ${(p) => p.theme.colors.aqua_blue};
+    border-color: ${(p) => p.theme.colors.accent_color};
   }
-  border-color: ${(p) => p.selected && p.theme.colors.aqua_blue};
+  border-color: ${(p) => p.selected && p.theme.colors.accent_color};
   border-width: ${(p) => p.selected && "2px"};
 `;
 

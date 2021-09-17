@@ -5,7 +5,6 @@ import { formatAsUSDWithoutTrailingZeros } from "@/shared/javascript";
 import { RegularText, BoldRegularText } from "shared/components";
 import { AiOutlineClose } from "react-icons/ai";
 import { RiArrowDropDownLine } from "react-icons/ri";
-import { IoIosArrowForward, IoIosArrowBack } from "react-icons/io";
 
 import { useClickOutside } from "shared/hooks";
 import { useEffect, useRef, useState } from "react";
@@ -13,23 +12,22 @@ import { useEffect, useRef, useState } from "react";
 import Portal from "components/Portal";
 
 const StyledContainer = styled.div`
-  max-width: 1600px;
-  width: 100%;
   height: 100%;
   display: flex;
   flex-direction: column;
-  padding: 10px;
   box-sizing: border-box;
 `;
 //overflow: hidden;
 
 const OuterContainer = styled.div`
+  flex: 1 1 auto;
   max-width: 1600px;
-  width: 100%;
   height: 100%;
   display: flex;
   justify-content: flex-start;
   background-color: ${(p) => p.theme.colors.gray_10};
+  margin-left: 10px;
+  box-sizing: border-box;
 `;
 
 export const Container = ({ children }) => {
@@ -41,23 +39,37 @@ export const Container = ({ children }) => {
 };
 
 export const PokemonContainer = styled.div`
-  width: calc(100vw - 300px);
-  max-width: 1600px;
   height: 100%;
   display: flex;
-  align-content: flex-start;
+  justify-content: center;
   flex-wrap: wrap;
+  margin-right: 12px;
+
+  @media (max-width: 550px) {
+    width: calc(100vw);
+    justify-content: center;
+  }
+
+  & > div {
+    flex: 1;
+  }
 `;
 
 export const StyledPokemonCard = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 300px;
+  min-width: 230px;
+  max-width: 305px;
   height: 330px;
   background-color: ${(p) => p.theme.colors.gray_0};
   margin: 0px 12px 12px 0px;
   border-radius: 12px;
+
+  @media (max-width: 550px) {
+    min-width: 300px;
+    width: 300px;
+  }
 
   position: relative;
 `;
@@ -144,47 +156,19 @@ export const AbilityFilterFlair = ({ ability }) => {
   return <p>{ability}</p>;
 };
 
-const StyledPageArrow = styled.div`
-  cursor: pointer;
-  padding: 5px;
-  padding-top: 11px;
-  &:hover {
-    background-color: ${(p) => p.theme.colors.gray_40};
-  }
+const DropdownContainer = styled.div`
+  margin-left: 12px;
+  position: relative;
 `;
 
-export const PrevPageArrow = ({ handleClick }) => {
-  return (
-    <StyledPageArrow onClick={handleClick}>
-      <IoIosArrowBack />
-    </StyledPageArrow>
-  );
-};
-export const NextPageArrow = ({ handleClick }) => {
-  return (
-    <StyledPageArrow onClick={handleClick}>
-      <IoIosArrowForward />
-    </StyledPageArrow>
-  );
-};
-export const PageNumber = styled.div`
-  cursor: pointer;
-  &:hover {
-    background-color: ${(p) => p.theme.colors.gray_40};
-  }
-  background-color: ${(p) => p.isActive && p.theme.colors.aqua_blue};
-  color: ${(p) => p.isActive && "white"};
-  margin: 0 8px;
-  padding: 8px;
-`;
-
-export const PageNavigatorContainer = styled.div`
+const DropdownList = styled.div`
   width: 100%;
-  height: 50px;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  top: 32px;
+  left: 0px;
+  position: absolute;
+  background-color: ${(p) => p.theme.colors.gray_90};
+  z-index: 30;
+  border-radius: 0px 0px 7px 7px;
 `;
 
 const DropdownItem = styled.div`
@@ -196,25 +180,22 @@ const DropdownItem = styled.div`
   height: 32px;
   cursor: pointer;
   box-sizing: border-box;
+  border-radius: ${(p) => {
+    if (p.selected && p.show) return "7px 7px 0px 0px";
+    else if (p.selected) return "7px";
+    else if (p.last) return "0px 0px 7px 7px";
+    else return "0px";
+  }};
 
   &:hover {
     background-color: ${(p) =>
-      p.selected ? p.theme.colors.gray_40 : p.theme.colors.aqua_blue};
+      p.selected ? p.theme.colors.gray_40 : p.theme.colors.accent_color};
   }
 
   & p {
     color: ${(p) =>
       p.selected ? p.theme.colors.font_color : "#fdfef4"} !important;
   }
-`;
-
-const DropdownList = styled.div`
-  width: 100%;
-  top: 32px;
-  left: 0px;
-  position: absolute;
-  background-color: ${(p) => p.theme.colors.gray_90};
-  z-index: 30;
 `;
 
 export const Dropdown = ({
@@ -242,8 +223,12 @@ export const Dropdown = ({
   };
 
   return (
-    <div style={{ marginLeft: "12px", position: "relative" }} ref={dropdown}>
-      <DropdownItem onClick={() => setShowDropdown(!showDropdown)} selected>
+    <DropdownContainer ref={dropdown}>
+      <DropdownItem
+        onClick={() => setShowDropdown(!showDropdown)}
+        selected
+        show={showDropdown}
+      >
         <p>
           {labelPrefix}
           {selected.label}
@@ -252,8 +237,9 @@ export const Dropdown = ({
       </DropdownItem>
       <DropdownList>
         {showDropdown
-          ? list.map((item) => (
+          ? list.map((item, index) => (
               <DropdownItem
+                last={index === list.length - 1}
                 key={item.label}
                 onClick={() => handleNewSelected(item.value)}
               >
@@ -262,7 +248,7 @@ export const Dropdown = ({
             ))
           : null}
       </DropdownList>
-    </div>
+    </DropdownContainer>
   );
 };
 
@@ -270,6 +256,10 @@ export const StyledFilterContainer = styled.div`
   display: flex;
   align-items: center;
   margin-bottom: 12px;
+
+  @media (max-width: 550px) {
+    padding-left: 20px;
+  }
 `;
 
 const StyledRemoveAllFilters = styled.div`
@@ -286,7 +276,7 @@ const StyledRemoveAllFilters = styled.div`
 
   border-radius: 4px;
   &:hover{
-    background-color ${(p) => p.theme.colors.aqua_blue};
+    background-color ${(p) => p.theme.colors.accent_color};
     color: white; 
   }
 `;
@@ -302,15 +292,17 @@ export const RemoveAllFilters = ({ handleClick }) => {
 export const ViewPanelContainer = styled.div`
   width: 100%;
   display: flex;
+  justify-content: space-between;
+
+  @media (max-width: 550px) {
+    padding-left: 20px;
+  }
 `;
-export const DropdownContainer = styled.div`
-  width: 80%;
+export const DropdownBox = styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-end;
-
-  & * {
-  }
+  margin-right: 10px;
 `;
 
 const StyledNoPokemonFound = styled.div`
@@ -335,7 +327,7 @@ export const NoPokemonFound = () => {
 export const ScrollToTopButton = styled.div`
   width: 60px;
   height: 60px;
-  background-color: ${(p) => p.theme.colors.aqua_blue};
+  background-color: ${(p) => p.theme.colors.accent_color};
   border-radius: 50%;
 
   z-index: 400;
@@ -352,7 +344,7 @@ export const ScrollToTopButton = styled.div`
   color: white;
 
   &:hover {
-    background-color: ${(p) => p.theme.colors.dark_aqua_blue};
+    background-color: ${(p) => p.theme.colors.dark_accent_color};
   }
 `;
 //position: sticky;
@@ -526,7 +518,7 @@ export const HeartContainer = styled.div`
 //   &:hover{
 //   background-color: ${p => p.theme.colors.gray_40};
 //   }
-//   background-color: ${p => p.isActive && p.theme.colors.aqua_blue};
+//   background-color: ${p => p.isActive && p.theme.colors.accent_color};
 //   color: ${p => p.isActive && 'white'};
 //   margin: 0 8px;
 //   padding:8px;
@@ -552,7 +544,7 @@ export const HeartContainer = styled.div`
 //   box-sizing:border-box;
 //
 //   &:hover{
-//   background-color: ${p => p.inlist ? p.theme.colors.aqua_blue : p.theme.colors.gray_40}
+//   background-color: ${p => p.inlist ? p.theme.colors.accent_color : p.theme.colors.gray_40}
 //   }
 // `
 //
@@ -619,7 +611,7 @@ export const HeartContainer = styled.div`
 //
 //   border-radius: 4px;
 //   &:hover{
-//     background-color ${p => p.theme.colors.aqua_blue};
+//     background-color ${p => p.theme.colors.accent_color};
 //     color: white;
 //   }
 // `

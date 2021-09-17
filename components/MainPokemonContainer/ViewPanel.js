@@ -1,4 +1,4 @@
-import { Dropdown, ViewPanelContainer, DropdownContainer } from "./Styles";
+import { Dropdown, ViewPanelContainer, DropdownBox } from "./Styles";
 import { SORTING_METHODS } from "shared/constants";
 import { BoldRegularText } from "shared/components";
 
@@ -90,7 +90,7 @@ const ViewPanel = () => {
       <BoldRegularText>
         {`${formatNumberOfMatchedPokemon(numberOfMatchedPokemon)} pokemon`}
       </BoldRegularText>
-      <DropdownContainer>
+      <DropdownBox>
         <Dropdown
           labelPrefix="sort by "
           defaultSelected={defaultSortingMethod}
@@ -103,7 +103,7 @@ const ViewPanel = () => {
           list={pokemon_per_page_list}
           handleChange={pokemonPerPageChange}
         />
-      </DropdownContainer>
+      </DropdownBox>
     </ViewPanelContainer>
   );
 };
@@ -179,7 +179,7 @@ export default ViewPanel;
 //
 //
 //   useEffect(() => {
-//     
+//
 //     sorting_list.forEach((item) => {
 //       if (item.value === sortingMethod) {
 //         setDefaultSortingMethod(item)
@@ -190,7 +190,7 @@ export default ViewPanel;
 //   }, [sortingMethod])
 //
 //   useEffect(() => {
-//     
+//
 //     pokemon_per_page_list.forEach((number) => {
 //       if (number.value === pokemonPerPage) {
 //         setDefaultPokemonPerPage(number)

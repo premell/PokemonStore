@@ -145,6 +145,7 @@ export const anyFilterActive = selector({
     if (get(abilityFilter).isFiltering) isFiltering = true;
     else if (get(typeFilter).isFiltering) isFiltering = true;
     else if (get(priceFilter).isFiltering) isFiltering = true;
+    else if (get(searchQuery).length !== 0) isFiltering = true;
     const localStatsFilter = get(statsFilter);
     Object.keys(localStatsFilter).forEach((key) => {
       if (localStatsFilter[key].isFiltering) isFiltering = true;

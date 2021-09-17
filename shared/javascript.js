@@ -21,7 +21,6 @@ export const formatAsUSD = (number) => {
 };
 
 export const formatAsUSDWithoutTrailingZeros = (number) => {
-  console.log(number);
   const numberWithCommas = number
     .toString()
     .replace(/([0-9])([0-9]{3})/g, "$1,$2");

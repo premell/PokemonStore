@@ -1,7 +1,7 @@
 import { FiShoppingCart } from "react-icons/fi";
 import { StyledCartButton } from "../Styles";
 
-import { BoldRegularText } from "shared/components";
+import { BoldRegularText, NavButton } from "shared/components";
 import { useRouter } from "next/router";
 
 import CartModal from "./CartModal";
@@ -19,16 +19,18 @@ const CartButton = ({
     <div
       style={{
         transformStyle: "preserve-3d",
+        marginRight: "10px",
       }}
     >
-      <StyledCartButton
+      <NavButton
         onClick={handleGoToCart}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
+        width="60px"
       >
-        <FiShoppingCart size={20} style={{ strokeWidth: "2" }} />
-        <BoldRegularText>Shopping cart</BoldRegularText>
-      </StyledCartButton>
+        <FiShoppingCart size={22} style={{ strokeWidth: "2" }} />
+        <BoldRegularText>Cart</BoldRegularText>
+      </NavButton>
       {children}
     </div>
   );

@@ -7,7 +7,6 @@ import {
 
 import PokemonList from "./PokemonList";
 import FilterPanel from "./FilterPanel";
-import PageNavigator from "./PageNavigator";
 import ViewPanel from "./ViewPanel";
 import { Seperator, IconThemeProvider } from "shared/components";
 
@@ -59,7 +58,6 @@ const MainContainer = ({ allPokemon }) => {
       <PokemonContainer>
         <PokemonList allPokemon={allPokemon} />
       </PokemonContainer>
-      <PageNavigator />
     </Container>
   );
 };

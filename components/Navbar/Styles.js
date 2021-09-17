@@ -16,9 +16,9 @@ import { BiSearch } from "react-icons/bi";
 
 import { formatAsUSDWithoutTrailingZeros } from "shared/javascript";
 
-import { useCartModal, useClickOutside } from "shared/hooks";
+import { useCartModal, useClickOutside, useWindowSize } from "shared/hooks";
 import { useRouter } from "next/router";
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export const MainContainer = styled.div`
   width: 100%;
@@ -27,18 +27,19 @@ export const MainContainer = styled.div`
   display: flex;
   justify-content: center;
   z-index: 400;
-  padding: 0px 24px;
   height: 76px;
   background-color: ${(p) => p.theme.colors.gray_0};
+  box-sizing: border-box;
 `;
 export const ContentContainer = styled.div`
-  padding-left: 24px;
   width: 100%;
   height: 100%;
   max-width: 1900px;
   display: flex;
   align-items: center;
   box-sizing: border-box;
+  padding-left: 24px;
+  padding-right: 24px;
 `;
 //background-color: ${p => p.theme.colors.gray_0};
 
@@ -76,13 +77,13 @@ export const RightSubContainer = styled.div`
   align-items: center;
   justify-content: flex-end;
   transform-style: preserve-3d;
-  margin-right: 20px;
 `;
 
 const SearchBarContainer = styled.div`
-  width: 500px;
   height: 45px;
-  margin-left: 24px;
+  flex: 1;
+  max-width: 600px;
+  min-width: 300px;
 
   border-radius: 4px;
   padding: 8px 10px 8px 16px;
@@ -95,10 +96,14 @@ const SearchBarContainer = styled.div`
   align-items: center;
 
   transition: border-color 0.2s;
+
   &:hover {
     border-color: ${(p) => p.theme.colors.gray_60};
   }
 `;
+// @media (max-width: 850px) {
+//   display: none;
+// }
 //border: ${p => `1px solid ${p.theme.colors.gray_40}`}
 const StyledInput = styled.input`
   background-color: ${(p) => p.theme.colors.gray_10};
@@ -111,10 +116,13 @@ const StyledInput = styled.input`
 
 export const StyledSearchBar = ({ value, handleChange }) => {
   const searchField = useRef();
+  const [searchExpanded, setSearchExpanded] = useState(false);
 
   const handleClick = () => {
     searchField.current.focus();
   };
+
+  const handleExpand = () => setSearchExpanded(true);
   return (
     <SearchBarContainer>
       <StyledInput
@@ -145,38 +153,49 @@ export const StyledCartButton = styled.div`
   }
 `;
 
-export const StyledCartModal = styled.div`
+export const ForgivingBorder = styled.div`
   transform: translateZ(-10px);
+  padding: 12px;
   position: absolute;
-  border-radius: 10px;
-  width: 400px;
-  left: -250px;
-  top: -640px;
-  background-color: ${(p) => p.theme.colors.gray_0};
-  padding-top: 60px;
-  border: 1px solid;
-  border-color: ${(p) => p.theme.colors.gray_40};
+  width: 250px;
+  right: -135px;
+  top: -670px;
 
   transition: top 0.3s ease-out;
   visibility: ${(p) => (p.show ? "visible" : "hidden")};
   ${(p) =>
     p.showWithAnimation &&
     css`
+      transition: top 0.3s ease-out;
       top: -10px;
     `};
 `;
 
+export const StyledCartModal = styled.div`
+  border-radius: 10px;
+  background-color: ${(p) => p.theme.colors.gray_0};
+  padding-top: 40px;
+  border: 1px solid;
+  border-color: ${(p) => p.theme.colors.gray_40};
+`;
+
 const StyledModalPokemonCard = styled.div`
+  width: 200px;
   display: flex;
   padding-left: 20px;
 `;
 
 const PokemonInformation = styled.div`
   cursor: pointer;
-  width: 200px;
+  width: 60px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 30px;
+
+  & * {
+    margin: 5px;
+  }
 `;
 
 const TypeContainer = styled.div`
@@ -185,7 +204,7 @@ const TypeContainer = styled.div`
 
 const IconContainer = styled.div`
   margin-top: 30px;
-  margin-right: 20px;
+  margin-left: 20px;
   cursor: pointer;
   &:hover svg {
     color: red;
@@ -205,18 +224,13 @@ export const ModalPokemonCard = ({
         <Image
           onClick={handleRouteClick}
           quality={100}
-          width={150}
-          height={150}
+          width={120}
+          height={120}
           src={image_url}
         />
       </div>
       <PokemonInformation onClick={handleRouteClick}>
         <BoldRegularText>{name}</BoldRegularText>
-        <TypeContainer>
-          {types.map((type) => (
-            <TypeFlair key={type} type={type} />
-          ))}
-        </TypeContainer>
         <BoldRegularText>
           {formatAsUSDWithoutTrailingZeros(price)}
         </BoldRegularText>
@@ -224,7 +238,7 @@ export const ModalPokemonCard = ({
       <div>
         <IconContainer>
           <RiDeleteBinLine
-            size={23}
+            size={20}
             onClick={() => handleDeleteClick(pokemon)}
           />
         </IconContainer>
@@ -232,6 +246,12 @@ export const ModalPokemonCard = ({
     </StyledModalPokemonCard>
   );
 };
+
+// <TypeContainer>
+//   {types.map((type) => (
+//     <TypeFlair key={type} type={type} />
+//   ))}
+// </TypeContainer>
 
 export const ModalPokemonCartContainer = styled.div`
   overflow-y: scroll;
@@ -307,7 +327,7 @@ export const BackgroundBlur = styled.div`
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  padding-top: 15%;
+  padding-top: 10vh;
   overflow-y: hidden;
 
   visibility: ${(p) => (p.show === true ? "visible" : "visible")};
@@ -318,17 +338,19 @@ const StyledFavoritesPopupContainer = styled.div`
   padding-top: 15px;
   padding-left: 11px;
   padding-bottom: 15px;
+  max-height: calc(0.85 * 100vh);
 
   background-color: ${(p) => p.theme.colors.gray_0};
   box-sizing: border-box;
   min-height: 450px;
-  max-height: 800px;
   position: relative;
   overflow: hidden;
 
   box-sizing: border-box;
   border-radius: 15px;
 `;
+//max-height: ${window.outerHeight * 0.84}px;
+// max-height: 800px;
 //padding: 20px;
 
 const StyledFavoritesPopupContent = styled.div`
@@ -336,8 +358,8 @@ const StyledFavoritesPopupContent = styled.div`
   align-items: center;
   flex-direction: column;
   min-height: 450px;
-  max-height: 770px;
 
+  max-height: calc(0.85 * (100vh - 30px));
 
   overflow-y: scroll;
   scrollbar-color: transparent transparent;
@@ -423,4 +445,24 @@ export const FavoritePokemonCard = ({ pokemon }) => {
 export const DarkmodeContainer = styled.div`
   margin-left: 15px;
   cursor: pointer;
+`;
+
+export const MainMiniContainer = styled.div`
+  top: 0;
+  position: fixed;
+  display: flex;
+  flex-wrap: wrap;
+  height: 110px;
+  justify-content: center;
+  align-items: center;
+  z-index: 400;
+  background-color: ${(p) => p.theme.colors.gray_0};
+
+  padding: 0px 40px;
+  box-sizing: border-box;
+  padding-bottom: 15px;
+  padding-top: 10px;
+
+  & > div {
+  }
 `;

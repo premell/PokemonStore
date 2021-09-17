@@ -1,6 +1,7 @@
 import { formatAsUSDWithoutTrailingZeros } from "shared/javascript";
 import { FiShoppingCart } from "react-icons/fi";
 import {
+  ForgivingBorder,
   StyledCartModal,
   ModalPokemonCard,
   ModalPokemonCartContainer,
@@ -31,31 +32,35 @@ const CartModal = ({
   const handleRouteClick = (pokemon) => router.push(`/pokemon/${pokemon.name}`);
 
   return (
-    <StyledCartModal
+    <ForgivingBorder
       showWithAnimation={showWithAnimation}
       show={show}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
-      <ModalPokemonCartContainer>
-        {cartPokemon.length !== 0 ? (
-          cartPokemon.map((pokemon) => (
-            <ModalPokemonCard
-              key={pokemon.name}
-              pokemon={pokemon}
-              handleRouteClick={() => handleRouteClick(pokemon)}
-              handleDeleteClick={() => handleDeleteClick(pokemon)}
-            />
-          ))
-        ) : (
-          <NoPokemonFoundContainer>Your cart is empty</NoPokemonFoundContainer>
-        )}
-      </ModalPokemonCartContainer>
-      <ModalPokemonCartFooter>
-        <Subheading1>Total:</Subheading1>
-        <Subheading1>{formatAsUSDWithoutTrailingZeros(total)}</Subheading1>
-      </ModalPokemonCartFooter>
-    </StyledCartModal>
+      <StyledCartModal>
+        <ModalPokemonCartContainer>
+          {cartPokemon.length !== 0 ? (
+            cartPokemon.map((pokemon) => (
+              <ModalPokemonCard
+                key={pokemon.name}
+                pokemon={pokemon}
+                handleRouteClick={() => handleRouteClick(pokemon)}
+                handleDeleteClick={() => handleDeleteClick(pokemon)}
+              />
+            ))
+          ) : (
+            <NoPokemonFoundContainer>
+              Your cart is empty
+            </NoPokemonFoundContainer>
+          )}
+        </ModalPokemonCartContainer>
+        <ModalPokemonCartFooter>
+          <Subheading1>Total:</Subheading1>
+          <Subheading1>{formatAsUSDWithoutTrailingZeros(total)}</Subheading1>
+        </ModalPokemonCartFooter>
+      </StyledCartModal>
+    </ForgivingBorder>
   );
 };
 

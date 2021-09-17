@@ -9,6 +9,7 @@ import {
   LeftSubContainer,
   HideAnimationContainer,
   RightSubContainer,
+  MainMiniContainer,
 } from "./Styles";
 
 import { Links } from "shared/components";
@@ -24,15 +25,19 @@ import { Title2 } from "shared/components";
 import {
   useEscapeButtonListener,
   useShowCartModalOnCartUpdate,
-} from "@/shared/hooks";
+  useWindowSize,
+} from "shared/hooks";
 
 import { darkThemeEnabled as darkThemeEnabledAtoms } from "atoms.js";
+import { useState, useEffect } from "react";
 
 const Navbar = () => {
   const defaultPriceFilter = useResetRecoilState(priceFilterAtoms);
   const defaultStatsFilter = useResetRecoilState(statsFilterAtoms);
   const defaultTypeFilter = useResetRecoilState(typeFilterAtoms);
   const defaultAbilityFilter = useResetRecoilState(abilityFilterAtoms);
+
+  const [windowWidth, setWindowWidth] = useState(0);
 
   const [darkThemeEnabled, setDarkThemeEnabled] = useRecoilState(
     darkThemeEnabledAtoms
@@ -47,16 +52,37 @@ const Navbar = () => {
     router.push("/");
   };
 
+  useEffect(() => {
+    setWindowWidth(window.innerWidth);
+  }, []);
+
+  const handleResize = () => setWindowWidth(window.innerWidth);
+  useWindowSize(handleResize);
+
   return (
-    <MainContainer>
-      <ContentContainer>
-        <LeftSubContainer>
-          <Title2 style={{ cursor: "pointer" }} onClick={handleGoToHome}>
-            POKEMON TRADER
-          </Title2>
-          <SearchBar />
-        </LeftSubContainer>
-        <HideAnimationContainer>
+    <>
+      {windowWidth > 650 ? (
+        <MainContainer>
+          <ContentContainer>
+            <LeftSubContainer>
+              <Title2 style={{ cursor: "pointer" }} onClick={handleGoToHome}>
+                POKEMON TRADER
+              </Title2>
+              <SearchBar />
+            </LeftSubContainer>
+            <HideAnimationContainer>
+              <RightSubContainer>
+                <Login />
+                <Favorites />
+                <Cart />
+                <Links darkBackground={darkThemeEnabled} size={30} />
+                <DarkMode />
+              </RightSubContainer>
+            </HideAnimationContainer>
+          </ContentContainer>
+        </MainContainer>
+      ) : (
+        <MainMiniContainer>
           <RightSubContainer>
             <Login />
             <Favorites />
@@ -64,9 +90,10 @@ const Navbar = () => {
             <Links darkBackground={darkThemeEnabled} size={30} />
             <DarkMode />
           </RightSubContainer>
-        </HideAnimationContainer>
-      </ContentContainer>
-    </MainContainer>
+          <SearchBar />
+        </MainMiniContainer>
+      )}
+    </>
   );
 };
 

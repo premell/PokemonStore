@@ -9,6 +9,8 @@ import {
   NextPageArrow,
   PageNumber,
 } from "./Styles";
+
+import { BoldRegularText } from "shared/components";
 import { useEffect } from "react";
 
 const getPagesToShow = (
@@ -73,7 +75,7 @@ const PageNavigator = () => {
           onClick={() => goToPage(page)}
           isActive={page === currentPage}
         >
-          {page}
+          <BoldRegularText>{page}</BoldRegularText>
         </PageNumber>
       ))}
       {nextPageExists && (
