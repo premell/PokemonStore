@@ -14,7 +14,6 @@ export const MainContainer = styled.div`
   top: 76px;
   overflow-y: scroll;
   background-color: ${(p) => p.theme.colors.gray_10};
-  margin-bottom: 20px;
   margin-top: 10px;
 
   scrollbar-color: transparent transparent;
@@ -79,3 +78,7 @@ export const FilterToggleHeading = ({ handleClick, children, menuVisible }) => {
     </ToggleHeadingContainer>
   );
 };
+
+export const BottomDivider = styled.div`
+  height: 180px;
+`;

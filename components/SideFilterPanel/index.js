@@ -2,7 +2,7 @@ import {
   MainContainer,
   StyledInnerContainer,
   FilterToggleHeading,
-  Divider,
+  BottomDivider,
 } from "./Styles.js";
 import TypeFilterContainer from "./TypeFilterContainer";
 import AbilityFilterContainer from "./AbilityFilterContainer";
@@ -78,6 +78,7 @@ const SidePanel = () => {
               />
             </div>
           ))}
+        <BottomDivider />
       </StyledInnerContainer>
     </MainContainer>
   );

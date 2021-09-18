@@ -1,6 +1,5 @@
 import {
   StyledPokemonCard,
-  TypeContainer,
   StyledPokemonMain,
   HeartContainer,
 } from "../Styles";
@@ -9,6 +8,7 @@ import {
   Subheading2,
   BoldRegularText,
   RegularText,
+  TypeContainer,
 } from "@/shared/components";
 import Image from "next/image";
 import Link from "next/link";

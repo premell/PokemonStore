@@ -9,14 +9,19 @@ import {
   Button,
   FavoritesHeart,
 } from "shared/components";
-import { TypeFlair } from "shared/components";
+import { TypeFlair, TypeContainer } from "shared/components";
 
 import { RiDeleteBinLine } from "react-icons/ri";
 import { BiSearch } from "react-icons/bi";
 
 import { formatAsUSDWithoutTrailingZeros } from "shared/javascript";
 
-import { useCartModal, useClickOutside, useWindowSize } from "shared/hooks";
+import {
+  useCart,
+  useCartModal,
+  useClickOutside,
+  useWindowSize,
+} from "shared/hooks";
 import { useRouter } from "next/router";
 import { useEffect, useRef, useState } from "react";
 
@@ -105,8 +110,9 @@ const SearchBarContainer = styled.div`
 //   display: none;
 // }
 //border: ${p => `1px solid ${p.theme.colors.gray_40}`}
-const StyledInput = styled.input`
+const StyledInput = styled.input.attrs({ type: "text" })`
   background-color: ${(p) => p.theme.colors.gray_10};
+  color: ${(p) => p.theme.font_color};
   width: 100%;
   height: 100%;
   cursor: text;
@@ -196,10 +202,6 @@ const PokemonInformation = styled.div`
   & * {
     margin: 5px;
   }
-`;
-
-const TypeContainer = styled.div`
-  display: flex;
 `;
 
 const IconContainer = styled.div`
@@ -348,6 +350,10 @@ const StyledFavoritesPopupContainer = styled.div`
 
   box-sizing: border-box;
   border-radius: 15px;
+
+  & p {
+    color: ${(p) => p.theme.font_color};
+  }
 `;
 //max-height: ${window.outerHeight * 0.84}px;
 // max-height: 800px;
@@ -390,6 +396,7 @@ const FavoritePokemonCardContainer = styled.div`
   background-color: ${(p) => p.theme.colors.gray_10};
   border-radius: 10px;
   align-items: center;
+  height: 200px;
 
   position: relative;
 `;
@@ -402,17 +409,49 @@ const FavoriteHeartContainer = styled.div`
 
 const InformationContainer = styled.div`
   width: 80px;
-  margin: 0 70px 50px 50px;
+  margin: 20px 70px 50px 50px;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
 `;
 
-export const FavoritePokemonCard = ({ pokemon }) => {
-  const { image_url, name, price, types } = pokemon;
+const ButtonContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 
-  const handleButtonClick = () => {};
+  & > p {
+    margin: 16px 0 10px 0;
+  }
+`;
+
+export const FavoritePokemonCard = ({ pokemon }) => {
+  const { name, types, price, image_url } = pokemon;
+
+  const { showWithTimer } = useCartModal();
+  const { getCurrentCart, addPokemonToCart, removePokemonFromCart } = useCart();
+
+  const findPokemon = getCurrentCart().filter(
+    (arrayPokemon) => arrayPokemon.name === pokemon.name
+  );
+  const pokemonExistsInCart = findPokemon.length !== 0;
+
+  const handleButtonClick = () => {
+    if (pokemonExistsInCart) removePokemonFromCart(pokemon);
+    else addPokemonToCart(pokemon);
+    showWithTimer();
+  };
+
+  // export const Button = ({
+  //   handleClick,
+  //   type,
+  //   innerText,
+  //   height = "100px",
+  //   width = "330px",
+  // }) => {
+
   return (
     <div>
       <div>
@@ -431,8 +470,21 @@ export const FavoritePokemonCard = ({ pokemon }) => {
                 <TypeFlair key={type} type={type} />
               ))}
             </TypeContainer>
+            <ButtonContainer>
+              <Subheading2>
+                {formatAsUSDWithoutTrailingZeros(price)}
+              </Subheading2>
+              <Button
+                handleClick={handleButtonClick}
+                type={`${pokemonExistsInCart ? "negative" : "positive"}`}
+                innerText={`${
+                  !pokemonExistsInCart ? "Add to cart" : "Remove from cart"
+                }`}
+                width="120px"
+                height="30px"
+              />
+            </ButtonContainer>
           </InformationContainer>
-          <Subheading2>{formatAsUSDWithoutTrailingZeros(price)}</Subheading2>
           <FavoriteHeartContainer>
             <FavoritesHeart pokemon={pokemon} />
           </FavoriteHeartContainer>

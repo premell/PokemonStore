@@ -50,7 +50,7 @@ const StyledButton = styled.div`
   }
 
   & p {
-    color: ${(p) => p.theme.specific_font_colors.light_font_color} !important;
+    color: white !important;
   }
 `;
 
@@ -95,7 +95,7 @@ export const NavButton = styled.div`
 `;
 
 export const Title2 = styled.p`
-  width: 285px;
+  width: 217px;
   display: flex;
   align-items: center;
   font-weight: 900;
@@ -218,10 +218,12 @@ const HeartIcon = styled.div`
   cursor: pointer;
 
   & svg {
-    color: ${(p) =>
-      p.isFavorited || p.hovering ? "red" : p.theme.font_color} !important;
-  }
+    color: ${(p) => {
+      if (p.isFavorited) return "red !important";
+      else return p.theme.discrete_font_color + "!important";
+    }}
 `;
+//p.isFavorited || p.hovering ? "red" : p.theme.font_color} !important;
 
 export const FavoritesHeart = ({ pokemon, size = 25 }) => {
   const [favorites, setFavorites] = useRecoilState(favoritesAtoms);
@@ -313,7 +315,9 @@ export const TypeFlair = ({
 };
 
 export const IconThemeProvider = styled.div`
-  color: ${(p) => p.theme.font_color} !important;
+  & > svg {
+    color: ${(p) => p.theme.font_color};
+  }
 `;
 
 //Checkbox
@@ -376,3 +380,10 @@ export const Checkbox = ({ checked, handleClick }) => {
     </CheckboxContainer>
   );
 };
+
+export const TypeContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  column-gap: 3px;
+  width: 165px;
+`;

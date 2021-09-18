@@ -327,7 +327,8 @@ export const NoPokemonFound = () => {
 export const ScrollToTopButton = styled.div`
   width: 60px;
   height: 60px;
-  background-color: ${(p) => p.theme.colors.accent_color};
+  background-color: rgba(235, 20, 95, 0.75);
+
   border-radius: 50%;
 
   z-index: 400;
@@ -341,7 +342,9 @@ export const ScrollToTopButton = styled.div`
   justify-content: center;
 
   cursor: pointer;
-  color: white;
+  & * {
+    color: ${(p) => p.theme.specific_font_colors.light_font_color} !important;
+  }
 
   &:hover {
     background-color: ${(p) => p.theme.colors.dark_accent_color};

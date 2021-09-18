@@ -295,7 +295,9 @@ const NumberRangeContainer = React.memo(
               setLocalMaxVal(value);
               setMaxVal(value);
             }}
-            style={{ backgroundColor: currentColors.handle_color }}
+            style={{
+              backgroundColor: currentColors.handle_color,
+            }}
             className={`${NumberRangeContainerCss.thumb} ${NumberRangeContainerCss.thumb_right}`}
           />
 

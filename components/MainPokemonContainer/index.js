@@ -44,7 +44,7 @@ const MainContainer = ({ allPokemon }) => {
       {scrollPosition >= 400 ? (
         <ScrollToTopButton marginB={100} onClick={handleScrollClick}>
           <IconThemeProvider>
-            <AiOutlineArrowUp size={20} />
+            <AiOutlineArrowUp size={25} />
           </IconThemeProvider>
         </ScrollToTopButton>
       ) : null}

@@ -35,7 +35,12 @@ p{
     font-size:14px;
     font-weight: 400;
     }
+
+div::-webkit-scrollbar {
+  display: none;
+}
 `;
+
 // a{
 //     color:white;
 // }
