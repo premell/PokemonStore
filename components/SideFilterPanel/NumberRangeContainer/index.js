@@ -2,9 +2,29 @@ import React, { useCallback, useEffect, useRef, useState } from "react";
 
 import NumberRangeContainerCss from "./NumberRangeContainer.module.css";
 import { useRecoilState } from "recoil";
+import { darkThemeEnabled as darkThemeEnabledAtoms } from "atoms";
 //import { priceFilter as priceFilterAtoms } from "atoms.js";
 
 import { stringToInteger } from "@/shared/javascript";
+
+const darkColors = {
+  track_color: "#38404b",
+  range_color: "#eb145f",
+  input_color: "#38404b",
+  input_border_color: "#12151a",
+  input_text_color: "white",
+  handle_color: "#d1d8e3",
+};
+
+const lightColors = {
+  track_color: "#d1d8e3",
+  range_color: "#eb145f",
+  input_color: "#fefefe",
+  input_border_color: "#d1d8e3;",
+  input_text_color: "black",
+  handle_color: "#d1d8e3",
+};
+//handle_color: "#d1d8e3",
 
 const NumberRangeContainer = React.memo(
   ({ filter, handleChange, categoryName }) => {
@@ -19,6 +39,28 @@ const NumberRangeContainer = React.memo(
       currentlyDragging: false,
       target: "min",
     });
+
+    // const testAddingClass = () => {
+    //   const thumb = document.getElementsByClassName(
+    //     NumberRangeContainerCss.thumb
+    //   )[0];
+    //   console.log(
+    //     document.getElementsByClassName(NumberRangeContainerCss.thumb).length
+    //   );
+    //   thumb.classList.remove(NumberRangeContainerCss.thumb);
+    //   thumb.classList.add(NumberRangeContainerCss.dark_thumb);
+    //   console.log(thumb);
+    // };
+
+    const [darkThemeEnabled, setDarkThemeEnabled] = useRecoilState(
+      darkThemeEnabledAtoms
+    );
+    const [currentColors, setCurrentColors] = useState({});
+    useEffect(() => {
+      // testAddingClass();
+      if (darkThemeEnabled) setCurrentColors(darkColors);
+      else setCurrentColors(lightColors);
+    }, [darkThemeEnabled]);
 
     useEffect(() => {
       setLocalMaxVal(filter.currentRange.max);
@@ -164,7 +206,6 @@ const NumberRangeContainer = React.memo(
     }, [minVal, maxVal]);
 
     const handleRangeClick = (e, minVal, maxVal) => {
-      console.log("HEJSAN");
       const rect = sliderRef.current.getBoundingClientRect();
       let percentageClick = (e.clientX - rect.x) / 180;
 
@@ -239,6 +280,7 @@ const NumberRangeContainer = React.memo(
               const value = Math.min(Number(event.target.value), maxVal - 1);
               setMinVal(value);
             }}
+            style={{ backgroundColor: currentColors.handle_color }}
             className={`${NumberRangeContainerCss.thumb} ${NumberRangeContainerCss.thumb_left}`}
           />
           <input
@@ -253,35 +295,53 @@ const NumberRangeContainer = React.memo(
               setLocalMaxVal(value);
               setMaxVal(value);
             }}
+            style={{ backgroundColor: currentColors.handle_color }}
             className={`${NumberRangeContainerCss.thumb} ${NumberRangeContainerCss.thumb_right}`}
           />
 
           <div className={NumberRangeContainerCss.slider}>
-            <div className={NumberRangeContainerCss.slider_track}></div>
+            <div
+              className={NumberRangeContainerCss.slider_track}
+              style={{ backgroundColor: currentColors.track_color }}
+            ></div>
             <div
               ref={range}
               className={NumberRangeContainerCss.slider_range}
+              style={{ backgroundColor: currentColors.range_color }}
             ></div>
           </div>
         </div>
         <div style={{ marginTop: "5px" }}>
           <input
-            className={NumberRangeContainerCss.left_text_input}
+            type="text"
+            className={NumberRangeContainerCss.input}
             onChange={handleMinChange}
             value={minVal}
+            style={{
+              backgroundColor: currentColors.input_color,
+              borderColor: currentColors.input_border_color,
+              color: currentColors.input_text_color,
+            }}
           />
           <p
             style={{
               display: "inline-block",
+              margin: "12px",
             }}
           >
             -
           </p>
           <input
+            type="text"
             onBlur={() => setAcceptedMaxValue(localMaxVal, maxVal, minVal)}
-            className={NumberRangeContainerCss.right_text_input}
+            className={NumberRangeContainerCss.input}
             onChange={handleMaxChange}
             value={localMaxVal}
+            style={{
+              backgroundColor: currentColors.input_color,
+              borderColor: currentColors.input_border_color,
+              color: currentColors.input_text_color,
+            }}
           />
         </div>
       </div>

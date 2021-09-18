@@ -32,7 +32,7 @@
 }
 
 .slider_range {
-  background-color: #3584e4;
+  background-color: #eb145f;
   z-index: 2;
 }
 
@@ -78,7 +78,20 @@
 
 /* For Chrome browsers */
 .thumb::-webkit-slider-thumb {
-  background-color: #f1f5f7;
+  border: none;
+  border-radius: 50%;
+  /* 
+  box-shadow: 0 0 1px 1px #ced4da;
+*/
+  cursor: pointer;
+  height: 18px;
+  width: 18px;
+  margin-top: 4px;
+  pointer-events: all;
+  position: relative;
+  background-color: #dfe4eb;
+}
+.dark_thumb::-webkit-slider-thumb {
   border: none;
   border-radius: 50%;
   box-shadow: 0 0 1px 1px #ced4da;
@@ -88,39 +101,38 @@
   margin-top: 4px;
   pointer-events: all;
   position: relative;
+  background-color: yellow;
 }
 
 /* For Firefox browsers */
 .thumb::-moz-range-thumb {
-  background-color: #f1f5f7;
   border: none;
   border-radius: 50%;
+  /* 
   box-shadow: 0 0 1px 1px #ced4da;
+*/
   cursor: pointer;
   height: 18px;
   width: 18px;
   margin-top: 4px;
   pointer-events: all;
   position: relative;
+  background-color: #dfe4eb;
 }
 
-.left_text_input {
-  margin: 12px;
-  margin-top: 22px;
-  margin-left: 0;
+.input {
   padding: 0 12px;
   height: 25px;
   width: 36%;
   box-sizing: border-box;
+  text-shadow: none;
+  border: 1px solid;
+  border-radius: 2px;
+  outline: none;
 }
-.right_text_input {
-  margin: 12px;
-  margin-top: 22px;
-  margin-right: 0;
-  padding: 0 12px;
-  height: 25px;
-  width: 36%;
-  box-sizing: border-box;
+
+.input:focus {
+  outline: 1px solid;
 }
 
 .header {
