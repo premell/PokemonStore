@@ -36,7 +36,8 @@ p{
     font-weight: 400;
     }
 
-div::-webkit-scrollbar {
+
+::-webkit-scrollbar {
   display: none;
 }
 `;

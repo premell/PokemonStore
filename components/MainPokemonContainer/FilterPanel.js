@@ -110,7 +110,10 @@ const FilterPanel = () => {
           />
         ))}
       {searchQuery.length !== 0 && (
-        <FilterBox handleClick={removeSearchQuery} text={searchQuery} />
+        <FilterBox
+          handleClick={removeSearchQuery}
+          text={searchQuery.toLowerCase()}
+        />
       )}
       {Object.keys(statsFilter).map((key) => {
         if (statsFilter[key].isFiltering)
