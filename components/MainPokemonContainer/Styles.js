@@ -42,9 +42,9 @@ export const Container = ({ children }) => {
 };
 
 export const PokemonContainer = styled.div`
-  height: 100%;
   display: flex;
   justify-content: flex-start;
+  align-items: start;
   flex-wrap: wrap;
   margin-right: 12px;
 
