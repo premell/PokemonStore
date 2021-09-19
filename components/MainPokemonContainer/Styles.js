@@ -11,22 +11,25 @@ import { useEffect, useRef, useState } from "react";
 
 import Portal from "components/Portal";
 
-const StyledContainer = styled.div`
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  box-sizing: border-box;
-`;
 //overflow: hidden;
 
 const OuterContainer = styled.div`
   flex: 1 1 auto;
   max-width: 1600px;
-  height: 100%;
+  width: calc(100vw - 250px);
+  min-height: 880px;
   display: flex;
   justify-content: flex-start;
   background-color: ${(p) => p.theme.colors.gray_10};
   margin-left: 10px;
+  box-sizing: border-box;
+`;
+
+const StyledContainer = styled.div`
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
   box-sizing: border-box;
 `;
 
@@ -41,7 +44,7 @@ export const Container = ({ children }) => {
 export const PokemonContainer = styled.div`
   height: 100%;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   flex-wrap: wrap;
   margin-right: 12px;
 
@@ -327,12 +330,14 @@ export const NoPokemonFound = () => {
 export const ScrollToTopButton = styled.div`
   width: 60px;
   height: 60px;
+  box-sizing: border-box;
+  padding: 20px;
   background-color: rgba(235, 20, 95, 0.75);
 
   border-radius: 50%;
 
   z-index: 400;
-  top: 85%;
+  top: 80%;
   left: 90%;
 
   position: sticky;
