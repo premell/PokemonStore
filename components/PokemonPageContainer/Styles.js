@@ -215,55 +215,10 @@ export const PokemonInformation = ({ pokemon }) => {
   }, [cart]);
 
   return (
-<<<<<<< Updated upstream
     <div>
       <StyledPokemonInformation>
         <Subheading1 style={{ fontSize: "35px", margin: "8px 0px" }}>
           {name}
-=======
-    <StyledPokemonInformation>
-      <Subheading1 style={{ fontSize: "35px", margin: "8px 0px" }}>
-        {name}
-      </Subheading1>
-      <ItemContainer style={{ marginBottom: "20px" }}>
-        {types.map((type) => (
-          <TypeFlair
-            key={type}
-            font_size="15px"
-            type={type}
-            width="100px"
-            height="40px"
-          />
-        ))}
-      </ItemContainer>
-      <Subheading1>Abilities</Subheading1>
-      <ItemContainer>
-        {abilities.map((ability) => (
-          <Ability key={ability}>
-            <p>{ability}</p>
-          </Ability>
-        ))}
-      </ItemContainer>
-      <Subheading1>Stats</Subheading1>
-      <ItemContainer>
-        {stats.map((stat) => (
-          <Stat
-            key={Object.keys(stat)[0]}
-            statName={Object.keys(stat)[0]}
-            value={Object.values(stat)[0]}
-          />
-        ))}
-      </ItemContainer>
-      <ItemContainer
-        style={{
-          marginTop: "30px",
-          width: "300px",
-          justifyContent: "space-between",
-        }}
-      >
-        <Subheading1 style={{ fontSize: "28px" }}>
-          {formatAsUSDWithoutTrailingZeros(price)}
->>>>>>> Stashed changes
         </Subheading1>
         <ItemContainer style={{ marginBottom: "20px" }}>
           {types.map((type) => (

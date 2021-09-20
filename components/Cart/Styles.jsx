@@ -10,6 +10,7 @@ import {
   TypeFlair,
   TypeContainer,
   FavoritesHeart,
+  Subheading1,
   Subheading2,
   BoldRegularText,
   Button,
@@ -23,20 +24,9 @@ import {
 
 import { MY_PERSONAL_FAVORITE_POKEMON as myPersonalFavoritePokemon } from "shared/constants";
 
-import { RiDeleteBinLine } from "react-icons/ri";
-const IconContainer = styled.div`
-  margin-top: 30px;
-  margin-left: 20px;
-  cursor: pointer;
-  &:hover svg {
-    color: red;
-  }
-`;
-
-const Bin = styled.div``;
 const PokemonInformation = styled.div``;
 
-const StyledPokemonCard = styled.div`
+const StyledCartCard = styled.div`
   display: flex;
 `;
 
@@ -51,19 +41,16 @@ const HeartContainer = styled.div`
   z-index: 300;
 `;
 
-const StyledRecommended = styled.div`
-  display: flex;
-  width: 250px;
-  position: relative;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin: 0 10px;
-  background-color: ${(p) => p.theme.colors.gray_0};
-  padding: 10px;
-  border-radius: 10px;
+//RECOMMENDED SECTION
 
-  box-sizing: border-box;
+const RecommendedSection = styled.div`
+  width: 100%;
+  height: 470px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 `;
 
 const RecommendedContainer = styled.div`
@@ -94,13 +81,99 @@ const RightArrow = styled.div`
   right: 10px;
 `;
 
-const RecommendedSection = styled.div`
-  width: 100%;
-  height: 370px;
-  position: relative;
+const StyledRecommendedCard = styled.div`
   display: flex;
+  width: 250px;
+  position: relative;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
+  margin: 0 10px;
+  background-color: ${(p) => p.theme.colors.gray_0};
+  padding: 10px;
+  border-radius: 10px;
+
+  box-sizing: border-box;
+
+  & > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
 `;
+
+const PokemonCard = ({ pokemon, handleDeleteClick }) => {
+  const { name, types, price, images, image_url } = pokemon;
+
+  const { showWithTimer } = useCartModal();
+  const { getCurrentCart, addPokemonToCart, removePokemonFromCart } = useCart();
+
+  const findPokemon = getCurrentCart().filter(
+    (arrayPokemon) => arrayPokemon.name === pokemon.name
+  );
+  const pokemonExistsInCart = findPokemon.length !== 0;
+
+  const handleButtonClick = () => {
+    if (pokemonExistsInCart) removePokemonFromCart(pokemon);
+    else addPokemonToCart(pokemon);
+
+    showWithTimer();
+  };
+
+  return (
+    <StyledCartCard>
+      <Link as={`/pokemon/${name}`} href="/pokemon/[pokemonName]">
+        <div style={{ cursor: "pointer" }}>
+          <ImageContainer>
+            <Image quality={100} width={200} height={200} src={image_url} />
+            <HeartContainer>
+              <FavoritesHeart pokemon={pokemon} />
+            </HeartContainer>
+          </ImageContainer>
+        </div>
+      </Link>
+      <PokemonInformation>
+        <BoldRegularText>{name}</BoldRegularText>
+        <TypeContainer>
+          {types.map((type) => (
+            <TypeFlair key={type} type={type} />
+          ))}
+        </TypeContainer>
+      </PokemonInformation>
+      <Subheading2>{formatAsUSDWithoutTrailingZeros(price)}</Subheading2>
+      <Button
+        handleClick={handleButtonClick}
+        type={`${pokemonExistsInCart ? "negative" : "positive"}`}
+        innerText={`${
+          !pokemonExistsInCart ? "Add to cart" : "Remove from cart"
+        }`}
+        width="80%"
+        height="30px"
+      />
+    </StyledCartCard>
+  );
+};
+
+export const PokemonList = ({ pokemon }) => {
+  const { removePokemonFromCart } = useCart();
+
+  return (
+    <div>
+      {pokemon.map((pokemon) => (
+        <PokemonCard
+          key={pokemon.name}
+          pokemon={pokemon}
+          handleDeleteClick={() => removePokemonFromCart(pokemon)}
+        />
+      ))}
+    </div>
+  );
+};
+
+export const Checkout = ({ total }) => {
+  return <div>{total}</div>;
+};
 
 const RecommendedPokemonCard = ({ pokemon }) => {
   const { name, types, price, image_url } = pokemon;
@@ -121,20 +194,20 @@ const RecommendedPokemonCard = ({ pokemon }) => {
   };
 
   return (
-    <StyledRecommended>
+    <StyledRecommendedCard>
       <Link as={`/pokemon/${name}`} href="/pokemon/[pokemonName]">
-        <>
+        <div style={{ cursor: "pointer" }}>
           <HeartContainer>
             <FavoritesHeart pokemon={pokemon} />
           </HeartContainer>
-          <Image quality={100} width={150} height={150} src={image_url} />
+          <Image quality={100} width={190} height={190} src={image_url} />
           <BoldRegularText>{name}</BoldRegularText>
           <TypeContainer>
             {types.map((type) => (
               <TypeFlair key={type} type={type} />
             ))}
           </TypeContainer>
-        </>
+        </div>
       </Link>
       <Subheading2>{formatAsUSDWithoutTrailingZeros(price)}</Subheading2>
       <Button
@@ -146,65 +219,8 @@ const RecommendedPokemonCard = ({ pokemon }) => {
         width="80%"
         height="30px"
       />
-    </StyledRecommended>
+    </StyledRecommendedCard>
   );
-};
-
-const PokemonCard = ({ pokemon, handleDeleteClick }) => {
-  const { name, types, price, images, image_url } = pokemon;
-
-  return (
-    <StyledPokemonCard>
-      <Link as={`/pokemon/${name}`} href="/pokemon/[pokemonName]">
-        <>
-          <ImageContainer>
-            <Image quality={100} width={200} height={200} src={image_url} />
-            <HeartContainer>
-              <FavoritesHeart pokemon={pokemon} />
-            </HeartContainer>
-          </ImageContainer>
-          <PokemonInformation>
-            <BoldRegularText>{name}</BoldRegularText>
-            <TypeContainer>
-              {types.map((type) => (
-                <TypeFlair key={type} type={type} />
-              ))}
-            </TypeContainer>
-          </PokemonInformation>
-        </>
-      </Link>
-      <Bin>
-        <Subheading2>{formatAsUSDWithoutTrailingZeros(price)}</Subheading2>
-        <IconContainer>
-          <RiDeleteBinLine
-            size={20}
-            onClick={() => handleDeleteClick(pokemon)}
-          />
-        </IconContainer>
-      </Bin>
-    </StyledPokemonCard>
-  );
-};
-
-export const PokemonList = ({ pokemon }) => {
-  const { removePokemonFromCart } = useCart();
-  console.log(pokemon);
-
-  return (
-    <>
-      {pokemon.map((pokemon) => (
-        <PokemonCard
-          key={pokemon.name}
-          pokemon={pokemon}
-          handleDeleteClick={() => removePokemonFromCart(pokemon)}
-        />
-      ))}
-    </>
-  );
-};
-
-export const Checkout = ({ total }) => {
-  return <div>{total}</div>;
 };
 
 export const SuggestedPokemon = ({ cartPokemon, favoritePokemon }) => {
@@ -223,10 +239,7 @@ export const SuggestedPokemon = ({ cartPokemon, favoritePokemon }) => {
     setWindowWidth(window.innerWidth);
     const maximumPokemonPerPage = Math.ceil(windowWidth / 270);
     setPokemonToRight(
-      filteredAlreadyInCart.length - (maximumPokemonPerPage - viewPosition)
-    );
-    console.log(
-      filteredAlreadyInCart.length - (maximumPokemonPerPage - viewPosition)
+      filteredAlreadyInCart.length - (maximumPokemonPerPage - viewPosition) + 1
     );
   }, [windowWidth, viewPosition, filteredAlreadyInCart]);
   useWindowSize(() => setWindowWidth(window.innerWidth));
@@ -238,24 +251,27 @@ export const SuggestedPokemon = ({ cartPokemon, favoritePokemon }) => {
     if (viewPosition !== 0) setViewPosition((c) => c + 1);
   };
   return (
-    <RecommendedSection>
-      {viewPosition !== 0 && (
-        <LeftArrow onClick={moveLeft}>
-          <IoIosArrowBack size={35} />
-        </LeftArrow>
-      )}
-      {pokemonToRight >= 1 && (
-        <RightArrow onClick={moveRight}>
-          <IoIosArrowForward size={35} />
-        </RightArrow>
-      )}
-      <RecommendedContainer>
-        <HiddenContainer viewPosition={viewPosition}>
-          {filteredAlreadyInCart.map((pokemon) => (
-            <RecommendedPokemonCard key={pokemon.name} pokemon={pokemon} />
-          ))}
-        </HiddenContainer>
-      </RecommendedContainer>
-    </RecommendedSection>
+    <>
+      <RecommendedSection>
+        <Subheading1>Recommended pokemon</Subheading1>
+        {viewPosition !== 0 && (
+          <LeftArrow onClick={moveLeft}>
+            <IoIosArrowBack size={35} />
+          </LeftArrow>
+        )}
+        {pokemonToRight >= 1 && (
+          <RightArrow onClick={moveRight}>
+            <IoIosArrowForward size={35} />
+          </RightArrow>
+        )}
+        <RecommendedContainer>
+          <HiddenContainer viewPosition={viewPosition}>
+            {filteredAlreadyInCart.map((pokemon) => (
+              <RecommendedPokemonCard key={pokemon.name} pokemon={pokemon} />
+            ))}
+          </HiddenContainer>
+        </RecommendedContainer>
+      </RecommendedSection>
+    </>
   );
 };
