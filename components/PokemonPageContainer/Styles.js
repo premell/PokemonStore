@@ -27,8 +27,8 @@ export const MainContent = styled.div`
   height: 100%;
   width: 100%;
   display: flex;
-  margin-top: 20px;
   justify-content: center;
+  align-items: center;
   box-sizing: border-box;
 
   & * {
@@ -38,11 +38,17 @@ export const MainContent = styled.div`
 //padding-left:24px;
 
 const StyledImageList = styled.div`
-  height: 660px;
+  width: 10vw;
+  max-width: 155px;
+  height: min(calc(100% - 80px), 42vw);
   margin-left: 24px;
   display: flex;
   flex-direction: column;
   justify-content: center;
+
+  & * {
+    flex: 1;
+  }
 `;
 const StyledImageContainer = styled.div`
   cursor: pointer;
@@ -51,6 +57,8 @@ const StyledImageContainer = styled.div`
   border-style: solid;
   border-radius: 4px;
   margin-bottom: 5px;
+
+  position: relative;
 
   transition: border-color 0.2s;
   &:hover {
@@ -63,7 +71,7 @@ const StyledImageContainer = styled.div`
 const ImageContainer = ({ image, selected, handleClick }) => {
   return (
     <StyledImageContainer onClick={handleClick} selected={selected}>
-      <Image quality={100} width={100} height={100} src={image} />
+      <Image quality={100} layout="fill" src={image} />
     </StyledImageContainer>
   );
 };
@@ -100,8 +108,9 @@ export const ImageList = ({ images, selectedImage, handleNewSelected }) => {
 const StyledMainImage = styled.div`
   background-color: ${(p) => p.theme.colors.gray_0};
   position: relative;
-  height: 660px;
-  width: 660px;
+  width: 50vw;
+  max-width: 690px;
+  height: min(calc(100% - 40px), 50vw);
   border-radius: 20px;
   margin-right: 20px;
 `;
@@ -119,13 +128,7 @@ export const MainImage = ({ defaultImage, image, pokemon }) => {
   pokemon = { ...pokemon, image_url: defaultImage };
   return (
     <StyledMainImage>
-      <Image
-        quality={100}
-        layout="fixed"
-        width={660}
-        height={660}
-        src={image}
-      />
+      <Image quality={100} layout="fill" src={image} />
       <FavoritesHeartContainer>
         <FavoritesHeart pokemon={pokemon} size={42} />
       </FavoritesHeartContainer>
@@ -137,6 +140,11 @@ const StyledPokemonInformation = styled.div`
   background-color: ${(p) => p.theme.colors.gray_0};
   border-radius: 20px;
   padding: 15px 0px 15px 30px;
+  margin-bottom: 20px;
+
+  @media (max-width: 650px) {
+    margin-top: 30px;
+  }
 `;
 
 const Ability = styled.div`
@@ -164,15 +172,19 @@ const StyledStat = styled.div`
   align-items: center;
   width: 130px;
   padding: 5px 20px;
-  background-color: ${(p) => p.color};
+  background-color: ${(p) => p.backgroundColor};
   box-sizing: border-box;
   border-radius: 8px;
+
+  & > p {
+    color: white;
+  }
 `;
 
 const Stat = ({ statName, value }) => {
-  const color = getStatColor(statName);
+  const backgroundColor = getStatColor(statName);
   return (
-    <StyledStat color={color}>
+    <StyledStat backgroundColor={backgroundColor}>
       <p>{statName}</p>
       <p>{value}</p>
     </StyledStat>
@@ -215,60 +227,60 @@ export const PokemonInformation = ({ pokemon }) => {
   }, [cart]);
 
   return (
-    <div>
-      <StyledPokemonInformation>
-        <Subheading1 style={{ fontSize: "35px", margin: "8px 0px" }}>
-          {name}
-        </Subheading1>
-        <ItemContainer style={{ marginBottom: "20px" }}>
-          {types.map((type) => (
-            <TypeFlair
-              key={type}
-              font_size="15px"
-              type={type}
-              width="100px"
-              height="40px"
-            />
-          ))}
-        </ItemContainer>
-        <Subheading1>Abilities</Subheading1>
-        <ItemContainer>
-          {abilities.map((ability) => (
-            <Ability key={ability}>{ability}</Ability>
-          ))}
-        </ItemContainer>
-        <Subheading1>Stats</Subheading1>
-        <ItemContainer>
-          {stats.map((stat) => {
-            return (
-              <Stat
-                key={Object.keys(stat)[0]}
-                statName={Object.keys(stat)[0]}
-                value={Object.values(stat)[0]}
-              />
-            );
-          })}
-        </ItemContainer>
-        <ItemContainer
-          style={{
-            marginTop: "30px",
-            width: "300px",
-            justifyContent: "space-between",
-          }}
-        >
-          <Subheading1 style={{ fontSize: "28px" }}>
-            {formatAsUSDWithoutTrailingZeros(price)}
-          </Subheading1>
-          <Button
-            height="50px"
-            width="180px"
-            handleClick={handleClick}
-            innerText={existsInCart ? "Remove from cart" : "Add to cart"}
-            type={existsInCart ? "negative" : "positive"}
+    <StyledPokemonInformation>
+      <Subheading1 style={{ fontSize: "35px", margin: "8px 0px" }}>
+        {name}
+      </Subheading1>
+      <ItemContainer style={{ marginBottom: "20px" }}>
+        {types.map((type) => (
+          <TypeFlair
+            key={type}
+            font_size="15px"
+            type={type}
+            width="100px"
+            height="40px"
           />
-        </ItemContainer>
-      </StyledPokemonInformation>
-    </div>
+        ))}
+      </ItemContainer>
+      <Subheading1>Abilities</Subheading1>
+      <ItemContainer>
+        {abilities.map((ability) => (
+          <Ability key={ability}>
+            <p>{ability}</p>
+          </Ability>
+        ))}
+      </ItemContainer>
+      <Subheading1>Stats</Subheading1>
+      <ItemContainer>
+        {stats.map((stat) => {
+          return (
+            <Stat
+              key={Object.keys(stat)[0]}
+              statName={Object.keys(stat)[0]}
+              value={Object.values(stat)[0]}
+            />
+          );
+        })}
+      </ItemContainer>
+      <ItemContainer
+        style={{
+          marginTop: "30px",
+          width: "300px",
+          justifyContent: "space-between",
+        }}
+      >
+        <Subheading1 style={{ fontSize: "28px" }}>
+          {formatAsUSDWithoutTrailingZeros(price)}
+        </Subheading1>
+        <Button
+          height="50px"
+          width="180px"
+          handleClick={handleClick}
+          innerText={existsInCart ? "Remove from cart" : "Add to cart"}
+          type={existsInCart ? "negative" : "positive"}
+        />
+      </ItemContainer>
+    </StyledPokemonInformation>
   );
 };
 //   export const Button = ({ handleClick, type, innerText, height = "300px", width = "330px" }) => {

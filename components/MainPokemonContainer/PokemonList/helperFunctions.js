@@ -1,65 +1,73 @@
-import { SORTING_METHODS } from "@/shared/constants"
+import { SORTING_METHODS } from "@/shared/constants";
 
 export const getTypeFilteredPokemon = (pokemonToFilter, typeFilter) => {
   const filteredPokemon = pokemonToFilter.filter((pokemon) => {
-    let hasFilteredTypes = true
+    let hasFilteredTypes = true;
     typeFilter.forEach((filter) => {
-      if (!pokemon.types.includes(filter)) hasFilteredTypes = false
-    }
-    )
-    return hasFilteredTypes
-  })
-  return filteredPokemon
-}
+      if (!pokemon.types.includes(filter)) hasFilteredTypes = false;
+    });
+    return hasFilteredTypes;
+  });
+  return filteredPokemon;
+};
 
 export const getAbilityFilteredPokemon = (pokemonToFilter, abilityFilter) => {
   const filteredPokemon = pokemonToFilter.filter((pokemon) => {
-    let hasFilteredAbilities = true
+    let hasFilteredAbilities = true;
     abilityFilter.forEach((filter) => {
-      if (!pokemon.abilities.includes(filter)) hasFilteredAbilities = false
-    })
-    return hasFilteredAbilities
-  })
-  return filteredPokemon
-}
+      if (!pokemon.abilities.includes(filter)) hasFilteredAbilities = false;
+    });
+    return hasFilteredAbilities;
+  });
+  return filteredPokemon;
+};
 
-export const getPriceFilteredPokemon = (pokemonToFilter, priceRange, isFiltering) => {
-  if (!isFiltering) return [...pokemonToFilter]
+export const getPriceFilteredPokemon = (
+  pokemonToFilter,
+  priceRange,
+  isFiltering
+) => {
+  if (!isFiltering) return [...pokemonToFilter];
   const filteredPokemon = pokemonToFilter.filter((pokemon) => {
-    if (pokemon.price >= priceRange.min && pokemon.price <= priceRange.max) return true
-    else return false
-  })
-  return filteredPokemon
-}
+    if (pokemon.price >= priceRange.min && pokemon.price <= priceRange.max)
+      return true;
+    else return false;
+  });
+  return filteredPokemon;
+};
 
 export const getStatFilteredPokemon = (pokemonToFilter, statsFilter) => {
-  let filteredPokemon = [...pokemonToFilter]
+  let filteredPokemon = [...pokemonToFilter];
 
   Object.keys(statsFilter).forEach((key) => {
-    const filter = statsFilter[key]
-    if (!filter.isFiltering) return
-
+    const filter = statsFilter[key];
+    if (!filter.isFiltering) return;
 
     filteredPokemon = filteredPokemon.filter((pokemon) => {
-      const pokemonStat = pokemon.stats.find((stat) => Object.keys(stat)[0] === filter.name)
-      const pokemonStatValue = Object.values(pokemonStat)[0]
+      const pokemonStat = pokemon.stats.find(
+        (stat) => Object.keys(stat)[0] === filter.name
+      );
+      const pokemonStatValue = Object.values(pokemonStat)[0];
 
-      if (pokemonStatValue >= filter.currentRange.min && pokemonStatValue <= filter.currentRange.max) return true
-      else return false
-    })
-  })
-  return filteredPokemon
-}
+      if (
+        pokemonStatValue >= filter.currentRange.min &&
+        pokemonStatValue <= filter.currentRange.max
+      )
+        return true;
+      else return false;
+    });
+  });
+  return filteredPokemon;
+};
 
 export const getSearchFilteredPokemon = (pokemonToFilter, searchQuery) => {
-
-  if (searchQuery === "") return [...pokemonToFilter]
+  if (searchQuery === "") return [...pokemonToFilter];
   const filteredPokemon = pokemonToFilter.filter((pokemon) => {
-    if (pokemon.name.includes(searchQuery)) return true
-    else return false
-  })
-  return [...filteredPokemon]
-}
+    if (pokemon.name.includes(searchQuery.toLowerCase())) return true;
+    else return false;
+  });
+  return [...filteredPokemon];
+};
 
 export const getSortedPokemon = (searchFilteredPokemon, sortingMethod) => {
   const sortedPokemon = [...searchFilteredPokemon];
@@ -85,15 +93,16 @@ export const getSortedPokemon = (searchFilteredPokemon, sortingMethod) => {
       break;
     default:
   }
-  return sortedPokemon
-}
+  return sortedPokemon;
+};
 
-export const getPokemonToDisplay = (sortedPokemon, pokemonPerPage, currentPage) => {
+export const getPokemonToDisplay = (
+  sortedPokemon,
+  pokemonPerPage,
+  currentPage
+) => {
   const startPokemon = (currentPage - 1) * pokemonPerPage;
   const endPokemon = currentPage * pokemonPerPage;
-  const pokemonToDisplay = [...sortedPokemon].slice(
-    startPokemon,
-    endPokemon
-  );
-  return pokemonToDisplay
+  const pokemonToDisplay = [...sortedPokemon].slice(startPokemon, endPokemon);
+  return pokemonToDisplay;
 };
