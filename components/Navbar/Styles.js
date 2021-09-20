@@ -336,7 +336,7 @@ export const BackgroundBlur = styled.div`
 `;
 
 const StyledFavoritesPopupContainer = styled.div`
-  width: 500px;
+  width: 450px;
   padding-top: 15px;
   padding-left: 11px;
   padding-bottom: 15px;

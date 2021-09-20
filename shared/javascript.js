@@ -129,3 +129,35 @@ export const getTypeColor = (type) => {
   }
   return flairColor;
 };
+
+export const removeOverlappingObjectsByName = (listToFilter, refrenceList) => {
+  const filteredObjects = listToFilter.filter((objToFilter) => {
+    const duplicateObject = refrenceList.filter(
+      (refObj) => refObj.name === objToFilter.name
+    );
+    if (duplicateObject.length === 0) return true;
+  });
+  return filteredObjects;
+};
+
+export const removeDuplicateObjectsByName = (listToFilter) => {
+  const uniqueItemsInArray = [];
+
+  const filteredList = listToFilter.filter((obj) => {
+    if (uniqueItemsInArray.includes(obj.name)) return false;
+    else {
+      uniqueItemsInArray.push(obj.name);
+      return true;
+    }
+  });
+  return filteredList;
+};
+
+//   const filteredDuplicates = removeDuplicateObjectsByName(
+//     recommendedPokemon,
+//     cartPokemon
+//   );
+//   const filteredAlreadyInCart = removeOverlappingObjectsByName(
+//     recommendedPokemon,
+//     cartPokemon
+//   );

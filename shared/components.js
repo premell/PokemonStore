@@ -238,7 +238,9 @@ export const FavoritesHeart = ({ pokemon, size = 25 }) => {
     setIsFavorited(localIsFavorited);
   }, [favorites]);
 
-  const handleClick = () => {
+  const handleClick = (e) => {
+    e.stopPropagation();
+    e.preventDefault();
     let newPokemon = [...favorites.pokemon];
     if (isFavorited) {
       newPokemon = newPokemon.filter(

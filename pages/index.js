@@ -5,7 +5,11 @@ import MainPokemonContainer from "components/MainPokemonContainer";
 import PageNavigator from "components/PageNavigator";
 
 import { fetchData, getPokemonPricing } from "@/shared/javascript";
-import { BASE_URL, POKEMON_TO_EXCLUDE } from "@/shared/constants";
+import {
+  BASE_URL,
+  POKEMON_TO_EXCLUDE,
+  MY_PERSONAL_FAVORITE_POKEMON,
+} from "@/shared/constants";
 import { useEffect } from "react";
 
 const Divider = styled.div`
