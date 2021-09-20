@@ -55,7 +55,7 @@ export default Home;
 
 export async function getStaticProps() {
   const defaultPokemonRefs = await fetchData(
-    BASE_URL + "pokemon?offset=0&limit=100"
+    BASE_URL + "pokemon?offset=0&limit=950"
   );
   const filteredPokemonRefs = defaultPokemonRefs.results.filter(
     (pokemonRef) => !POKEMON_TO_EXCLUDE.includes(pokemonRef.name)
