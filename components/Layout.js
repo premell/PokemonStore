@@ -10,6 +10,7 @@ import { useCartModal } from "shared/hooks";
 
 import { useRecoilState } from "recoil";
 import { showFavorites as showFavoritesAtoms } from "atoms.js";
+import { searchQuery as searchQueryAtoms } from "atoms.js";
 
 import { useScrollPosition } from "shared/hooks";
 
@@ -36,6 +37,9 @@ const MainContainer = styled.div`
 `;
 
 const MainContent = styled.div`
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
   width: 100%;
   max-width: 1900px;
   margin-top: 76px;
@@ -50,7 +54,6 @@ const Layout = ({ children }) => {
   const [darkThemeEnabled, setDarkThemeEnabled] = useRecoilState(
     darkThemeEnabledAtoms
   );
-
   const [theme, setTheme] = useState(themes.light);
 
   useEffect(() => {
@@ -77,6 +80,12 @@ const Layout = ({ children }) => {
     hideInstantly();
     setShowFavorites(false);
   }, [router.asPath]);
+
+  const [searchQuery, setSearchQuery] = useRecoilState(searchQueryAtoms);
+
+  useEffect(() => {
+    if (router.asPath !== "/") router.push("/");
+  }, [searchQuery]);
 
   return (
     <ThemeProvider theme={theme}>

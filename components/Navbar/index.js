@@ -16,10 +16,11 @@ import { Links } from "shared/components";
 import { useRouter } from "next/router";
 
 import { useRecoilState, useResetRecoilState } from "recoil";
-import { priceFilter as priceFilterAtoms } from "atoms.js";
+import { priceFilter as priceFilterAtoms, searchQuery } from "atoms.js";
 import { statsFilter as statsFilterAtoms } from "atoms.js";
 import { typeFilter as typeFilterAtoms } from "atoms.js";
 import { abilityFilter as abilityFilterAtoms } from "atoms.js";
+import { searchQuery as searchQueryAtoms } from "atoms.js";
 
 import { Title2 } from "shared/components";
 import {
@@ -36,6 +37,7 @@ const Navbar = () => {
   const defaultStatsFilter = useResetRecoilState(statsFilterAtoms);
   const defaultTypeFilter = useResetRecoilState(typeFilterAtoms);
   const defaultAbilityFilter = useResetRecoilState(abilityFilterAtoms);
+  const defaultSeachQuery = useResetRecoilState(searchQueryAtoms);
 
   const [windowWidth, setWindowWidth] = useState(0);
 
@@ -45,10 +47,12 @@ const Navbar = () => {
 
   const router = useRouter();
   const handleGoToHome = () => {
+    console.log("HSAJNSADF");
     defaultPriceFilter();
     defaultStatsFilter();
     defaultTypeFilter();
     defaultAbilityFilter();
+    defaultSeachQuery();
     router.push("/");
   };
 

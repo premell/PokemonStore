@@ -21,7 +21,7 @@ const { persistAtom } = recoilPersist();
 
 export const pokemonPerPage = atom({
   key: "pokemonPerPage",
-  default: 50,
+  default: 20,
 });
 
 export const currentPage = atom({

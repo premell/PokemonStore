@@ -24,9 +24,45 @@ import {
 
 import { MY_PERSONAL_FAVORITE_POKEMON as myPersonalFavoritePokemon } from "shared/constants";
 
-const PokemonInformation = styled.div``;
+const StyledHeader = styled.div`
+  margin-top: 20px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
 
+  @media (max-width: 650px) {
+    margin-top: 40px;
+  }
+`;
+
+export const Header = () => {
+  return (
+    <StyledHeader>
+      <Subheading1>Shopping cart</Subheading1>
+    </StyledHeader>
+  );
+};
+
+const PokemonInformation = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px 20px 20px 0;
+`;
+
+export const MainContainer = styled.div`
+  max-width: 1400px;
+  margin-top: 10px;
+  padding: 0 100px;
+  display: flex;
+  justify-content: center;
+  min-height: 500px;
+`;
 const StyledCartCard = styled.div`
+  padding: 15px;
+  background-color: ${(p) => p.theme.colors.gray_0};
+  margin: 10px;
+  border-radius: 8px;
   display: flex;
 `;
 
@@ -36,14 +72,15 @@ const ImageContainer = styled.div`
 
 const HeartContainer = styled.div`
   position: absolute;
-  right: 15px;
-  top: 15px;
+  right: 10px;
+  top: 10px;
   z-index: 300;
 `;
 
 //RECOMMENDED SECTION
 
 const RecommendedSection = styled.div`
+  max-width: 1400px;
   width: 100%;
   height: 470px;
   position: relative;
@@ -51,18 +88,22 @@ const RecommendedSection = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
+  margin-top: 50px;
 `;
 
 const RecommendedContainer = styled.div`
   display: flex;
   height: 370px;
   width: calc(100vw - 100px);
+  max-width: 100%;
   box-sizing: border-box;
   position: relative;
   padding: 0 50px;
   overflow: hidden;
 `;
 const HiddenContainer = styled.div`
+  transition: left 0.3s ease-out;
   position: absolute;
   display: flex;
   left: ${(p) => p.viewPosition * 270}px;
@@ -103,10 +144,18 @@ const StyledRecommendedCard = styled.div`
   }
 `;
 
+const StyledButtonContainer = styled.div`
+  display: flex;
+  align-items: center;
+  height: 50px;
+  margin-top: 20px;
+  gap: 8px;
+  margin-left: 20px;
+`;
+
 const PokemonCard = ({ pokemon, handleDeleteClick }) => {
   const { name, types, price, images, image_url } = pokemon;
 
-  const { showWithTimer } = useCartModal();
   const { getCurrentCart, addPokemonToCart, removePokemonFromCart } = useCart();
 
   const findPokemon = getCurrentCart().filter(
@@ -117,8 +166,6 @@ const PokemonCard = ({ pokemon, handleDeleteClick }) => {
   const handleButtonClick = () => {
     if (pokemonExistsInCart) removePokemonFromCart(pokemon);
     else addPokemonToCart(pokemon);
-
-    showWithTimer();
   };
 
   return (
@@ -140,45 +187,107 @@ const PokemonCard = ({ pokemon, handleDeleteClick }) => {
             <TypeFlair key={type} type={type} />
           ))}
         </TypeContainer>
+        <StyledButtonContainer>
+          <Subheading2>{formatAsUSDWithoutTrailingZeros(price)}</Subheading2>
+          <Button
+            handleClick={handleButtonClick}
+            type={`${pokemonExistsInCart ? "negative" : "positive"}`}
+            innerText={`${
+              !pokemonExistsInCart ? "Add to cart" : "Remove from cart"
+            }`}
+            width="130px"
+            height="40px"
+          />
+        </StyledButtonContainer>
       </PokemonInformation>
-      <Subheading2>{formatAsUSDWithoutTrailingZeros(price)}</Subheading2>
-      <Button
-        handleClick={handleButtonClick}
-        type={`${pokemonExistsInCart ? "negative" : "positive"}`}
-        innerText={`${
-          !pokemonExistsInCart ? "Add to cart" : "Remove from cart"
-        }`}
-        width="80%"
-        height="30px"
-      />
     </StyledCartCard>
   );
 };
+
+const StyledPokemonList = styled.div`
+  flex: 4;
+`;
+
+const NoPokemonInCart = styled.div`
+  min-width: 460px;
+  height: 100%;
+  margin-top: 15%;
+  display: flex;
+  justify-content: center;
+  & > p {
+    height: 30px;
+  }
+`;
 
 export const PokemonList = ({ pokemon }) => {
   const { removePokemonFromCart } = useCart();
 
   return (
-    <div>
-      {pokemon.map((pokemon) => (
-        <PokemonCard
-          key={pokemon.name}
-          pokemon={pokemon}
-          handleDeleteClick={() => removePokemonFromCart(pokemon)}
-        />
-      ))}
-    </div>
+    <>
+      <StyledPokemonList>
+        {pokemon.length === 0 ? (
+          <NoPokemonInCart>
+            <Subheading1>No pokemon in cart</Subheading1>
+          </NoPokemonInCart>
+        ) : (
+          pokemon.map((pokemon) => (
+            <PokemonCard
+              key={pokemon.name}
+              pokemon={pokemon}
+              handleDeleteClick={() => removePokemonFromCart(pokemon)}
+            />
+          ))
+        )}
+      </StyledPokemonList>
+    </>
   );
 };
 
+const StyledCheckout = styled.div`
+  width: 330px;
+  background-color: ${(p) => p.theme.colors.gray_0};
+  height: 100px;
+  border-radius: 8px;
+  padding: 40px;
+  flex: 2;
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+`;
+
+const CheckoutButton = styled.div`
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 8px;
+  cursor: not-allowed;
+  height: 60px;
+
+  background-color: ${(p) => p.theme.colors.green_light};
+  &:hover {
+    background-color: ${(p) => p.theme.colors.green_hover};
+  }
+  & p {
+    color: white !important;
+  }
+`;
 export const Checkout = ({ total }) => {
-  return <div>{total}</div>;
+  return (
+    <StyledCheckout>
+      <Subheading1>Total: {formatAsUSDWithoutTrailingZeros(total)}</Subheading1>
+      <CheckoutButton>
+        <BoldRegularText>Continue to checkout</BoldRegularText>
+      </CheckoutButton>
+    </StyledCheckout>
+  );
 };
 
 const RecommendedPokemonCard = ({ pokemon }) => {
   const { name, types, price, image_url } = pokemon;
 
-  const { showWithTimer } = useCartModal();
   const { getCurrentCart, addPokemonToCart, removePokemonFromCart } = useCart();
 
   const findPokemon = getCurrentCart().filter(
@@ -189,8 +298,6 @@ const RecommendedPokemonCard = ({ pokemon }) => {
   const handleButtonClick = () => {
     if (pokemonExistsInCart) removePokemonFromCart(pokemon);
     else addPokemonToCart(pokemon);
-
-    showWithTimer();
   };
 
   return (
