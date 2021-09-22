@@ -73,7 +73,7 @@ const ToggleHeadingContainer = styled.div`
 export const FilterToggleHeading = ({ handleClick, children, menuVisible }) => {
   return (
     <ToggleHeadingContainer onClick={handleClick}>
-      <Subheading2>{children}</Subheading2>
+      <h2>{children}</h2>
       {menuVisible ? <IoIosArrowUp size={18} /> : <IoIosArrowDown size={18} />}
     </ToggleHeadingContainer>
   );

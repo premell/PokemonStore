@@ -2,8 +2,8 @@ const baseTheme = {
   font_size: {
     title_1: "2rem",
     title_2: "1rem",
-    subheading1: "20px",
-    subheading2: "16px",
+    h1: "20px",
+    h2: "16px",
     regular: "14px",
   },
   font_families: {

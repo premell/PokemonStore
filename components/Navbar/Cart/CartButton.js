@@ -29,7 +29,7 @@ const CartButton = ({
         width="60px"
       >
         <FiShoppingCart size={22} style={{ strokeWidth: "2" }} />
-        <BoldRegularText>Cart</BoldRegularText>
+        <h3>Cart</h3>
       </NavButton>
       {children}
     </div>

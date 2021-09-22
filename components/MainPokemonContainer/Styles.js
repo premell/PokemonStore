@@ -1,6 +1,6 @@
 import styled, { css } from "styled-components";
 
-import { formatAsUSDWithoutTrailingZeros } from "@/shared/javascript";
+import { formatAsUSDWithoutTrailingZeros } from "shared/javascript";
 
 import { RegularText, BoldRegularText } from "shared/components";
 import { AiOutlineClose } from "react-icons/ai";
@@ -102,7 +102,7 @@ export const FilterBox = ({ handleClick, text }) => {
   );
 };
 
-export const TypeContainer = styled.div`
+export const TypeFlairBox = styled.div`
   display: flex;
 `;
 
@@ -137,11 +137,11 @@ const StyledPriceFilterFlair = styled.div``;
 
 export const PriceFilterFlair = ({ min, max }) => {
   return (
-    <RegularText
-      style={{ margin: 0 }}
-    >{`Price: ${formatAsUSDWithoutTrailingZeros(
-      min
-    )} - ${formatAsUSDWithoutTrailingZeros(max)}`}</RegularText>
+    <p>
+      {`Price: ${formatAsUSDWithoutTrailingZeros(
+        min
+      )} - ${formatAsUSDWithoutTrailingZeros(max)}`}
+    </p>
   );
 };
 
@@ -320,9 +320,9 @@ const StyledNoPokemonFound = styled.div`
 export const NoPokemonFound = () => {
   return (
     <StyledNoPokemonFound>
-      <BoldRegularText style={{ height: "50px" }}>
+      <h3 style={{ height: "50px" }}>
         No pokemon were found
-      </BoldRegularText>
+      </h3>
     </StyledNoPokemonFound>
   );
 };
@@ -365,7 +365,7 @@ export const HeartContainer = styled.div`
 
 // import styled, { css } from "styled-components"
 //
-// import { formatAsUSDWithoutTrailingZeros } from "@/shared/javascript"
+// import { formatAsUSDWithoutTrailingZeros } from "shared/javascript"
 //
 // import { RegularText, BoldRegularText } from "shared/components"
 // import { AiOutlineClose } from "react-icons/ai"
@@ -451,7 +451,7 @@ export const HeartContainer = styled.div`
 //   )
 // }
 //
-// export const TypeContainer = styled.div`
+// export const TypeFlairBox = styled.div`
 //  display: flex;
 // `
 //
@@ -663,9 +663,9 @@ export const HeartContainer = styled.div`
 //
 //   return (
 //     <StyledNoPokemonFound>
-//       <BoldRegularText>
+//       <h3>
 //         No pokemon were found
-//       </BoldRegularText>
+//       </h3>
 //     </StyledNoPokemonFound>
 //   )
 //

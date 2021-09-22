@@ -7,19 +7,10 @@
     "module": "es2015",
     "baseUrl": ".",
     "paths": {
-      "@/components/*": [
-        "components/*"
-      ],
-      "@/styles/*": [
-        "styles/*"
-      ],
-      "@/pages/*": [
-        "pages/*"
-      ],
-      "@/shared/*": [
-        "shared/*"
-      ]
-
+      "components/*": ["components/*"],
+      "styles/*": ["styles/*"],
+      "pages/*": ["pages/*"],
+      "shared/*": ["shared/*"]
     }
   },
   "exclude": [
@@ -34,9 +25,6 @@
   ],
   "typeAcquisition": {
     "enable": true,
-    "include": [
-      "react",
-      "react-dom"
-    ]
+    "include": ["react", "react-dom"]
   }
 }

@@ -6,10 +6,11 @@ import {
   RegularText,
   BoldRegularText,
   Subheading2,
+  CartButton,
   Button,
   FavoritesHeart,
 } from "shared/components";
-import { TypeFlair, TypeContainer } from "shared/components";
+import { TypeFlairBox } from "shared/components";
 
 import { RiDeleteBinLine } from "react-icons/ri";
 import { BiSearch } from "react-icons/bi";
@@ -232,10 +233,8 @@ export const ModalPokemonCard = ({
         />
       </div>
       <PokemonInformation onClick={handleRouteClick}>
-        <BoldRegularText>{name}</BoldRegularText>
-        <BoldRegularText>
-          {formatAsUSDWithoutTrailingZeros(price)}
-        </BoldRegularText>
+        <h3>{name}</h3>
+        <h3>{formatAsUSDWithoutTrailingZeros(price)}</h3>
       </PokemonInformation>
       <div>
         <IconContainer>
@@ -248,12 +247,6 @@ export const ModalPokemonCard = ({
     </StyledModalPokemonCard>
   );
 };
-
-// <TypeContainer>
-//   {types.map((type) => (
-//     <TypeFlair key={type} type={type} />
-//   ))}
-// </TypeContainer>
 
 export const ModalPokemonCartContainer = styled.div`
   overflow-y: scroll;
@@ -310,7 +303,7 @@ const StyledNoPokemon = styled.div`
 export const NoPokemonFoundContainer = ({ children }) => {
   return (
     <StyledNoPokemon>
-      <Subheading2>{children}</Subheading2>
+      <h2>{children}</h2>
     </StyledNoPokemon>
   );
 };
@@ -430,28 +423,6 @@ const ButtonContainer = styled.div`
 export const FavoritePokemonCard = ({ pokemon }) => {
   const { name, types, price, image_url } = pokemon;
 
-  const { showWithTimer } = useCartModal();
-  const { getCurrentCart, addPokemonToCart, removePokemonFromCart } = useCart();
-
-  const findPokemon = getCurrentCart().filter(
-    (arrayPokemon) => arrayPokemon.name === pokemon.name
-  );
-  const pokemonExistsInCart = findPokemon.length !== 0;
-
-  const handleButtonClick = () => {
-    if (pokemonExistsInCart) removePokemonFromCart(pokemon);
-    else addPokemonToCart(pokemon);
-    showWithTimer();
-  };
-
-  // export const Button = ({
-  //   handleClick,
-  //   type,
-  //   innerText,
-  //   height = "100px",
-  //   width = "330px",
-  // }) => {
-
   return (
     <div>
       <div>
@@ -464,17 +435,11 @@ export const FavoritePokemonCard = ({ pokemon }) => {
             </Link>
           </div>
           <InformationContainer>
-            <BoldRegularText>{name}</BoldRegularText>
-            <TypeContainer>
-              {types.map((type) => (
-                <TypeFlair key={type} type={type} />
-              ))}
-            </TypeContainer>
+            <h3>{name}</h3>
+            <TypeFlairBox types={types} />
             <ButtonContainer>
-              <Subheading2>
-                {formatAsUSDWithoutTrailingZeros(price)}
-              </Subheading2>
-              <Button
+              <h2>{formatAsUSDWithoutTrailingZeros(price)}</h2>
+              <CartButton
                 handleClick={handleButtonClick}
                 type={`${pokemonExistsInCart ? "negative" : "positive"}`}
                 innerText={`${
@@ -482,6 +447,7 @@ export const FavoritePokemonCard = ({ pokemon }) => {
                 }`}
                 width="120px"
                 height="30px"
+                activateCartDropdown="true"
               />
             </ButtonContainer>
           </InformationContainer>
@@ -516,5 +482,20 @@ export const MainMiniContainer = styled.div`
   padding-top: 10px;
 
   & > div {
+  }
+`;
+
+export const Title2 = styled.p`
+  width: 217px;
+  display: flex;
+  align-items: center;
+  font-weight: 900;
+  font-size: ${(p) => p.theme.font_size.title_2};
+  font-family: ${(props) => props.theme.font_families.titles};
+  color: ${(p) => p.theme.colors.accent_color};
+  padding-right: 20px;
+
+  @media (max-width: 850px) {
+    display: none;
   }
 `;

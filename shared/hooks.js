@@ -42,7 +42,6 @@ export const useCart = () => {
   const getCurrentCart = () => {
     return cart.pokemon;
   };
-
   const getCurrentTotal = () => {
     return cart.total;
   };

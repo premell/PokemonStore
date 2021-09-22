@@ -7,13 +7,12 @@ import { cart as cartAtoms } from "atoms.js";
 import { useCart, useCartModal, useWindowSize } from "shared/hooks";
 import { useEffect, useState } from "react";
 import {
-  TypeFlair,
-  TypeContainer,
   FavoritesHeart,
   Subheading1,
   Subheading2,
   BoldRegularText,
   Button,
+  AddToCartButton,
 } from "shared/components";
 import Link from "next/link";
 import {
@@ -38,7 +37,7 @@ const StyledHeader = styled.div`
 export const Header = () => {
   return (
     <StyledHeader>
-      <Subheading1>Shopping cart</Subheading1>
+      <h1>Shopping cart</h1>
     </StyledHeader>
   );
 };
@@ -156,18 +155,6 @@ const StyledButtonContainer = styled.div`
 const PokemonCard = ({ pokemon, handleDeleteClick }) => {
   const { name, types, price, images, image_url } = pokemon;
 
-  const { getCurrentCart, addPokemonToCart, removePokemonFromCart } = useCart();
-
-  const findPokemon = getCurrentCart().filter(
-    (arrayPokemon) => arrayPokemon.name === pokemon.name
-  );
-  const pokemonExistsInCart = findPokemon.length !== 0;
-
-  const handleButtonClick = () => {
-    if (pokemonExistsInCart) removePokemonFromCart(pokemon);
-    else addPokemonToCart(pokemon);
-  };
-
   return (
     <StyledCartCard>
       <Link as={`/pokemon/${name}`} href="/pokemon/[pokemonName]">
@@ -181,23 +168,10 @@ const PokemonCard = ({ pokemon, handleDeleteClick }) => {
         </div>
       </Link>
       <PokemonInformation>
-        <BoldRegularText>{name}</BoldRegularText>
-        <TypeContainer>
-          {types.map((type) => (
-            <TypeFlair key={type} type={type} />
-          ))}
-        </TypeContainer>
+        <h3>{name}</h3>
         <StyledButtonContainer>
-          <Subheading2>{formatAsUSDWithoutTrailingZeros(price)}</Subheading2>
-          <Button
-            handleClick={handleButtonClick}
-            type={`${pokemonExistsInCart ? "negative" : "positive"}`}
-            innerText={`${
-              !pokemonExistsInCart ? "Add to cart" : "Remove from cart"
-            }`}
-            width="130px"
-            height="40px"
-          />
+          <h2>{formatAsUSDWithoutTrailingZeros(price)}</h2>
+          <AddToCartButton width="130px" height="40px" pokemon={pokemon} />
         </StyledButtonContainer>
       </PokemonInformation>
     </StyledCartCard>
@@ -227,7 +201,7 @@ export const PokemonList = ({ pokemon }) => {
       <StyledPokemonList>
         {pokemon.length === 0 ? (
           <NoPokemonInCart>
-            <Subheading1>No pokemon in cart</Subheading1>
+            <h3>No pokemon in cart</h3>
           </NoPokemonInCart>
         ) : (
           pokemon.map((pokemon) => (
@@ -277,9 +251,9 @@ const CheckoutButton = styled.div`
 export const Checkout = ({ total }) => {
   return (
     <StyledCheckout>
-      <Subheading1>Total: {formatAsUSDWithoutTrailingZeros(total)}</Subheading1>
+      <h1>Total: {formatAsUSDWithoutTrailingZeros(total)}</h1>
       <CheckoutButton>
-        <BoldRegularText>Continue to checkout</BoldRegularText>
+        <h3>Continue to checkout</h3>
       </CheckoutButton>
     </StyledCheckout>
   );
@@ -287,18 +261,6 @@ export const Checkout = ({ total }) => {
 
 const RecommendedPokemonCard = ({ pokemon }) => {
   const { name, types, price, image_url } = pokemon;
-
-  const { getCurrentCart, addPokemonToCart, removePokemonFromCart } = useCart();
-
-  const findPokemon = getCurrentCart().filter(
-    (arrayPokemon) => arrayPokemon.name === pokemon.name
-  );
-  const pokemonExistsInCart = findPokemon.length !== 0;
-
-  const handleButtonClick = () => {
-    if (pokemonExistsInCart) removePokemonFromCart(pokemon);
-    else addPokemonToCart(pokemon);
-  };
 
   return (
     <StyledRecommendedCard>
@@ -308,23 +270,16 @@ const RecommendedPokemonCard = ({ pokemon }) => {
             <FavoritesHeart pokemon={pokemon} />
           </HeartContainer>
           <Image quality={100} width={190} height={190} src={image_url} />
-          <BoldRegularText>{name}</BoldRegularText>
-          <TypeContainer>
-            {types.map((type) => (
-              <TypeFlair key={type} type={type} />
-            ))}
-          </TypeContainer>
+          <h3>{name}</h3>
+          <TypeFlairBox types={types} />
         </div>
       </Link>
-      <Subheading2>{formatAsUSDWithoutTrailingZeros(price)}</Subheading2>
-      <Button
-        handleClick={handleButtonClick}
-        type={`${pokemonExistsInCart ? "negative" : "positive"}`}
-        innerText={`${
-          !pokemonExistsInCart ? "Add to cart" : "Remove from cart"
-        }`}
+      <h2>{formatAsUSDWithoutTrailingZeros(price)}</h2>
+      <AddToCartButton
         width="80%"
         height="30px"
+        pokemon={pokemon}
+        activateCartDropdown={true}
       />
     </StyledRecommendedCard>
   );
@@ -360,7 +315,7 @@ export const SuggestedPokemon = ({ cartPokemon, favoritePokemon }) => {
   return (
     <>
       <RecommendedSection>
-        <Subheading1>Recommended pokemon</Subheading1>
+        <h1>Recommended pokemon</h1>
         {viewPosition !== 0 && (
           <LeftArrow onClick={moveLeft}>
             <IoIosArrowBack size={35} />

@@ -39,6 +39,29 @@ p{
 ::-webkit-scrollbar {
   display: none;
 }
+h1{
+    font-family: "LatoRegular";
+  display: flex;
+  align-items: center;
+  font-weight: 900;
+  font-size: 20px;
+    }
+
+h2{
+    font-family: "LatoRegular";
+  display: flex;
+  align-items: center;
+  font-weight: 900;
+  font-size: 16px;
+  }
+
+h3{
+    font-family: "LatoRegular";
+  display: flex;
+  align-items: center;
+  font-weight: 700;
+  font-size: 14px;
+  }
 `;
 
 // a{

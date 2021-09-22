@@ -4,12 +4,12 @@ import SideFilterPanel from "components/SideFilterPanel";
 import MainPokemonContainer from "components/MainPokemonContainer";
 import PageNavigator from "components/PageNavigator";
 
-import { fetchData, getPokemonPricing } from "@/shared/javascript";
+import { fetchData, getPokemonPricing } from "shared/javascript";
 import {
   BASE_URL,
   POKEMON_TO_EXCLUDE,
   MY_PERSONAL_FAVORITE_POKEMON,
-} from "@/shared/constants";
+} from "shared/constants";
 import { useEffect } from "react";
 
 const Divider = styled.div`
@@ -59,7 +59,7 @@ export default Home;
 
 export async function getStaticProps() {
   const defaultPokemonRefs = await fetchData(
-    BASE_URL + "pokemon?offset=0&limit=950"
+    BASE_URL + "pokemon?offset=0&limit=20"
   );
   const filteredPokemonRefs = defaultPokemonRefs.results.filter(
     (pokemonRef) => !POKEMON_TO_EXCLUDE.includes(pokemonRef.name)

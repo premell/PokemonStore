@@ -3,8 +3,8 @@ import Image from "next/image";
 import Link from "next/link";
 import PokemonPageContainer from "components/PokemonPageContainer";
 
-import { fetchData, getPokemonPricing } from "@/shared/javascript";
-import { BASE_URL, POKEMON_TO_EXCLUDE } from "@/shared/constants";
+import { fetchData, getPokemonPricing } from "shared/javascript";
+import { BASE_URL, POKEMON_TO_EXCLUDE } from "shared/constants";
 
 const pokemon = ({ pokemon }) => {
   return <PokemonPageContainer pokemon={pokemon} />;
@@ -12,7 +12,7 @@ const pokemon = ({ pokemon }) => {
 
 export const getStaticPaths = async () => {
   const defaultPokemonRefs = await fetchData(
-    BASE_URL + "pokemon?offset=0&limit=950"
+    BASE_URL + "pokemon?offset=0&limit=20"
   );
   console.log(defaultPokemonRefs);
 

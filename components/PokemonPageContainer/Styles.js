@@ -14,6 +14,7 @@ import { useEffect, useRef, useState } from "react";
 
 import { useRecoilState } from "recoil";
 import { cart as cartAtoms } from "atoms.js";
+import { AddToCartButton } from "shared/components";
 
 export const MainContainer = styled.div`
   height: calc(100vh - 376px);
@@ -205,44 +206,15 @@ const ItemContainer = styled.div`
 export const PokemonInformation = ({ pokemon }) => {
   const { name, stats, price, types, abilities, image_urls } = pokemon;
 
-  const [cart, setCart] = useRecoilState(cartAtoms);
-  const [existsInCart, setExistsInCart] = useState(false);
-
-  const { addPokemonToCart, removePokemonFromCart } = useCart();
-  const { showWithTimer } = useCartModal();
-
-  const handleClick = () => {
-    if (existsInCart) removePokemonFromCart(pokemon);
-    else addPokemonToCart({ ...pokemon, image_url: image_urls[0] });
-
-    showWithTimer();
-  };
-
-  useEffect(() => {
-    let localExistsInCart = false;
-    cart.pokemon.forEach((cartPokemon) => {
-      if (cartPokemon.name === name) localExistsInCart = true;
-    });
-    setExistsInCart(localExistsInCart);
-  }, [cart]);
-
   return (
     <StyledPokemonInformation>
-      <Subheading1 style={{ fontSize: "35px", margin: "8px 0px" }}>
-        {name}
-      </Subheading1>
+      <h1 style={{ fontSize: "35px", margin: "8px 0px" }}>{name}</h1>
       <ItemContainer style={{ marginBottom: "20px" }}>
         {types.map((type) => (
-          <TypeFlair
-            key={type}
-            font_size="15px"
-            type={type}
-            width="100px"
-            height="40px"
-          />
+          <TypeFlair key={type} type={type} width="100px" height="40px" />
         ))}
       </ItemContainer>
-      <Subheading1>Abilities</Subheading1>
+      <h1>Abilities</h1>
       <ItemContainer>
         {abilities.map((ability) => (
           <Ability key={ability}>
@@ -250,7 +222,7 @@ export const PokemonInformation = ({ pokemon }) => {
           </Ability>
         ))}
       </ItemContainer>
-      <Subheading1>Stats</Subheading1>
+      <h1>Stats</h1>
       <ItemContainer>
         {stats.map((stat) => {
           return (
@@ -269,16 +241,10 @@ export const PokemonInformation = ({ pokemon }) => {
           justifyContent: "space-between",
         }}
       >
-        <Subheading1 style={{ fontSize: "28px" }}>
+        <h1 style={{ fontSize: "28px" }}>
           {formatAsUSDWithoutTrailingZeros(price)}
-        </Subheading1>
-        <Button
-          height="50px"
-          width="180px"
-          handleClick={handleClick}
-          innerText={existsInCart ? "Remove from cart" : "Add to cart"}
-          type={existsInCart ? "negative" : "positive"}
-        />
+        </h1>
+        <AddToCartButton height="50px" width="180px" pokemon={pokemon} />
       </ItemContainer>
     </StyledPokemonInformation>
   );

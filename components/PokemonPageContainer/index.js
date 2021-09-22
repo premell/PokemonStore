@@ -7,7 +7,7 @@ import {
 } from "./Styles";
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import { useWindowSize } from "@/shared/hooks";
+import { useWindowSize } from "shared/hooks";
 
 const PokemonPageContainer = ({ pokemon }) => {
   const { image_urls } = pokemon;

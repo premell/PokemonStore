@@ -4,8 +4,6 @@ import { NoPokemonFound } from "../Styles";
 
 import { useEffect, useLayoutEffect, useMemo, useState } from "react";
 
-import { getAllPokemons } from "@/shared/javascript";
-
 import { useRecoilState } from "recoil";
 import { typeFilter as typeFilterAtoms } from "atoms.js";
 import { abilityFilter as abilityFilterAtoms } from "atoms.js";

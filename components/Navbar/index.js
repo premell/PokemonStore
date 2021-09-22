@@ -10,6 +10,7 @@ import {
   HideAnimationContainer,
   RightSubContainer,
   MainMiniContainer,
+  Title2,
 } from "./Styles";
 
 import { Links } from "shared/components";
@@ -22,7 +23,6 @@ import { typeFilter as typeFilterAtoms } from "atoms.js";
 import { abilityFilter as abilityFilterAtoms } from "atoms.js";
 import { searchQuery as searchQueryAtoms } from "atoms.js";
 
-import { Title2 } from "shared/components";
 import {
   useEscapeButtonListener,
   useShowCartModalOnCartUpdate,

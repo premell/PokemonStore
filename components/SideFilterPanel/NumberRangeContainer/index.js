@@ -5,7 +5,7 @@ import { useRecoilState } from "recoil";
 import { darkThemeEnabled as darkThemeEnabledAtoms } from "atoms";
 //import { priceFilter as priceFilterAtoms } from "atoms.js";
 
-import { stringToInteger } from "@/shared/javascript";
+import { stringToInteger } from "shared/javascript";
 
 const darkColors = {
   track_color: "#38404b",

@@ -75,7 +75,7 @@ const PageNavigator = () => {
           onClick={() => goToPage(page)}
           isActive={page === currentPage}
         >
-          <BoldRegularText>{page}</BoldRegularText>
+          <h3>{page}</h3>
         </PageNumber>
       ))}
       {nextPageExists && (

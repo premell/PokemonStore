@@ -56,8 +56,8 @@ const CartModal = ({
           )}
         </ModalPokemonCartContainer>
         <ModalPokemonCartFooter>
-          <Subheading1>Total:</Subheading1>
-          <Subheading1>{formatAsUSDWithoutTrailingZeros(total)}</Subheading1>
+          <h1>Total:</h1>
+          <h1>{formatAsUSDWithoutTrailingZeros(total)}</h1>
         </ModalPokemonCartFooter>
       </StyledCartModal>
     </ForgivingBorder>

@@ -30,7 +30,7 @@ const Favorites = () => {
     <NavButton onClick={handleFavoritesPopup}>
       <FavoritesPopup show={showFavorites} setShow={setShowFavorites} />
       <AiOutlineHeart size={23} />
-      <BoldRegularText>Favorites</BoldRegularText>
+      <h3>Favorites</h3>
     </NavButton>
   );
 };

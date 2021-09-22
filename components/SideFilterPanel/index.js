@@ -69,7 +69,7 @@ const SidePanel = () => {
         {statsMenuVisible &&
           Object.keys(statsFilter).map((key) => (
             <div key={key}>
-              <BoldRegularText>{statsFilter[key].name}</BoldRegularText>
+              <h3>{statsFilter[key].name}</h3>
               <NumberRangeContainer
                 filter={{ ...statsFilter[key] }}
                 categoryName={key}

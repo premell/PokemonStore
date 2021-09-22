@@ -1,23 +1,9 @@
 import { atom, selector } from "recoil";
 import { recoilPersist } from "recoil-persist";
 
-import { SORTING_METHODS, STATS } from "@/shared/constants";
+import { SORTING_METHODS, STATS } from "shared/constants";
 
 const { persistAtom } = recoilPersist();
-
-// export const popupMessage = atom({
-//   key: "popupMessage",
-//   default: {
-//     show: false,
-//     message: "hello",
-//     type: "positive",
-//   },
-// });
-
-// export const numberOfMatchedPokemon = atom({
-//   key: "numberOfMatchedPokemon",
-//   default: 0
-// });
 
 export const pokemonPerPage = atom({
   key: "pokemonPerPage",

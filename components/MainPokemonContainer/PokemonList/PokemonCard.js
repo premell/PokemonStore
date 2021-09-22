@@ -8,8 +8,8 @@ import {
   Subheading2,
   BoldRegularText,
   RegularText,
-  TypeContainer,
-} from "@/shared/components";
+  TypeFlairBox,
+} from "shared/components";
 import Image from "next/image";
 import Link from "next/link";
 import { TypeFlair } from "shared/components";
@@ -18,24 +18,10 @@ import { formatAsUSDWithoutTrailingZeros } from "shared/javascript";
 import { FavoritesHeart } from "shared/components";
 
 import { useCart, useCartModal } from "shared/hooks";
+import { AddToCartButton } from "shared/components";
 
 const PokemonCard = ({ pokemon }) => {
   const { name, types, price, image_url } = pokemon;
-
-  const { showWithTimer } = useCartModal();
-  const { getCurrentCart, addPokemonToCart, removePokemonFromCart } = useCart();
-
-  const findPokemon = getCurrentCart().filter(
-    (arrayPokemon) => arrayPokemon.name === pokemon.name
-  );
-  const pokemonExistsInCart = findPokemon.length !== 0;
-
-  const handleButtonClick = () => {
-    if (pokemonExistsInCart) removePokemonFromCart(pokemon);
-    else addPokemonToCart(pokemon);
-
-    showWithTimer();
-  };
 
   return (
     <StyledPokemonCard>
@@ -45,24 +31,12 @@ const PokemonCard = ({ pokemon }) => {
       <Link as={`/pokemon/${name}`} href="/pokemon/[pokemonName]">
         <StyledPokemonMain>
           <Image quality={100} width={150} height={150} src={image_url} />
-          <BoldRegularText>{name}</BoldRegularText>
-          <TypeContainer>
-            {types.map((type) => (
-              <TypeFlair key={type} type={type} />
-            ))}
-          </TypeContainer>
-          <Subheading2>{formatAsUSDWithoutTrailingZeros(price)}</Subheading2>
+          <h3>{name}</h3>
+          <TypeFlairBox types={types} />
+          <h2>{formatAsUSDWithoutTrailingZeros(price)}</h2>
         </StyledPokemonMain>
       </Link>
-      <Button
-        handleClick={handleButtonClick}
-        type={`${pokemonExistsInCart ? "negative" : "positive"}`}
-        innerText={`${
-          !pokemonExistsInCart ? "Add to cart" : "Remove from cart"
-        }`}
-        width="80%"
-        height="30px"
-      />
+      <AddToCartButton width="80%" height="30px" pokemon={pokemon} />
     </StyledPokemonCard>
   );
 };

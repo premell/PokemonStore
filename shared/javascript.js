@@ -7,18 +7,18 @@ export const fetchData = async (url) => {
   return data;
 };
 
-export const getAllPokemons = async () => {
-  const data = await fetchData(`${BASE_URL}pokemon?offset=0&limit=100`);
-  const pokemon = data.results;
-  return pokemon;
-};
+// export const getAllPokemons = async () => {
+//   const data = await fetchData(`${BASE_URL}pokemon?offset=0&limit=100`);
+//   const pokemon = data.results;
+//   return pokemon;
+// };
 
-export const formatAsUSD = (number) => {
-  return new Intl.NumberFormat("en-IN", {
-    style: "currency",
-    currency: "USD",
-  }).format(number);
-};
+// export const formatAsUSD = (number) => {
+//   return new Intl.NumberFormat("en-IN", {
+//     style: "currency",
+//     currency: "USD",
+//   }).format(number);
+// };
 
 export const formatAsUSDWithoutTrailingZeros = (number) => {
   const numberWithCommas = number
@@ -27,6 +27,7 @@ export const formatAsUSDWithoutTrailingZeros = (number) => {
 
   return `$${numberWithCommas}`;
 };
+
 export const stringToInteger = (string) => {
   const removeLetters = string.replace(/[^0-9]/g, "");
   const removeFirstZero = removeLetters.replace(/^0(.+)/, "$1");
@@ -152,12 +153,3 @@ export const removeDuplicateObjectsByName = (listToFilter) => {
   });
   return filteredList;
 };
-
-//   const filteredDuplicates = removeDuplicateObjectsByName(
-//     recommendedPokemon,
-//     cartPokemon
-//   );
-//   const filteredAlreadyInCart = removeOverlappingObjectsByName(
-//     recommendedPokemon,
-//     cartPokemon
-//   );

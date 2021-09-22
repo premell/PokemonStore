@@ -87,9 +87,9 @@ const ViewPanel = () => {
 
   return (
     <ViewPanelContainer>
-      <BoldRegularText>
+      <h3>
         {`${formatNumberOfMatchedPokemon(numberOfMatchedPokemon)} pokemon`}
-      </BoldRegularText>
+      </h3>
       <DropdownBox>
         <Dropdown
           labelPrefix="sort by "
@@ -202,9 +202,9 @@ export default ViewPanel;
 //
 //   return (
 //     <ViewPanelContainer>
-//       <BoldRegularText>
+//       <h3>
 //         {`${formatNumberOfMatchedPokemon(numberOfMatchedPokemon)} pokemon`}
-//       </BoldRegularText>
+//       </h3>
 //       <DropdownContainer>
 //         <Dropdown labelPrefix="sort by " defaultSelected={defaultSortingMethod} list={sorting_list} handleChange={sortingMethodChange} />
 //         <Dropdown labelPrefix="pokemon per page " defaultSelected={defaultPokemonPerPage} list={pokemon_per_page_list} handleChange={pokemonPerPageChange} />

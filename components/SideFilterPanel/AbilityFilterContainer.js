@@ -1,4 +1,4 @@
-import { ABILITIES } from "@/shared/constants";
+import { ABILITIES } from "shared/constants";
 
 import { useRecoilState } from "recoil";
 import { abilityFilter as abilityFilterAtoms } from "atoms.js";

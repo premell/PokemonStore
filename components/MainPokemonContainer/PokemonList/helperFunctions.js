@@ -1,4 +1,4 @@
-import { SORTING_METHODS } from "@/shared/constants";
+import { SORTING_METHODS } from "shared/constants";
 
 export const getTypeFilteredPokemon = (pokemonToFilter, typeFilter) => {
   const filteredPokemon = pokemonToFilter.filter((pokemon) => {

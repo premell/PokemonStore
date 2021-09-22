@@ -16,7 +16,7 @@ const Footer = () => {
   return (
     <StyledFooter>
       <p>This is a pokemon website</p>
-      <BoldRegularText>Contact me</BoldRegularText>
+      <h3>Contact me</h3>
       <p>Email: elmer.lignestal@live.se</p>
       <Links />
     </StyledFooter>

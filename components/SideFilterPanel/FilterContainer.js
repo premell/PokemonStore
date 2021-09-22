@@ -1,4 +1,4 @@
-import { TYPES } from "@/shared/constants";
+import { TYPES } from "shared/constants";
 
 import { FilterBox, FilterToggleHeading } from "./Styles";
 
@@ -83,9 +83,7 @@ const FilterContainer = ({
               FilterItem="checkbox"
               checked={filterList?.includes(FilterItem)}
             />
-            <RegularText style={{ paddingLeft: "8px" }}>
-              {FilterItem}
-            </RegularText>
+            <p style={{ paddingLeft: "8px" }}>{FilterItem}</p>
           </FilterBox>
         ))}
     </div>

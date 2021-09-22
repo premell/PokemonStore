@@ -1,4 +1,4 @@
-import { TYPES } from "@/shared/constants"
+import { TYPES } from "shared/constants"
 
 import { useRecoilState } from "recoil";
 import { typeFilter as typeFilterAtoms } from "atoms.js";
