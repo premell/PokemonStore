@@ -1,9 +1,4 @@
-import {
-  Container,
-  PokemonContainer,
-  ScrollToTopButton,
-  Divider,
-} from "./Styles.js";
+import * as S from "./Styles.js";
 
 import PokemonList from "./PokemonList";
 import FilterPanel from "./FilterPanel";
@@ -19,7 +14,7 @@ import { useEffect, useRef, useState } from "react";
 import Portal from "components/Portal";
 import { AiOutlineArrowUp } from "react-icons/ai";
 
-const MainContainer = ({ allPokemon }) => {
+const Main = ({ allPokemon }) => {
   const [anyFilterActive, setAnyFilterActive] =
     useRecoilState(anyFilterActiveAtoms);
   const [numberOfMatchedPokemon, setNumberOfMatchedPokemon] = useRecoilState(
@@ -40,13 +35,13 @@ const MainContainer = ({ allPokemon }) => {
   };
 
   return (
-    <Container>
+    <S.Container>
       {scrollPosition >= 400 ? (
-        <ScrollToTopButton onClick={handleScrollClick}>
+        <S.ScrollToTopButton onClick={handleScrollClick}>
           <IconThemeProvider>
             <AiOutlineArrowUp size={25} />
           </IconThemeProvider>
-        </ScrollToTopButton>
+        </S.ScrollToTopButton>
       ) : null}
       <ViewPanel />
       {anyFilterActive ? (
@@ -55,11 +50,11 @@ const MainContainer = ({ allPokemon }) => {
           <FilterPanel />
         </>
       ) : null}
-      <PokemonContainer>
+      <S.PokemonContainer>
         <PokemonList allPokemon={allPokemon} />
-      </PokemonContainer>
-    </Container>
+      </S.PokemonContainer>
+    </S.Container>
   );
 };
 
-export default MainContainer;
+export default Main;

@@ -184,15 +184,7 @@ export const StyledCheckbox = styled.div`
   }
 `;
 
-//USED ONLY ONCE
-export const Seperator = styled.hr`
-  width: 100%;
-  border-top: 1px solid ${(p) => p.theme.colors.gray_40};
-  border-bottom: 1px solid ${(p) => p.theme.colors.gray_10};
-  border-left: 0px;
-  border-right: 0px;
-`;
-
+//Links
 export const StyledLinks = styled.div`
   display: flex;
   align-items: center;
@@ -202,4 +194,13 @@ export const StyledLinks = styled.div`
     cursor: pointer;
     color: ${(p) => (p.darkBackground ? "white" : "black")} !important;
   }
+`;
+
+//Seperator
+export const Seperator = styled.hr`
+  width: 100%;
+  border-top: 1px solid ${(p) => p.theme.colors.gray_40};
+  border-bottom: 1px solid ${(p) => p.theme.colors.gray_10};
+  border-left: 0px;
+  border-right: 0px;
 `;

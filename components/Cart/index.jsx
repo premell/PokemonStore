@@ -1,12 +1,8 @@
-import {
-  MainContainer,
-  PokemonList,
-  Checkout,
-  SuggestedPokemon,
-  Header,
-} from "./Styles";
+import Main from "./Main";
+import RecommendedPokemon from "./RecommendedPokemon";
 
-import { Subheading1 } from "shared/components";
+import * as S from "./Styles";
+
 import { useRecoilState } from "recoil";
 import { cart as cartAtoms } from "atoms.js";
 import { favorites as favoritesAtoms } from "atoms.js";
@@ -17,12 +13,9 @@ const Cart = () => {
 
   return (
     <>
-      <Header />
-      <MainContainer>
-        <PokemonList pokemon={cart.pokemon} />
-        <Checkout total={cart.total} />
-      </MainContainer>
-      <SuggestedPokemon
+      <S.Header />
+      <Main cartPokemon={cart.pokemon} total={cart.total} />
+      <RecommendedPokemon
         cartPokemon={cart.pokemon}
         favoritePokemon={favorites.pokemon}
       />

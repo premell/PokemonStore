@@ -1,10 +1,9 @@
-import {
-  MainContainer,
-  MainContent,
-  PokemonInformation,
-  ImageList,
-  MainImage,
-} from "./Styles";
+import { MainContainer, MainContent } from "./Styles";
+
+import ImageList from "./ImageList";
+import MainImage from "./MainImage";
+import PokemonInformation from "./PokemonInformation";
+
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { useWindowSize } from "shared/hooks";

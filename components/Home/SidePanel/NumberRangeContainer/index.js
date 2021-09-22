@@ -20,7 +20,7 @@ const lightColors = {
   track_color: "#d1d8e3",
   range_color: "#eb145f",
   input_color: "#fefefe",
-  input_border_color: "#d1d8e3;",
+  input_border_color: "#d1d8e3",
   input_text_color: "black",
   handle_color: "#d1d8e3",
 };

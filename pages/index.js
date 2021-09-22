@@ -1,18 +1,14 @@
 import styled from "styled-components";
 
-import SideFilterPanel from "components/SideFilterPanel";
-import MainPokemonContainer from "components/MainPokemonContainer";
-import PageNavigator from "components/PageNavigator";
+import SidePanel from "components/Home/SidePanel";
+import Main from "components/Home/Main";
+import PageNavigator from "components/Home/Main/PageNavigator";
 
 import { fetchData, getPokemonPricing } from "shared/javascript";
-import {
-  BASE_URL,
-  POKEMON_TO_EXCLUDE,
-  MY_PERSONAL_FAVORITE_POKEMON,
-} from "shared/constants";
+import { BASE_URL, POKEMON_TO_EXCLUDE } from "shared/constants";
 import { useEffect } from "react";
 
-const Divider = styled.div`
+const NavbarExtender = styled.div`
   background-color: ${(p) => p.theme.colors.gray_0};
   height: 30px;
   width: 100vw;
@@ -22,9 +18,9 @@ const Divider = styled.div`
   left: 0;
 `;
 
-const HiddenDivider = styled.div`
-  height: 30px;
-`;
+// const HiddenDivider = styled.div`
+//   height: 30px;
+// `;
 
 const AppContainer = styled.div`
   display: flex;
@@ -39,14 +35,15 @@ const AppContainer = styled.div`
 
 //overflow: hidden;
 //let pokemonObjects;
+
+//APP CONTAINER SHOULD BE IN ALL PAGES!
 const Home = ({ pokemonObjects }) => {
   return (
     <>
-      <Divider />
-      <HiddenDivider />
+      <NavbarExtender />
       <AppContainer>
-        <SideFilterPanel />
-        <MainPokemonContainer allPokemon={pokemonObjects} />
+        <SidePanel />
+        <Main allPokemon={pokemonObjects} />
       </AppContainer>
       <PageNavigator />
     </>
@@ -98,8 +95,8 @@ export async function getStaticProps() {
 //
 //   return (
 //     <AppContainer>
-//       <SideFilterPanel />
-//       <MainPokemonContainer allPokemon={pokemonObjects} />
+//       <SidePanel />
+//       <Main allPokemon={pokemonObjects} />
 //     </AppContainer>
 //   )
 // }

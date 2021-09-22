@@ -1,13 +1,13 @@
 import { useRouter } from "next/router";
 import Image from "next/image";
 import Link from "next/link";
-import PokemonPageContainer from "components/PokemonPageContainer";
+import PokemonPage from "components/PokemonPage";
 
 import { fetchData, getPokemonPricing } from "shared/javascript";
 import { BASE_URL, POKEMON_TO_EXCLUDE } from "shared/constants";
 
 const pokemon = ({ pokemon }) => {
-  return <PokemonPageContainer pokemon={pokemon} />;
+  return <PokemonPage pokemon={pokemon} />;
 };
 
 export const getStaticPaths = async () => {
@@ -62,6 +62,7 @@ export const getStaticProps = async ({ params }) => {
           pokemonObject.sprites?.front_shiny,
           pokemonObject.sprites?.back_shiny,
         ],
+        image_url: pokemonObject.sprites?.front_default,
       },
     },
   };

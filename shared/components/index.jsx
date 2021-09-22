@@ -35,8 +35,8 @@ export const Button = ({
 
 export const AddToCartButton = ({
   pokemon,
-  width = "330px",
   height = "100px",
+  width = "330px",
   activateCartDropdown = true,
 }) => {
   const { name, types, price, image_url } = pokemon;
@@ -68,8 +68,8 @@ export const AddToCartButton = ({
       handleClick={handleButtonClick}
       type={`${pokemonExistsInCart ? "negative" : "positive"}`}
       innerText={`${!pokemonExistsInCart ? "Add to cart" : "Remove from cart"}`}
-      width={height}
-      height={width}
+      width={width}
+      height={height}
     />
   );
 };
@@ -193,4 +193,6 @@ export const NavButton = ({ width, height }) => {
   return <S.StyledHeartIcon width={width} height={height} />;
 };
 
-export const IconThemeProvider = <S.IconThemeProvider />;
+export const IconThemeProvider = () => <S.IconThemeProvider />;
+
+export const Seperator = () => <S.Seperator />;
