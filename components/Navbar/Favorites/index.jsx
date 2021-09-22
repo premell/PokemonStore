@@ -1,4 +1,5 @@
 import { AiOutlineHeart } from "react-icons/ai";
+import * as S from "./Styles";
 import { formatAsUSDWithoutTrailingZeros } from "shared/javascript";
 import { NavButton, BoldRegularText } from "shared/components";
 import { useRouter } from "next/router";
@@ -9,7 +10,7 @@ import {
   ModalPokemonCartFooter,
   NoPokemonFoundContainer,
 } from "../Styles";
-import FavoritesPopup from "./FavoritesPopup";
+import Popup from "./Popup";
 
 import { useRecoilState } from "recoil";
 import { showFavorites as showFavoritesAtoms } from "atoms.js";
@@ -22,13 +23,14 @@ const Favorites = () => {
 
   const [showFavorites, setShowFavorites] = useRecoilState(showFavoritesAtoms);
 
-  const handleFavoritesPopup = () => {
+  const ShowPopup = () => {
     setShowFavorites(true);
   };
+  console.log(showFavorites);
 
   return (
-    <NavButton onClick={handleFavoritesPopup}>
-      <FavoritesPopup show={showFavorites} setShow={setShowFavorites} />
+    <NavButton onClick={ShowPopup}>
+      <Popup show={showFavorites} setShow={setShowFavorites} />
       <AiOutlineHeart size={23} />
       <h3>Favorites</h3>
     </NavButton>

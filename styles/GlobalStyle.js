@@ -30,6 +30,10 @@ a:visited{
     color:inherit;
 }
 
+svg{
+  cursor:pointer;
+}
+
 p{
     font-family: "LatoRegular";
     font-size:14px;

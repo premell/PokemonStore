@@ -47,7 +47,6 @@ const Navbar = () => {
 
   const router = useRouter();
   const handleGoToHome = () => {
-    console.log("HSAJNSADF");
     defaultPriceFilter();
     defaultStatsFilter();
     defaultTypeFilter();

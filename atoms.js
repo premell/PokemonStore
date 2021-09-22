@@ -206,7 +206,7 @@ export const showCartModalInstantly = atom({
 
 export const showFavorites = atom({
   key: "showFavorites",
-  default: false,
+  default: true,
 });
 
 export const darkThemeEnabled = atom({

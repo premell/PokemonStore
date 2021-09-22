@@ -1,58 +1,14 @@
-import styled from "styled-components";
-
-import SidePanel from "components/Home/SidePanel";
-import Main from "components/Home/Main";
-import PageNavigator from "components/Home/Main/PageNavigator";
-
 import { fetchData, getPokemonPricing } from "shared/javascript";
 import { BASE_URL, POKEMON_TO_EXCLUDE } from "shared/constants";
 import { useEffect } from "react";
 
-const NavbarExtender = styled.div`
-  background-color: ${(p) => p.theme.colors.gray_0};
-  height: 30px;
-  width: 100vw;
-  z-index: 300;
+import Home from "components/Home";
 
-  position: absolute;
-  left: 0;
-`;
-
-// const HiddenDivider = styled.div`
-//   height: 30px;
-// `;
-
-const AppContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  height: 100%;
-  width: 100%;
-  background-color: ${(p) => p.theme.colors.gray_10};
-  padding-bottom: 50px;
-
-  box-sizing: border-box;
-`;
-
-//overflow: hidden;
-//let pokemonObjects;
-
-//APP CONTAINER SHOULD BE IN ALL PAGES!
-const Home = ({ pokemonObjects }) => {
-  return (
-    <>
-      <NavbarExtender />
-      <AppContainer>
-        <SidePanel />
-        <Main allPokemon={pokemonObjects} />
-      </AppContainer>
-      <PageNavigator />
-    </>
-  );
+const home = ({ pokemonObjects }) => {
+  return <Home allPokemon={pokemonObjects} />;
 };
 
-//<Divider />
-
-export default Home;
+export default home;
 
 export async function getStaticProps() {
   const defaultPokemonRefs = await fetchData(

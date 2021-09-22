@@ -1,10 +1,11 @@
 import { ThemeProvider } from "styled-components";
 import styled from "styled-components";
 import { useRouter } from "next/router";
+import * as S from "./Styles";
 
 import { useEffect, useRef, useState } from "react";
-import Navbar from "./Navbar";
-import Footer from "./Footer";
+import Navbar from "components/Navbar";
+import Footer from "components/Footer";
 
 import { useCartModal } from "shared/hooks";
 
@@ -19,31 +20,6 @@ import {
   enableBodyScroll,
   clearAllBodyScrollLocks,
 } from "body-scroll-lock";
-
-const MainContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background-color: ${(p) => p.theme.colors.gray_10};
-
-  & p {
-    color: ${(p) => p.theme.font_color};
-  }
-
-  & svg {
-    color: ${(p) => p.theme.font_color};
-  }
-`;
-
-const MainContent = styled.div`
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  width: 100%;
-  max-width: 1900px;
-  margin-top: 76px;
-`;
 
 //overflow-x: hidden;
 //overflow: hidden;
@@ -89,11 +65,11 @@ const Layout = ({ children }) => {
 
   return (
     <ThemeProvider theme={theme}>
-      <MainContainer darkThemeEnabled={darkThemeEnabled}>
+      <S.MainContainer darkThemeEnabled={darkThemeEnabled}>
         <Navbar />
-        <MainContent>{children}</MainContent>
+        <S.MainContent>{children}</S.MainContent>
         <Footer />
-      </MainContainer>
+      </S.MainContainer>
     </ThemeProvider>
   );
 };

@@ -6,7 +6,6 @@ export default class MyDocument extends Document {
       <Html>
         <Head />
         <body>
-          <div id="scrollToTop" />
           <div id="favoritesPopup" />
           <Main />
           <NextScript />
