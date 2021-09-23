@@ -3,10 +3,7 @@ import styled, { css } from "styled-components";
 import { formatAsUSDWithoutTrailingZeros } from "shared/javascript";
 
 import { RegularText, BoldRegularText } from "shared/components";
-import { AiOutlineClose } from "react-icons/ai";
-import { RiArrowDropDownLine } from "react-icons/ri";
 
-import { useClickOutside } from "shared/hooks";
 import { useEffect, useRef, useState } from "react";
 
 import Portal from "components/Portal";
@@ -76,31 +73,6 @@ export const StyledPokemonCard = styled.div`
 
   position: relative;
 `;
-const StyledFilterBox = styled.div`
-  display: flex;
-  height: 30px;
-  align-items: center;
-  justify-content: center;
-  margin: 8px 8px 0px 0px;
-  background-color: ${(p) => p.theme.colors.gray_20};
-  padding: 6px 8px 6px 12px;
-  border-radius: 4px;
-  box-sizing: border-box;
-
-  cursor: pointer;
-  &:hover {
-    background-color: ${(p) => p.theme.colors.gray_40};
-  }
-`;
-
-export const FilterBox = ({ handleClick, text }) => {
-  return (
-    <StyledFilterBox onClick={handleClick}>
-      <p style={{ position: "relative" }}>{text}</p>
-      <Cross />
-    </StyledFilterBox>
-  );
-};
 
 export const TypeFlairBox = styled.div`
   display: flex;
@@ -117,21 +89,6 @@ export const StyledPokemonMain = styled.div`
     transform: scale(1.15);
   }
 `;
-
-const StyledCross = styled.p`
-  margin-left: 10px;
-  display: flex;
-  align-items: center;
-  color: ${(p) => p.theme.colors.gray_80};
-`;
-
-export const Cross = ({ handleClick }) => {
-  return (
-    <StyledCross onClick={handleClick}>
-      <AiOutlineClose />
-    </StyledCross>
-  );
-};
 
 const StyledPriceFilterFlair = styled.div``;
 
@@ -159,155 +116,6 @@ export const AbilityFilterFlair = ({ ability }) => {
   return <p>{ability}</p>;
 };
 
-const DropdownContainer = styled.div`
-  margin-left: 12px;
-  position: relative;
-`;
-
-const DropdownList = styled.div`
-  width: 100%;
-  top: 32px;
-  left: 0px;
-  position: absolute;
-  background-color: ${(p) => p.theme.colors.gray_90};
-  z-index: 30;
-  border-radius: 0px 0px 7px 7px;
-`;
-
-const DropdownItem = styled.div`
-  display: flex;
-  padding: 6px 12px;
-  align-items: center;
-  margin: 0px;
-  width: 100%;
-  height: 32px;
-  cursor: pointer;
-  box-sizing: border-box;
-  border-radius: ${(p) => {
-    if (p.selected && p.show) return "7px 7px 0px 0px";
-    else if (p.selected) return "7px";
-    else if (p.last) return "0px 0px 7px 7px";
-    else return "0px";
-  }};
-
-  &:hover {
-    background-color: ${(p) =>
-      p.selected ? p.theme.colors.gray_40 : p.theme.colors.accent_color};
-  }
-
-  & p {
-    color: ${(p) =>
-      p.selected ? p.theme.colors.font_color : "#fdfef4"} !important;
-  }
-`;
-
-export const Dropdown = ({
-  labelPrefix,
-  defaultSelected,
-  list,
-  handleChange,
-}) => {
-  const [selected, setSelected] = useState({});
-  const [showDropdown, setShowDropdown] = useState(false);
-  const dropdown = useRef(null);
-
-  const handleClickOutside = () => setShowDropdown(false);
-  useClickOutside(dropdown, handleClickOutside);
-
-  useEffect(() => {
-    setSelected(defaultSelected);
-  }, [defaultSelected]);
-
-  const handleNewSelected = (value) => {
-    const newItem = list.find((item) => item.value === value);
-    handleChange(newItem.value);
-    setSelected(newItem);
-    setShowDropdown(false);
-  };
-
-  return (
-    <DropdownContainer ref={dropdown}>
-      <DropdownItem
-        onClick={() => setShowDropdown(!showDropdown)}
-        selected
-        show={showDropdown}
-      >
-        <p>
-          {labelPrefix}
-          {selected.label}
-        </p>
-        <RiArrowDropDownLine size={20} />
-      </DropdownItem>
-      <DropdownList>
-        {showDropdown
-          ? list.map((item, index) => (
-              <DropdownItem
-                last={index === list.length - 1}
-                key={item.label}
-                onClick={() => handleNewSelected(item.value)}
-              >
-                <p>{item.label}</p>
-              </DropdownItem>
-            ))
-          : null}
-      </DropdownList>
-    </DropdownContainer>
-  );
-};
-
-export const StyledFilterContainer = styled.div`
-  display: flex;
-  align-items: center;
-  margin-bottom: 12px;
-
-  @media (max-width: 550px) {
-    padding-left: 20px;
-  }
-`;
-
-const StyledRemoveAllFilters = styled.div`
-  cursor: pointer;
-  margin: 8px 8px 0px 10px;
-
-  box-sizing:border-box;
-  transition: color 0.4s;
-  transition: background-color 0.4s;
-  padding: 0px 16px;
-  height:30px;
-  display:flex;
-  align-items:center;
-
-  border-radius: 4px;
-  &:hover{
-    background-color ${(p) => p.theme.colors.accent_color};
-    color: white; 
-  }
-`;
-
-export const RemoveAllFilters = ({ handleClick }) => {
-  return (
-    <StyledRemoveAllFilters onClick={handleClick}>
-      <p>Clear all filters</p>
-    </StyledRemoveAllFilters>
-  );
-};
-
-export const ViewPanelContainer = styled.div`
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-
-  @media (max-width: 550px) {
-    padding-left: 20px;
-  }
-`;
-export const DropdownBox = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  margin-right: 10px;
-`;
-
 const StyledNoPokemonFound = styled.div`
   max-width: 1600px;
   width: calc(100vw - 300px);
@@ -320,9 +128,7 @@ const StyledNoPokemonFound = styled.div`
 export const NoPokemonFound = () => {
   return (
     <StyledNoPokemonFound>
-      <h3 style={{ height: "50px" }}>
-        No pokemon were found
-      </h3>
+      <h3 style={{ height: "50px" }}>No pokemon were found</h3>
     </StyledNoPokemonFound>
   );
 };

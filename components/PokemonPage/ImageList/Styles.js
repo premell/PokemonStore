@@ -2,18 +2,22 @@ import styled, { css } from "styled-components";
 import Image from "next/image";
 
 export const ImageList = styled.div`
-  width: 10vw;
-  max-width: 155px;
-  height: min(calc(100% - 80px), 42vw);
   margin-left: 24px;
   display: flex;
   flex-direction: column;
   justify-content: center;
 
+  width: clamp(50px, 10vw, 150px);
+  height: clamp(200px, 40vw, 600px);
+
   & * {
     flex: 1;
   }
 `;
+
+// width: 10vw;
+// max-width: 155px;
+// height: min(calc(100% - 80px), 42vw);
 
 const StyledImageContainer = styled.div`
   cursor: pointer;

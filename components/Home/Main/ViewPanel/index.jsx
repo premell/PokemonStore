@@ -1,4 +1,4 @@
-import { Dropdown, ViewPanelContainer, DropdownBox } from "./Styles";
+//import { Dropdown, ViewPanelContainer, DropdownBox } from "./Styles";
 import { SORTING_METHODS } from "shared/constants";
 import { BoldRegularText } from "shared/components";
 
@@ -7,6 +7,9 @@ import { sortingMethod as sortingMethodAtoms } from "atoms.js";
 import { pokemonPerPage as pokemonPerPageAtoms } from "atoms.js";
 import { numberOfMatchedPokemon as numberOfMatchedPokemonAtoms } from "atoms.js";
 import { useEffect, useState } from "react";
+import Dropdown from "./Dropdown";
+
+import * as S from "./Styles";
 
 const sorting_list = [
   { value: SORTING_METHODS.PRICE_LOWEST_FIRST, label: "price, lowest first" },
@@ -86,11 +89,11 @@ const ViewPanel = () => {
   }, []);
 
   return (
-    <ViewPanelContainer>
+    <S.ViewPanel>
       <h3>
         {`${formatNumberOfMatchedPokemon(numberOfMatchedPokemon)} pokemon`}
       </h3>
-      <DropdownBox>
+      <S.DropdownBox>
         <Dropdown
           labelPrefix="sort by "
           defaultSelected={defaultSortingMethod}
@@ -103,8 +106,8 @@ const ViewPanel = () => {
           list={pokemon_per_page_list}
           handleChange={pokemonPerPageChange}
         />
-      </DropdownBox>
-    </ViewPanelContainer>
+      </S.DropdownBox>
+    </S.ViewPanel>
   );
 };
 

@@ -6,19 +6,20 @@ import { abilityFilter as abilityFilterAtoms } from "atoms.js";
 import { searchQuery as searchQueryAtoms } from "atoms.js";
 import { anyFilterActive as anyFilterActiveAtoms } from "atoms.js";
 
-import {
-  PriceFilterFlair,
-  NumberFilterFlair,
-  FilterBox,
-  Cross,
-  AbilityFilterFlair,
-  StyledFilterContainer,
-  RemoveAllFilters,
-} from "./Styles";
+// import {
+//   PriceFilterFlair,
+//   NumberFilterFlair,
+//   FilterBox,
+//   Cross,
+//   AbilityFilterFlair,
+//   StyledFilterContainer,
+//   RemoveAllFilters,
+// } from "./Styles";
 import { TypeFlair } from "shared/components";
 import { useEffect } from "react";
 
 import { formatAsUSDWithoutTrailingZeros } from "shared/javascript";
+import * as S from "./Styles";
 
 const FilterPanel = () => {
   const [priceFilter, setPriceFilter] = useRecoilState(priceFilterAtoms);
@@ -82,9 +83,9 @@ const FilterPanel = () => {
   };
 
   return (
-    <StyledFilterContainer>
+    <S.FilterContainer>
       {priceFilter.isFiltering && (
-        <FilterBox
+        <S.FilterBox
           handleClick={removePrice}
           text={`Price: ${formatAsUSDWithoutTrailingZeros(
             priceFilter.currentRange.min
@@ -95,7 +96,7 @@ const FilterPanel = () => {
       )}
       {typeFilter.isFiltering &&
         typeFilter.types.map((type) => (
-          <FilterBox
+          <S.FilterBox
             key={type}
             handleClick={() => removeType(type)}
             text={type}
@@ -103,14 +104,14 @@ const FilterPanel = () => {
         ))}
       {abilityFilter.isFiltering &&
         abilityFilter.abilities.map((ability) => (
-          <FilterBox
+          <S.FilterBox
             key={ability}
             handleClick={() => removeAbility(ability)}
             text={ability}
           />
         ))}
       {searchQuery.length !== 0 && (
-        <FilterBox
+        <S.FilterBox
           handleClick={removeSearchQuery}
           text={searchQuery.toLowerCase()}
         />
@@ -118,7 +119,7 @@ const FilterPanel = () => {
       {Object.keys(statsFilter).map((key) => {
         if (statsFilter[key].isFiltering)
           return (
-            <FilterBox
+            <S.FilterBox
               key={key}
               handleClick={() => removeStat(key)}
               text={`${statsFilter[key].name}: ${statsFilter[key].currentRange.min} - ${statsFilter[key].currentRange.max}`}
@@ -126,9 +127,9 @@ const FilterPanel = () => {
           );
       })}
       {anyFilterActive ? (
-        <RemoveAllFilters handleClick={removeAllFilters} />
+        <S.RemoveAllFilters handleClick={removeAllFilters} />
       ) : null}
-    </StyledFilterContainer>
+    </S.FilterContainer>
   );
 };
 // <FilterBox key={key}><NumberFilterFlair min={statsFilter[key].currentRange.min}

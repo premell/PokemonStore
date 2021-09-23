@@ -29,7 +29,7 @@ const PokemonCard = ({ pokemon }) => {
         width="80%"
         height="30px"
         pokemon={pokemon}
-        activateCartDropdown={true}
+        activateCartDropdown={false}
       />
     </S.PokemonCard>
   );
