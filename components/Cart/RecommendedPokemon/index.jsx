@@ -25,9 +25,9 @@ const RecommendedPokemon = ({ cartPokemon, favoritePokemon }) => {
   );
   useEffect(() => {
     setWindowWidth(window.innerWidth);
-    const maximumPokemonPerPage = Math.ceil(windowWidth / 270);
+    const pokemonOnScreen = Math.floor(windowWidth / 270);
     setPokemonToRight(
-      filteredAlreadyInCart.length - (maximumPokemonPerPage - viewPosition) + 1
+      filteredAlreadyInCart.length - (pokemonOnScreen - viewPosition) + 2
     );
   }, [windowWidth, viewPosition, filteredAlreadyInCart]);
   useWindowSize(() => setWindowWidth(window.innerWidth));

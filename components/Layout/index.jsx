@@ -26,6 +26,7 @@ import {
 import themes from "styles/theme";
 import { darkThemeEnabled as darkThemeEnabledAtoms } from "atoms.js";
 
+let firstRun = true;
 const Layout = ({ children }) => {
   const [darkThemeEnabled, setDarkThemeEnabled] = useRecoilState(
     darkThemeEnabledAtoms
@@ -60,6 +61,11 @@ const Layout = ({ children }) => {
   const [searchQuery, setSearchQuery] = useRecoilState(searchQueryAtoms);
 
   useEffect(() => {
+    if (firstRun) {
+      firstRun = false;
+      return;
+    }
+    console.log("AHSDKJLHASKJD");
     if (router.asPath !== "/") router.push("/");
   }, [searchQuery]);
 

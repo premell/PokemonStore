@@ -12,7 +12,7 @@ import Portal from "components/Portal";
 
 const OuterContainer = styled.div`
   flex: 1 1 auto;
-  max-width: 1600px;
+  max-width: 1650px;
   width: calc(100vw - 250px);
   min-height: 880px;
   display: flex;

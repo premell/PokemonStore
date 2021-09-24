@@ -1,3 +1,4 @@
+import styled, { css } from "styled-components";
 import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 import { useRecoilState } from "recoil";
@@ -189,10 +190,36 @@ export const Checkbox = ({ checked, handleClick }) => {
   );
 };
 
-export const NavButton = ({ width, height }) => {
-  return <S.StyledHeartIcon width={width} height={height} />;
-};
+// export const NavButton = ({ width, height }) => {
+//   return <S.NavButton width={width} height={height} />;
+// };
 
-export const IconThemeProvider = () => <S.IconThemeProvider />;
+export const NavButton = styled.div`
+  cursor: pointer;
+  width: ${(p) => p.width ?? "95px"};
+  display: flex;
+  align-items: center;
+  padding: 2px;
+  padding-left: 4px;
+  display: flex;
+  align-items: center;
+  height: 30px;
+  padding-right: 5px;
+  border-radius: 4px;
+
+  &:hover {
+    background-color: ${(p) => p.theme.colors.gray_20};
+  }
+  & * {
+    padding: 3px;
+  }
+`;
+export const IconThemeProvider = styled.div`
+  & > svg {
+    color: ${(p) => p.theme.font_color};
+  }
+`;
+
+// export const IconThemeProvider = () => <S.IconThemeProvider />;
 
 export const Seperator = () => <S.Seperator />;

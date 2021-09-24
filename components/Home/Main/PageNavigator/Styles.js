@@ -28,14 +28,14 @@ export const NextPageArrow = ({ handleClick }) => {
 export const PageNumber = styled.div`
   cursor: pointer;
   &:hover {
-    background-color: ${(p) => p.theme.colors.gray_40};
+    background-color: ${(p) => p.isActive === false && p.theme.colors.gray_40};
   }
   background-color: ${(p) => p.isActive && p.theme.colors.accent_color};
   margin: 0 4px;
   padding: 8px;
   border-radius: 5px;
 
-  & p {
+  & h3 {
     margin: 1px 0px;
     color: ${(p) => p.isActive && "white"};
   }

@@ -7,7 +7,8 @@ const StyledFooter = styled.div`
   height: 300px;
   width: 100%;
 
-  & p {
+  & p,
+  h3 {
     color: #fdfef4 !important;
   }
 `;

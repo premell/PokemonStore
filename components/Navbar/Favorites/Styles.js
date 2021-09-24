@@ -1,3 +1,5 @@
+import { useRef } from "react";
+import { useClickOutside } from "shared/hooks";
 import styled, { css } from "styled-components";
 
 export const BackgroundBlur = styled.div`
@@ -20,11 +22,9 @@ export const BackgroundBlur = styled.div`
   visibility: ${(p) => (p.show === true ? "visible" : "visible")};
 `;
 
-const StyledFavoritesPopupContainer = styled.div`
+const StyledContainer = styled.div`
   width: 450px;
-  padding-top: 15px;
-  padding-left: 11px;
-  padding-bottom: 15px;
+  padding: 11px 0 11px 11px;
   max-height: calc(0.85 * 100vh);
 
   background-color: ${(p) => p.theme.colors.gray_0};
@@ -36,7 +36,9 @@ const StyledFavoritesPopupContainer = styled.div`
   box-sizing: border-box;
   border-radius: 15px;
 
-  & p {
+  p,
+  h3,
+  h2 {
     color: ${(p) => p.theme.font_color};
   }
 `;
@@ -44,7 +46,7 @@ const StyledFavoritesPopupContainer = styled.div`
 // max-height: 800px;
 //padding: 20px;
 
-const StyledFavoritesPopupContent = styled.div`
+const StyledContent = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -62,21 +64,9 @@ const StyledFavoritesPopupContent = styled.div`
   scrollbar-color: ${(p) => p.theme.colors.gray_60} transparent; 
 `;
 
-export const FavoritesPopupContainer = ({ children, setShow }) => {
-  const styledContainer = useRef(null);
-
-  useClickOutside(styledContainer, () => setShow(false));
-
-  return (
-    <StyledFavoritesPopupContainer ref={styledContainer}>
-      <StyledFavoritesPopupContent>{children}</StyledFavoritesPopupContent>
-    </StyledFavoritesPopupContainer>
-  );
-};
-
 export const PokemonCardContainer = styled.div`
   margin: 10px;
-  padding-right: 20px;
+  padding-right: 11px;
   display: flex;
   background-color: ${(p) => p.theme.colors.gray_10};
   border-radius: 10px;
@@ -112,4 +102,14 @@ export const ButtonContainer = styled.div`
   }
 `;
 
-export const Container = styled.div``;
+export const Container = ({ children, setShow }) => {
+  const styledContainer = useRef(null);
+
+  useClickOutside(styledContainer, () => setShow(false));
+
+  return (
+    <StyledContainer ref={styledContainer}>
+      <StyledContent>{children}</StyledContent>
+    </StyledContainer>
+  );
+};

@@ -54,12 +54,6 @@ export const StyledHeartIcon = styled.div`
 `;
 //p.isFavorited || p.hovering ? "red" : p.theme.font_color} !important;
 
-export const IconThemeProvider = styled.div`
-  & > svg {
-    color: ${(p) => p.theme.font_color};
-  }
-`;
-
 // export const Subheading1 = styled.p`
 //   display: flex;
 //   align-items: center;
@@ -88,7 +82,7 @@ export const IconThemeProvider = styled.div`
 // `;
 
 //Styled navbutton
-export const StyledNavButton = styled.div`
+export const NavButton = styled.div`
   cursor: pointer;
   width: ${(p) => p.width ?? "95px"};
   display: flex;

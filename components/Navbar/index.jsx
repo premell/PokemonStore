@@ -1,8 +1,8 @@
 import SearchBar from "./SearchBar";
 import Cart from "./Cart";
 import Favorites from "./Favorites";
-import Login from "./Login";
 import DarkMode from "./DarkMode";
+import Login from "./Login";
 import {
   MainContainer,
   ContentContainer,
@@ -15,6 +15,7 @@ import {
 
 import { Links } from "shared/components";
 import { useRouter } from "next/router";
+import { BsPerson } from "react-icons/bs";
 
 import { useRecoilState, useResetRecoilState } from "recoil";
 import { priceFilter as priceFilterAtoms, searchQuery } from "atoms.js";
@@ -31,6 +32,7 @@ import {
 
 import { darkThemeEnabled as darkThemeEnabledAtoms } from "atoms.js";
 import { useState, useEffect } from "react";
+import { NavButton } from "shared/components/Styles";
 
 const Navbar = () => {
   const defaultPriceFilter = useResetRecoilState(priceFilterAtoms);
