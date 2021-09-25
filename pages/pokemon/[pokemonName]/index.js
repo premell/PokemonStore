@@ -3,16 +3,30 @@ import Image from "next/image";
 import Link from "next/link";
 import PokemonPage from "components/PokemonPage";
 
-import { fetchData, getPokemonPricing } from "shared/javascript";
+import Head from "next/head";
+
+import {
+  capitalizeFirstLetter,
+  fetchData,
+  getPokemonPricing,
+} from "shared/javascript";
 import { BASE_URL, POKEMON_TO_EXCLUDE } from "shared/constants";
 
 const pokemon = ({ pokemon }) => {
-  return <PokemonPage pokemon={pokemon} />;
+  return (
+    <>
+      <Head>
+        <title>{capitalizeFirstLetter(pokemon.name)} page</title>
+        <meta name="description" content={pokemon.name} />
+      </Head>
+      <PokemonPage pokemon={pokemon} />
+    </>
+  );
 };
 
 export const getStaticPaths = async () => {
   const defaultPokemonRefs = await fetchData(
-    BASE_URL + "pokemon?offset=0&limit=100"
+    BASE_URL + "pokemon?offset=0&limit=950"
   );
   console.log(defaultPokemonRefs);
 

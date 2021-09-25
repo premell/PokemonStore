@@ -12,7 +12,7 @@ export default home;
 
 export async function getStaticProps() {
   const defaultPokemonRefs = await fetchData(
-    BASE_URL + "pokemon?offset=0&limit=100"
+    BASE_URL + "pokemon?offset=0&limit=950"
   );
   const filteredPokemonRefs = defaultPokemonRefs.results.filter(
     (pokemonRef) => !POKEMON_TO_EXCLUDE.includes(pokemonRef.name)
@@ -58,7 +58,7 @@ export async function getStaticProps() {
 // }
 //
 // export const getStaticProps = async () => {
-//   const defaultPokemonRefs = await fetchData(BASE_URL + "pokemon?offset=0&limit=100")
+//   const defaultPokemonRefs = await fetchData(BASE_URL + "pokemon?offset=0&limit=950")
 //   const defaultPokemonObjects = await Promise.all(defaultPokemonRefs.results.map(async (pokemon) => {
 //     const data = await fetchData(pokemon.url)
 //     return data

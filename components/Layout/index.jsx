@@ -65,7 +65,6 @@ const Layout = ({ children }) => {
       firstRun = false;
       return;
     }
-    console.log("AHSDKJLHASKJD");
     if (router.asPath !== "/") router.push("/");
   }, [searchQuery]);
 

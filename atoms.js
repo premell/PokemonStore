@@ -14,6 +14,7 @@ export const pokemonPerPage = atom({
 export const currentPage = atom({
   key: "currentPage",
   default: 1,
+  effects_UNSTABLE: [persistAtom],
 });
 
 export const priceFilter = atom({
