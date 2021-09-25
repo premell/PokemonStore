@@ -14,7 +14,11 @@ const DarkMode = () => {
   const handleClick = () => setDarkThemeEnabled(!darkThemeEnabled);
   return (
     <DarkmodeContainer onClick={handleClick}>
-      {darkThemeEnabled ? <FiSun size={30} /> : <BiMoon size={30} />}
+      {darkThemeEnabled ? (
+        <FiSun size={30} style={{ strokeWidth: "2" }} />
+      ) : (
+        <BiMoon size={30} style={{ strokeWidth: "0.1" }} />
+      )}
     </DarkmodeContainer>
   );
 };

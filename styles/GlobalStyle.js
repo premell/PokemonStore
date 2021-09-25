@@ -1,10 +1,15 @@
 import { createGlobalStyle, ThemeProvider } from "styled-components";
 import RegularLato from "./fonts/Lato-Regular.ttf";
+import Emblema from "./fonts/EmblemaOne-Regular.ttf";
 
 const GlobalStyle = createGlobalStyle`
   @font-face {
     font-family: "LatoRegular";
     src: url(${RegularLato})
+  }
+  @font-face {
+    font-family: "Emblema";
+    src: url(${Emblema})
   }
 html{
   margin:0;

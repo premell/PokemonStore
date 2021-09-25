@@ -70,9 +70,7 @@ const Navbar = () => {
         <MainContainer>
           <ContentContainer>
             <LeftSubContainer>
-              <Title2 style={{ cursor: "pointer" }} onClick={handleGoToHome}>
-                POKEMON TRADER
-              </Title2>
+              <Title2 onClick={handleGoToHome}>JigglyStore</Title2>
               <SearchBar />
             </LeftSubContainer>
             <HideAnimationContainer>

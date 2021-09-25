@@ -14,11 +14,16 @@ export const PokemonCard = styled.div`
 
   box-sizing: border-box;
 
-  & > div {
+  & * {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    overflow: visible !important;
+  }
+
+  &:hover img {
+    transform: scale(1.15);
   }
 `;
 

@@ -85,6 +85,7 @@ export const StyledPokemonMain = styled.div`
   justify-content: center;
   align-items: center;
 
+  overflow: visible !important;
   &:hover img {
     transform: scale(1.15);
   }

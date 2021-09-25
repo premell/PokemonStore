@@ -10,7 +10,7 @@ import { stringToInteger } from "shared/javascript";
 const darkColors = {
   track_color: "#38404b",
   range_color: "#eb145f",
-  input_color: "#38404b",
+  input_color: "#2f3540",
   input_border_color: "#12151a",
   input_text_color: "white",
   handle_color: "#d1d8e3",

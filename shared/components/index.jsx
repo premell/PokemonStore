@@ -68,7 +68,7 @@ export const AddToCartButton = ({
     <Button
       handleClick={handleButtonClick}
       type={`${pokemonExistsInCart ? "negative" : "positive"}`}
-      innerText={`${!pokemonExistsInCart ? "Add to cart" : "Remove from cart"}`}
+      innerText={`${!pokemonExistsInCart ? "add to cart" : "remove from cart"}`}
       width={width}
       height={height}
     />

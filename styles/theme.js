@@ -7,7 +7,7 @@ const baseTheme = {
     regular: "14px",
   },
   font_families: {
-    titles: "BrooklineCondensed",
+    titles: "Emblema",
     text: "LatoRegular",
   },
   specific_font_colors: {

@@ -8,6 +8,8 @@ import { useRecoilState } from "recoil";
 import { typeFilter as typeFilterAtoms } from "atoms.js";
 import { useEffect, useState } from "react";
 
+import { capitalizeFirstLetter } from "shared/javascript";
+
 const CheckBoxWithState = ({
   isActive,
   removeFilter,
@@ -45,19 +47,15 @@ const FilterContainer = ({
   setFilterList,
 }) => {
   const handleCheckboxClick = (checked, item) => {
-    console.log(checked);
     if (!checked) addFilter(item);
     else removeFilter(item);
-    console.log(checked);
   };
 
   const addFilter = (item) => {
-    console.log("add");
     const updatedItems = [...filterList, item];
     setFilterList({ [filterName]: updatedItems, isFiltering: true });
   };
   const removeFilter = (item) => {
-    console.log("remove");
     const updatedItems = filterList.filter((arrayItem) => arrayItem !== item);
     let isFiltering = true;
     if (updatedItems.length === 0) isFiltering = false;
@@ -70,7 +68,7 @@ const FilterContainer = ({
         menuVisible={menuVisible}
         handleClick={handleToggleClick}
       >
-        {filterName}
+        {capitalizeFirstLetter(filterName)}
       </FilterToggleHeading>
       {menuVisible &&
         Object.values(allFilters).map((FilterItem) => (

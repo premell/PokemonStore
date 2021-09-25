@@ -95,12 +95,14 @@ const ViewPanel = () => {
       </h3>
       <S.DropdownBox>
         <Dropdown
+          width="134px"
           labelPrefix="sort by "
           defaultSelected={defaultSortingMethod}
           list={sorting_list}
           handleChange={sortingMethodChange}
         />
         <Dropdown
+          width="170px"
           labelPrefix="pokemon per page "
           defaultSelected={defaultPokemonPerPage}
           list={pokemon_per_page_list}

@@ -7,10 +7,9 @@ export const PokemonList = styled.div`
 export const NoPokemonInCart = styled.div`
   min-width: 460px;
   height: 100%;
-  margin-top: 15%;
+  margin-top: 10%;
   display: flex;
-  justify-content: center;
-  & > p {
-    height: 30px;
-  }
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
 `;

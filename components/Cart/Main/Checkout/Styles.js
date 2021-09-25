@@ -27,7 +27,7 @@ export const CheckoutButton = styled.div`
   &:hover {
     background-color: ${(p) => p.theme.colors.green_hover};
   }
-  & p {
+  & h3 {
     color: white !important;
   }
 `;

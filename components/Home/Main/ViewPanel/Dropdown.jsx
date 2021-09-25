@@ -3,7 +3,13 @@ import { useEffect, useRef, useState } from "react";
 import * as S from "./Styles";
 import { RiArrowDropDownLine } from "react-icons/ri";
 
-const Dropdown = ({ labelPrefix, defaultSelected, list, handleChange }) => {
+const Dropdown = ({
+  labelPrefix,
+  defaultSelected,
+  list,
+  handleChange,
+  width = "100px",
+}) => {
   const [selected, setSelected] = useState({});
   const [showDropdown, setShowDropdown] = useState(false);
   const dropdown = useRef(null);
@@ -23,7 +29,7 @@ const Dropdown = ({ labelPrefix, defaultSelected, list, handleChange }) => {
   };
 
   return (
-    <S.DropdownContainer ref={dropdown}>
+    <S.DropdownContainer ref={dropdown} width={width}>
       <S.DropdownItem
         onClick={() => setShowDropdown(!showDropdown)}
         selected

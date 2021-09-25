@@ -14,12 +14,13 @@ export const DropdownBox = styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  margin-right: 10px;
+  margin-right: 24px;
 `;
 
 export const DropdownContainer = styled.div`
-  margin-left: 12px;
+  margin-left: 3px;
   position: relative;
+  width: ${(p) => p.width};
 `;
 
 export const DropdownList = styled.div`
@@ -34,7 +35,7 @@ export const DropdownList = styled.div`
 
 export const DropdownItem = styled.div`
   display: flex;
-  padding: 6px 12px;
+  padding: 6px 4px 6px 12px;
   align-items: center;
   margin: 0px;
   width: 100%;
