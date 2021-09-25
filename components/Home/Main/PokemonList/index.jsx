@@ -90,11 +90,9 @@ const PokemonList = ({ allPokemon }) => {
 
   useEffect(() => {
     if (firstRun.current) {
-      console.log("NOPE");
       firstRun.current = false;
       return;
     }
-    console.log("HEJSAN");
     setCurrentPage(1);
     window.scrollTo(0, 0);
   }, [numberOfMatchedPokemon, sortingMethod, pokemonPerPage]);

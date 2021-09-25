@@ -3,7 +3,6 @@ import React, { useCallback, useEffect, useRef, useState } from "react";
 import NumberRangeContainerCss from "./NumberRangeContainer.module.css";
 import { useRecoilState } from "recoil";
 import { darkThemeEnabled as darkThemeEnabledAtoms } from "atoms";
-//import { priceFilter as priceFilterAtoms } from "atoms.js";
 
 import { stringToInteger } from "shared/javascript";
 
@@ -24,7 +23,6 @@ const lightColors = {
   input_text_color: "black",
   handle_color: "#d1d8e3",
 };
-//handle_color: "#d1d8e3",
 
 const NumberRangeContainer = React.memo(
   ({ filter, handleChange, categoryName }) => {
@@ -39,18 +37,6 @@ const NumberRangeContainer = React.memo(
       currentlyDragging: false,
       target: "min",
     });
-
-    // const testAddingClass = () => {
-    //   const thumb = document.getElementsByClassName(
-    //     NumberRangeContainerCss.thumb
-    //   )[0];
-    //   console.log(
-    //     document.getElementsByClassName(NumberRangeContainerCss.thumb).length
-    //   );
-    //   thumb.classList.remove(NumberRangeContainerCss.thumb);
-    //   thumb.classList.add(NumberRangeContainerCss.dark_thumb);
-    //   console.log(thumb);
-    // };
 
     const [darkThemeEnabled, setDarkThemeEnabled] = useRecoilState(
       darkThemeEnabledAtoms

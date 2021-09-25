@@ -18,7 +18,4 @@ const Login = () => {
   );
 };
 
-//<NotImplemented defaultText="Login">
-//</NotImplemented>
-
 export default Login;

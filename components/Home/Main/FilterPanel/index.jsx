@@ -132,8 +132,5 @@ const FilterPanel = () => {
     </S.FilterContainer>
   );
 };
-// <FilterBox key={key}><NumberFilterFlair min={statsFilter[key].currentRange.min}
-//   max={statsFilter[key].currentRange.max} name={statsFilter[key].name} /> <Cross handleClick={() => removeStat(key)} /></FilterBox>
-// )
 
 export default FilterPanel;

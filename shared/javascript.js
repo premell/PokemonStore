@@ -7,19 +7,6 @@ export const fetchData = async (url) => {
   return data;
 };
 
-// export const getAllPokemons = async () => {
-//   const data = await fetchData(`${BASE_URL}pokemon?offset=0&limit=40`);
-//   const pokemon = data.results;
-//   return pokemon;
-// };
-
-// export const formatAsUSD = (number) => {
-//   return new Intl.NumberFormat("en-IN", {
-//     style: "currency",
-//     currency: "USD",
-//   }).format(number);
-// };
-
 export const formatAsUSDWithoutTrailingZeros = (number) => {
   const numberWithCommas = number
     .toString()

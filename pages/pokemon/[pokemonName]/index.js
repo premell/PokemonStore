@@ -59,8 +59,6 @@ export const getStaticProps = async ({ params }) => {
     [stat.stat.name]: stat.base_stat,
   }));
 
-  //const front_default = pokemonObject.sprites.front_default ??
-
   return {
     props: {
       pokemon: {

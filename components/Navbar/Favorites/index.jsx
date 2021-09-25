@@ -26,7 +26,6 @@ const Favorites = () => {
   const ShowPopup = () => {
     setShowFavorites(true);
   };
-  console.log(showFavorites);
 
   return (
     <NavButton onClick={ShowPopup}>

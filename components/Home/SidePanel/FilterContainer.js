@@ -88,8 +88,4 @@ const FilterContainer = ({
   );
 };
 
-//onChange={(e) => handleCheckboxClick(e, FilterItem)}
-//<Checkbox type="checkbox" onChange={(e) => handleClick(e, FilterItem)} FilterItem="checkbox" checked={filterList?.includes(FilterItem)} />
-//<CheckBoxWithState isActive={filterList?.includes(FilterItem)} addFilter={addFilter} removeFilter={removeFilter} item={FilterItem} />
-
 export default FilterContainer;

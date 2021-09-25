@@ -73,10 +73,4 @@ h3{
   }
 `;
 
-// a{
-//     color:white;
-// }
-
-//overflow-x:hidden;
-
 export default GlobalStyle;

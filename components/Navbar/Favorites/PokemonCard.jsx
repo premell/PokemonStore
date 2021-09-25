@@ -35,7 +35,4 @@ const PokemonCard = ({ pokemon }) => {
   );
 };
 
-//   </div>
-// </div>
-
 export default PokemonCard;

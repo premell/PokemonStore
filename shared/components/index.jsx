@@ -190,10 +190,6 @@ export const Checkbox = ({ checked, handleClick }) => {
   );
 };
 
-// export const NavButton = ({ width, height }) => {
-//   return <S.NavButton width={width} height={height} />;
-// };
-
 export const NavButton = styled.div`
   cursor: pointer;
   width: ${(p) => p.width ?? "95px"};
@@ -219,7 +215,5 @@ export const IconThemeProvider = styled.div`
     color: ${(p) => p.theme.font_color};
   }
 `;
-
-// export const IconThemeProvider = () => <S.IconThemeProvider />;
 
 export const Seperator = () => <S.Seperator />;

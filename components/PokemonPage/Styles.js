@@ -35,7 +35,6 @@ export const MainContent = styled.div`
     margin-right: 10px;
   }
 `;
-//padding-left:24px;
 
 export const FavoritesHeartContainer = styled.div`
   position: absolute;
@@ -45,10 +44,3 @@ export const FavoritesHeartContainer = styled.div`
   width: 50px;
   height: 50px;
 `;
-
-//   export const Button = ({ handleClick, type, innerText, height = "300px", width = "330px" }) => {
-//
-//   }
-// <ItemContainer>
-//   {stats.map((ability) => <Ability>{ability}</Ability>)}
-// </ItemContainer>

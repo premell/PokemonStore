@@ -2,9 +2,6 @@ import PokemonCard from "./PokemonCard";
 import * as S from "./Styles";
 
 const PokemonList = ({ cartPokemon }) => {
-  //const { removePokemonFromCart } = useCart();
-  //handleDeleteClick={() => removePokemonFromCart(cartPokemon)}
-
   return (
     <>
       <S.PokemonList>

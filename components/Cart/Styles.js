@@ -45,5 +45,3 @@ export const HeartContainer = styled.div`
   top: 10px;
   z-index: 300;
 `;
-
-//RECOMMENDED SECTION

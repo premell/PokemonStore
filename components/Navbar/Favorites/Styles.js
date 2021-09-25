@@ -42,9 +42,6 @@ const StyledContainer = styled.div`
     color: ${(p) => p.theme.font_color};
   }
 `;
-//max-height: ${window.outerHeight * 0.84}px;
-// max-height: 800px;
-//padding: 20px;
 
 const StyledContent = styled.div`
   display: flex;

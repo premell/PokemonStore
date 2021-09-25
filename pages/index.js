@@ -43,43 +43,6 @@ export async function getStaticProps() {
   });
 
   return {
-    props: { pokemonObjects }, // will be passed to the page component as props
+    props: { pokemonObjects },
   };
 }
-
-// const Home = ({ pokemonObjects }) => {
-//
-//   return (
-//     <AppContainer>
-//       <SidePanel />
-//       <Main allPokemon={pokemonObjects} />
-//     </AppContainer>
-//   )
-// }
-//
-// export const getStaticProps = async () => {
-//   const defaultPokemonRefs = await fetchData(BASE_URL + "pokemon?offset=0&limit=40")
-//   const defaultPokemonObjects = await Promise.all(defaultPokemonRefs.results.map(async (pokemon) => {
-//     const data = await fetchData(pokemon.url)
-//     return data
-//   }
-//   ))
-//   const pokemonObjects = defaultPokemonObjects.map((pokemon) => {
-//     const types = pokemon.types.map((type) => type.type.name)
-//     const abilities = pokemon.abilities.map((ability) => ability.ability.name)
-//
-//     return {
-//       name: pokemon.name,
-//       price: getPokemonPricing(pokemon.name),
-//       types,
-//       abilities,
-//       image_url: pokemon.sprites.front_default,
-//     }
-//   })
-//
-//   return {
-//     props: { pokemonObjects }
-//   }
-// }
-//
-// export default Home

@@ -26,7 +26,6 @@ const RecommendedPokemon = ({ cartPokemon, favoritePokemon }) => {
   useEffect(() => {
     setWindowWidth(window.innerWidth);
     const pokemonOnScreen = Math.max(Math.min(windowWidth - 200, 1300) / 270);
-    console.log(pokemonOnScreen);
     setPokemonToRight(
       filteredAlreadyInCart.length - (pokemonOnScreen - viewPosition) + 1
     );

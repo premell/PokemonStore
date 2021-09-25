@@ -83,6 +83,5 @@ const SidePanel = () => {
     </MainContainer>
   );
 };
-//<PriceFilterContainer min={0} max={2500} />
 
 export default SidePanel;

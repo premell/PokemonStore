@@ -15,10 +15,6 @@ export const ImageList = styled.div`
   }
 `;
 
-// width: 10vw;
-// max-width: 155px;
-// height: min(calc(100% - 80px), 42vw);
-
 const StyledImageContainer = styled.div`
   cursor: pointer;
   border-width: 1px;

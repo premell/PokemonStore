@@ -43,16 +43,3 @@ const SearchBar = () => {
 };
 
 export default SearchBar;
-
-// export const StyledSearchBar = ({ value, handleChange }) => {
-//   const searchField = useRef();
-//   const [searchExpanded, setSearchExpanded] = useState(false);
-
-//   const handleClick = () => {
-//     searchField.current.focus();
-//   };
-
-//   const handleExpand = () => setSearchExpanded(true);
-//   return (
-//   );
-// };
