@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import Image from "next/image";
-import sadPikachu from "public/images/sad_pikachu.png";
+import sadPikachu from "static/sad_pikachu.png";
 
 const Background = styled.div`
   background-color: ${(p) => p.theme.colors.gray_20};
