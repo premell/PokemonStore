@@ -1,5 +1,7 @@
 import PokemonCard from "./PokemonCard";
 
+import React, { useRef } from "react";
+
 import { NoPokemonFound } from "../Styles";
 
 import { useEffect, useLayoutEffect, useMemo, useState } from "react";
@@ -38,6 +40,8 @@ const PokemonList = ({ allPokemon }) => {
   const [numberOfMatchedPokemon, setNumberOfMatchedPokemon] = useRecoilState(
     numberOfMatchedPokemonAtoms
   );
+
+  const firstRun = useRef(true);
 
   const [pokemonToDisplay, setPokemonToDisplay] = useState([]);
 
@@ -85,6 +89,12 @@ const PokemonList = ({ allPokemon }) => {
   }, [searchFilteredPokemon, sortingMethod, currentPage, pokemonPerPage]);
 
   useEffect(() => {
+    if (firstRun.current) {
+      console.log("NOPE");
+      firstRun.current = false;
+      return;
+    }
+    console.log("HEJSAN");
     setCurrentPage(1);
     window.scrollTo(0, 0);
   }, [numberOfMatchedPokemon, sortingMethod, pokemonPerPage]);
@@ -101,4 +111,4 @@ const PokemonList = ({ allPokemon }) => {
     );
 };
 
-export default PokemonList;
+export default React.memo(PokemonList);
