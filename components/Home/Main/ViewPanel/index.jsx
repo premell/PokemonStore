@@ -102,7 +102,7 @@ const ViewPanel = () => {
           handleChange={sortingMethodChange}
         />
         <Dropdown
-          width="170px"
+          width="176px"
           labelPrefix="pokemon per page "
           defaultSelected={defaultPokemonPerPage}
           list={pokemon_per_page_list}

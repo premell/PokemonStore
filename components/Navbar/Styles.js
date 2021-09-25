@@ -285,7 +285,7 @@ export const Title2 = styled.p`
   display: flex;
   align-items: center;
   font-weight: 900;
-  font-size: 27px;
+  font-size: 26px;
   font-family: ${(props) => props.theme.font_families.titles};
   color: ${(p) => p.theme.colors.accent_color} !important;
   padding-right: 20px;
