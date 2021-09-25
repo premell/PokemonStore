@@ -10,6 +10,7 @@ export const PokemonCard = styled.div`
   margin: 0 10px;
   background-color: ${(p) => p.theme.colors.gray_0};
   padding: 10px;
+  padding-bottom: 20px;
   border-radius: 10px;
 
   box-sizing: border-box;

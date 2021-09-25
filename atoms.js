@@ -8,6 +8,7 @@ const { persistAtom } = recoilPersist();
 export const pokemonPerPage = atom({
   key: "pokemonPerPage",
   default: 20,
+  effects_UNSTABLE: [persistAtom],
 });
 
 export const currentPage = atom({
@@ -148,6 +149,7 @@ export const searchQuery = atom({
 export const sortingMethod = atom({
   key: "sortingMethod",
   default: SORTING_METHODS.RELEASE_OLDEST_FIRST,
+  effects_UNSTABLE: [persistAtom],
 });
 
 // export const sortedPokemon = atom({
@@ -160,6 +162,7 @@ export const favorites = atom({
   default: {
     pokemon: [],
   },
+  effects_UNSTABLE: [persistAtom],
 });
 
 export const cart = atom({
@@ -168,6 +171,7 @@ export const cart = atom({
     pokemon: [],
     total: 0,
   },
+  effects_UNSTABLE: [persistAtom],
 });
 
 // export const generalModalMessage = atom({
@@ -212,4 +216,5 @@ export const showFavorites = atom({
 export const darkThemeEnabled = atom({
   key: "darkThemeEnabled",
   default: false,
+  effects_UNSTABLE: [persistAtom],
 });

@@ -1,5 +1,4 @@
 import * as S from "./Styles";
-import * as PS from "../Styles";
 import Link from "next/link";
 import Image from "next/image";
 import {

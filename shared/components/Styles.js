@@ -125,6 +125,7 @@ export const StyledTypeFlair = styled.div`
 
 export const TypeFlairBox = styled.div`
   display: flex;
+  flex-direction: row !important;
   justify-content: center;
   column-gap: 3px;
   width: 165px;
