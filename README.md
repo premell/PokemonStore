@@ -18,8 +18,8 @@ height="50"/>
 src="https://raw.githubusercontent.com/styled-components/brand/master/styled-components.png"
      width="50" 
 height="50"/>
-<img src="./images/github.svg" width="50" height="50"/>
-<img src="./images/recoil.svg" width="50" height="50"/>
+<img src="./shared/readme_images/github.svg" width="50" height="50"/>
+<img src="./shared/readme_images/recoil.svg" width="50" height="50"/>
 
 #### Features
 
