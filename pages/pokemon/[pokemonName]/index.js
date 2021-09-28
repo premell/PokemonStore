@@ -26,7 +26,7 @@ const pokemon = ({ pokemon }) => {
 
 export const getStaticPaths = async () => {
   const defaultPokemonRefs = await fetchData(
-    BASE_URL + "pokemon?offset=0&limit=40"
+    BASE_URL + "pokemon?offset=0&limit=950"
   );
   console.log(defaultPokemonRefs);
 
