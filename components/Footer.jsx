@@ -22,8 +22,8 @@ const Footer = () => {
   return (
     <StyledFooter>
       <h3>
-        This website is a demo project written in reactjs. Feels free to contact
-        me :)
+        This website is a demo project written in react. Feel free to contact me
+        :)
       </h3>
       <Links />
     </StyledFooter>
