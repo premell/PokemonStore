@@ -12,6 +12,8 @@ import {
   AiFillHeart,
 } from "react-icons/ai";
 
+import { GrMail, GrMailOption } from "react-icons/gr";
+
 import * as S from "./Styles";
 import { useCart, useCartModal } from "shared/hooks";
 
@@ -87,9 +89,13 @@ export const Links = ({ darkBackground = true, size = 35 }) => {
       >
         <AiFillLinkedin size={size} />
       </a>
+      <a href="mailto: elmer.lingestal@live.se">
+        <GrMail size={size} />
+      </a>
     </S.StyledLinks>
   );
 };
+// import { GrMail, GrMailOption } from "react-icons/gr";
 
 export const FavoritesHeart = ({ pokemon, size = 25 }) => {
   const [favorites, setFavorites] = useRecoilState(favoritesAtoms);

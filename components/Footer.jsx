@@ -6,6 +6,10 @@ const StyledFooter = styled.div`
   background-color: ${(p) => p.theme.colors.gray_100};
   height: 300px;
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 20px;
 
   & p,
   h3 {
@@ -16,9 +20,10 @@ const StyledFooter = styled.div`
 const Footer = () => {
   return (
     <StyledFooter>
-      <p>This is a pokemon website</p>
-      <h3>Contact me</h3>
-      <p>Email: elmer.lignestal@live.se</p>
+      <h3>
+        This website is a demo project written in reactjs. Feels free to contact
+        me :)
+      </h3>
       <Links />
     </StyledFooter>
   );

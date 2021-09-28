@@ -1,9 +1,11 @@
 ### JigglyStore
+
 Your favorite local pokemon store :grinning:
 
 #### Demo [Jigglystore](https://pokemon-store-nextjs.vercel.app)
 
 #### Technologies used
+
 <img
 src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/react/react.png"
 width="50" 
@@ -20,11 +22,18 @@ height="50"/>
 <img src="./images/recoil.svg" width="50" height="50"/>
 
 #### Features
-* Dark mode :waxing_crescent_moon:
-* Favorite pokemon, together with a modal to view them :hearts:
-* Multiple filters :pushpin: 
-* Different sorting methods :telescope:
-* Cart dropdown :diamonds:
-* Responsive website :dancer:
+
+- Dark mode :waxing_crescent_moon:
+- Favorite pokemon, together with a modal to view them :hearts:
+- Multiple filters :pushpin:
+- Different sorting methods :telescope:
+- Cart dropdown :diamonds:
+- Responsive website :dancer:
+
+#### What's missing?
+
+- Login and authentication :key:
+- Checkout and payment processing :credit_card:
+- You cannot buy the shiny pokemon :cry:
 
 ##### Api used [pokeapi](https://pokeapi.co/)
