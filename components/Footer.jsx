@@ -9,7 +9,8 @@ const StyledFooter = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 20px;
+  padding-top: 30px;
+  padding-bottom: 10px;
 
   & p,
   h3 {
