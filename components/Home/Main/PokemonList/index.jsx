@@ -1,33 +1,16 @@
+import { abilityFilter as abilityFilterAtoms, currentPage as currentPageAtoms, numberOfMatchedPokemon as numberOfMatchedPokemonAtoms, pokemonPerPage as pokemonPerPageAtoms, priceFilter as priceFilterAtoms, searchQuery as searchQueryAtoms, sortingMethod as sortingMethodAtoms, statsFilter as statsFilterAtoms, typeFilter as typeFilterAtoms } from "atoms.js";
+import React, { useEffect, useMemo, useRef, useState } from "react";
+import { useRecoilState } from "recoil";
+import { NoPokemonFound } from "../Styles";
+import {
+  getAbilityFilteredPokemon, getPokemonToDisplay, getPriceFilteredPokemon, getSearchFilteredPokemon, getSortedPokemon, getStatFilteredPokemon, getTypeFilteredPokemon
+} from "./helperFunctions";
 import PokemonCard from "./PokemonCard";
 
-import React, { useRef } from "react";
 
-import { NoPokemonFound } from "../Styles";
 
-import { useEffect, useLayoutEffect, useMemo, useState } from "react";
 
-import { useRecoilState } from "recoil";
-import { typeFilter as typeFilterAtoms } from "atoms.js";
-import { abilityFilter as abilityFilterAtoms } from "atoms.js";
-import { priceFilter as priceFilterAtoms } from "atoms.js";
-import { statsFilter as statsFilterAtoms } from "atoms.js";
-import { searchQuery as searchQueryAtoms } from "atoms.js";
-import { sortingMethod as sortingMethodAtoms } from "atoms.js";
-import { numberOfMatchedPokemon as numberOfMatchedPokemonAtoms } from "atoms.js";
-//import { sortedPokemon as sortedPokemonAtoms } from "atoms.js";
 
-import { pokemonPerPage as pokemonPerPageAtoms } from "atoms.js";
-import { currentPage as currentPageAtoms } from "atoms.js";
-
-import {
-  getTypeFilteredPokemon,
-  getAbilityFilteredPokemon,
-  getPriceFilteredPokemon,
-  getStatFilteredPokemon,
-  getSearchFilteredPokemon,
-  getPokemonToDisplay,
-  getSortedPokemon,
-} from "./helperFunctions";
 
 let pokemonToDisplay = [];
 const PokemonList = ({ allPokemon }) => {

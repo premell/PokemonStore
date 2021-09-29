@@ -1,39 +1,23 @@
-import SearchBar from "./SearchBar";
-import Cart from "./Cart";
-import Favorites from "./Favorites";
-import DarkMode from "./DarkMode";
-import Login from "./Login";
+import { abilityFilter as abilityFilterAtoms, currentPage as currentPageAtoms, darkThemeEnabled as darkThemeEnabledAtoms, priceFilter as priceFilterAtoms, searchQuery as searchQueryAtoms, statsFilter as statsFilterAtoms, typeFilter as typeFilterAtoms } from "atoms.js";
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
+import { useRecoilState, useResetRecoilState } from "recoil";
+import { Links } from "shared/components";
 import {
-  MainContainer,
-  ContentContainer,
-  LeftSubContainer,
-  HideAnimationContainer,
-  RightSubContainer,
-  MainMiniContainer,
-  Title2,
+  useWindowSize
+} from "shared/hooks";
+import Cart from "./Cart";
+import DarkMode from "./DarkMode";
+import Favorites from "./Favorites";
+import Login from "./Login";
+import SearchBar from "./SearchBar";
+import {
+  ContentContainer, HideAnimationContainer, LeftSubContainer, MainContainer, MainMiniContainer, RightSubContainer, Title2
 } from "./Styles";
 
-import { Links } from "shared/components";
-import { useRouter } from "next/router";
-import { BsPerson } from "react-icons/bs";
 
-import { useRecoilState, useResetRecoilState } from "recoil";
-import { priceFilter as priceFilterAtoms, searchQuery } from "atoms.js";
-import { statsFilter as statsFilterAtoms } from "atoms.js";
-import { typeFilter as typeFilterAtoms } from "atoms.js";
-import { abilityFilter as abilityFilterAtoms } from "atoms.js";
-import { searchQuery as searchQueryAtoms } from "atoms.js";
-import { currentPage as currentPageAtoms } from "atoms.js";
 
-import {
-  useEscapeButtonListener,
-  useShowCartModalOnCartUpdate,
-  useWindowSize,
-} from "shared/hooks";
 
-import { darkThemeEnabled as darkThemeEnabledAtoms } from "atoms.js";
-import { useState, useEffect } from "react";
-import { NavButton } from "shared/components/Styles";
 
 const Navbar = () => {
   const defaultPriceFilter = useResetRecoilState(priceFilterAtoms);

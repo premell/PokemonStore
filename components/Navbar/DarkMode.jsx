@@ -1,11 +1,11 @@
+import { darkThemeEnabled as darkThemeEnabledAtoms } from "atoms.js";
 import React from "react";
 import { BiMoon } from "react-icons/bi";
 import { FiSun } from "react-icons/fi";
-
+import { useRecoilState } from "recoil";
 import { DarkmodeContainer } from "./Styles";
 
-import { useRecoilState } from "recoil";
-import { darkThemeEnabled as darkThemeEnabledAtoms } from "atoms.js";
+
 const DarkMode = () => {
   const [darkThemeEnabled, setDarkThemeEnabled] = useRecoilState(
     darkThemeEnabledAtoms

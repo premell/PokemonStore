@@ -1,24 +1,5 @@
 import styled from "styled-components";
-import Image from "next/image";
 
-import { useRecoilState } from "recoil";
-import { cart as cartAtoms } from "atoms.js";
-import { useCart, useCartModal, useWindowSize } from "shared/hooks";
-import { useEffect, useState } from "react";
-import {
-  FavoritesHeart,
-  Subheading1,
-  Subheading2,
-  BoldRegularText,
-  Button,
-  AddToCartButton,
-} from "shared/components";
-import Link from "next/link";
-import {
-  formatAsUSDWithoutTrailingZeros,
-  removeDuplicateObjectsByName,
-  removeOverlappingObjectsByName,
-} from "shared/javascript";
 
 const StyledHeader = styled.div`
   margin-top: 20px;

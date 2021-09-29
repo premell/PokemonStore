@@ -1,7 +1,6 @@
 import { useEffect, useRef } from "react";
-
 import * as S from "./Styles";
-import * as PS from "../Styles.js";
+
 
 const ImageList = ({ images, selectedImage, handleNewSelected }) => {
   const anyImageAvailable = useRef(true);

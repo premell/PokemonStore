@@ -1,5 +1,5 @@
-import styled, { css } from "styled-components";
 import Image from "next/image";
+import styled from "styled-components";
 
 export const ImageList = styled.div`
   margin-left: 24px;

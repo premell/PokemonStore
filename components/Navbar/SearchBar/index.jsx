@@ -1,11 +1,10 @@
-import { useEffect, useState, useRef } from "react";
-import * as S from "./Styles";
-import { BiSearch } from "react-icons/bi";
-
-import { useRecoilState } from "recoil";
 import { searchQuery as searchQueryAtoms } from "atoms.js";
+import { useEffect, useRef, useState } from "react";
+import { BiSearch } from "react-icons/bi";
+import { useRecoilState } from "recoil";
+import * as S from "./Styles";
 
-import { StyledSearchBar } from "../Styles";
+
 
 const SearchBar = () => {
   const [localSearchQuery, setlocalSearchQuery] = useState("");

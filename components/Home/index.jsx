@@ -1,7 +1,7 @@
-import * as S from "./Styles";
-import SidePanel from "components/Home/SidePanel";
 import Main from "components/Home/Main";
 import PageNavigator from "components/Home/Main/PageNavigator";
+import SidePanel from "components/Home/SidePanel";
+import * as S from "./Styles";
 
 const Home = ({ allPokemon }) => {
   return (

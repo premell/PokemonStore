@@ -1,4 +1,4 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 
 export const MainImage = styled.div`
   background-color: ${(p) => p.theme.colors.gray_0};

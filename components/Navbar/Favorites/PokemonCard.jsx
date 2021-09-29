@@ -1,12 +1,11 @@
-import {
-  FavoritesHeart,
-  TypeFlairBox,
-  AddToCartButton,
-} from "shared/components";
-import * as S from "./Styles";
-import Link from "next/link";
 import Image from "next/image";
+import Link from "next/link";
+import {
+  AddToCartButton, FavoritesHeart,
+  TypeFlairBox
+} from "shared/components";
 import { formatAsUSDWithoutTrailingZeros } from "shared/javascript";
+import * as S from "./Styles";
 
 const PokemonCard = ({ pokemon }) => {
   const { name, types, price, image_url } = pokemon;

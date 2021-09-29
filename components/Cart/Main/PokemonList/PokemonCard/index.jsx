@@ -1,11 +1,9 @@
+import Image from "next/image";
 import Link from "next/link";
-
-import * as S from "./Styles";
-import * as PS from "../Styles";
-import * as PPS from "../../Styles";
 import { AddToCartButton, FavoritesHeart } from "shared/components";
 import { formatAsUSDWithoutTrailingZeros } from "shared/javascript";
-import Image from "next/image";
+import * as S from "./Styles";
+
 
 const PokemonCard = ({ pokemon }) => {
   const { name, types, price, images, image_url } = pokemon;

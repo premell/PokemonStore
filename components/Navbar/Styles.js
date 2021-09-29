@@ -1,30 +1,18 @@
-import styled, { css } from "styled-components";
 import Image from "next/image";
-import Link from "next/link";
-
-import {
-  RegularText,
-  BoldRegularText,
-  Subheading2,
-  CartButton,
-  Button,
-  FavoritesHeart,
-} from "shared/components";
-import { TypeFlairBox } from "shared/components";
-
-import { RiDeleteBinLine } from "react-icons/ri";
-import { BiSearch } from "react-icons/bi";
-
-import { formatAsUSDWithoutTrailingZeros } from "shared/javascript";
-
-import {
-  useCart,
-  useCartModal,
-  useClickOutside,
-  useWindowSize,
-} from "shared/hooks";
 import { useRouter } from "next/router";
-import { useEffect, useRef, useState } from "react";
+import { RiDeleteBinLine } from "react-icons/ri";
+import {
+  Button
+} from "shared/components";
+import {
+  useCartModal
+} from "shared/hooks";
+import { formatAsUSDWithoutTrailingZeros } from "shared/javascript";
+import styled, { css } from "styled-components";
+
+
+
+
 
 export const MainContainer = styled.div`
   width: 100%;

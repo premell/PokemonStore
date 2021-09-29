@@ -1,15 +1,12 @@
 //import { Dropdown, ViewPanelContainer, DropdownBox } from "./Styles";
-import { SORTING_METHODS } from "shared/constants";
-import { BoldRegularText } from "shared/components";
-
-import { useRecoilState } from "recoil";
-import { sortingMethod as sortingMethodAtoms } from "atoms.js";
-import { pokemonPerPage as pokemonPerPageAtoms } from "atoms.js";
-import { numberOfMatchedPokemon as numberOfMatchedPokemonAtoms } from "atoms.js";
+import { numberOfMatchedPokemon as numberOfMatchedPokemonAtoms, pokemonPerPage as pokemonPerPageAtoms, sortingMethod as sortingMethodAtoms } from "atoms.js";
 import { useEffect, useState } from "react";
+import { useRecoilState } from "recoil";
+import { SORTING_METHODS } from "shared/constants";
 import Dropdown from "./Dropdown";
-
 import * as S from "./Styles";
+
+
 
 const sorting_list = [
   { value: SORTING_METHODS.PRICE_LOWEST_FIRST, label: "price, lowest first" },

@@ -1,19 +1,5 @@
-import styled, { css } from "styled-components";
-import Image from "next/image";
-import {
-  FavoritesHeart,
-  Subheading1,
-  Subheading2,
-  Button,
-} from "shared/components";
-import { TypeFlair } from "shared/components";
-import { formatAsUSDWithoutTrailingZeros } from "shared/javascript";
-import { useCart, useCartModal } from "shared/hooks";
-import { useEffect, useRef, useState } from "react";
+import styled from "styled-components";
 
-import { useRecoilState } from "recoil";
-import { cart as cartAtoms } from "atoms.js";
-import { AddToCartButton } from "shared/components";
 
 export const MainContainer = styled.div`
   height: calc(100vh - 376px);

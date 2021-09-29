@@ -1,12 +1,11 @@
-import { MainContainer, MainContent } from "./Styles";
-
+import { useEffect, useState } from "react";
+import { useWindowSize } from "shared/hooks";
 import ImageList from "./ImageList";
 import MainImage from "./MainImage";
 import PokemonInformation from "./PokemonInformation";
+import { MainContainer, MainContent } from "./Styles";
 
-import Image from "next/image";
-import { useEffect, useState } from "react";
-import { useWindowSize } from "shared/hooks";
+
 
 const PokemonPageContainer = ({ pokemon }) => {
   const { image_urls } = pokemon;

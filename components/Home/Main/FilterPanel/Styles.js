@@ -1,5 +1,5 @@
-import styled from "styled-components";
 import { AiOutlineClose } from "react-icons/ai";
+import styled from "styled-components";
 
 export const FilterContainer = styled.div`
   display: flex;

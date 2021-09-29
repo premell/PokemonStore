@@ -1,10 +1,8 @@
-import { FiShoppingCart } from "react-icons/fi";
-import { StyledCartButton } from "../Styles";
-
-import { BoldRegularText, NavButton } from "shared/components";
 import { useRouter } from "next/router";
+import { FiShoppingCart } from "react-icons/fi";
+import { NavButton } from "shared/components";
 
-import CartModal from "./CartModal";
+
 
 const CartButton = ({
   handleClick,

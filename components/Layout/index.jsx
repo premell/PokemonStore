@@ -1,30 +1,21 @@
-import { ThemeProvider } from "styled-components";
-import styled from "styled-components";
-import { useRouter } from "next/router";
-import * as S from "./Styles";
-
-import { useEffect, useRef, useState } from "react";
-import Navbar from "components/Navbar";
+import { darkThemeEnabled as darkThemeEnabledAtoms, searchQuery as searchQueryAtoms, showFavorites as showFavoritesAtoms } from "atoms.js";
 import Footer from "components/Footer";
-
-import { useCartModal } from "shared/hooks";
-
+import Navbar from "components/Navbar";
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
 import { useRecoilState } from "recoil";
-import { showFavorites as showFavoritesAtoms } from "atoms.js";
-import { searchQuery as searchQueryAtoms } from "atoms.js";
-
-import { useScrollPosition } from "shared/hooks";
-
-import {
-  disableBodyScroll,
-  enableBodyScroll,
-  clearAllBodyScrollLocks,
-} from "body-scroll-lock";
-
+import { useCartModal } from "shared/hooks";
+import { ThemeProvider } from "styled-components";
 //overflow-x: hidden;
 //overflow: hidden;
 import themes from "styles/theme";
-import { darkThemeEnabled as darkThemeEnabledAtoms } from "atoms.js";
+import * as S from "./Styles";
+
+
+
+
+
+
 
 let firstRun = true;
 const Layout = ({ children }) => {

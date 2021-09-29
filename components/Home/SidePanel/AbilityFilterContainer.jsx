@@ -1,9 +1,8 @@
-import { ABILITIES } from "shared/constants";
-
-import { useRecoilState } from "recoil";
 import { abilityFilter as abilityFilterAtoms } from "atoms.js";
+import { useRecoilState } from "recoil";
+import { ABILITIES } from "shared/constants";
 import FilterContainer from "./FilterContainer";
-import { useEffect } from "react";
+
 
 const TypeFilterContainer = ({ menuVisible, handleClick }) => {
   const [abilityFilter, setAbilityFilter] = useRecoilState(abilityFilterAtoms);

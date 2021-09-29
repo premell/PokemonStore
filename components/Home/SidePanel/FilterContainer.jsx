@@ -1,14 +1,11 @@
-import { TYPES } from "shared/constants";
-
+import { useEffect, useState } from "react";
+import { Checkbox } from "shared/components";
+import { capitalizeFirstLetter } from "shared/javascript";
 import { FilterBox, FilterToggleHeading } from "./Styles";
 
-import { RegularText, BoldRegularText, Checkbox } from "shared/components";
 
-import { useRecoilState } from "recoil";
-import { typeFilter as typeFilterAtoms } from "atoms.js";
-import { useEffect, useState } from "react";
 
-import { capitalizeFirstLetter } from "shared/javascript";
+
 
 const CheckBoxWithState = ({
   isActive,

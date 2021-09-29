@@ -1,5 +1,5 @@
-import styled, { css } from "styled-components";
-import { IoIosArrowForward, IoIosArrowBack } from "react-icons/io";
+import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
+import styled from "styled-components";
 
 const StyledPageArrow = styled.div`
   cursor: pointer;

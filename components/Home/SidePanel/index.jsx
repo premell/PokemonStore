@@ -1,19 +1,15 @@
-import {
-  MainContainer,
-  StyledInnerContainer,
-  FilterToggleHeading,
-  BottomDivider,
-} from "./Styles.js";
-import TypeFilterContainer from "./TypeFilterContainer";
+import { priceFilter as priceFilterAtoms, statsFilter as statsFilterAtoms } from "atoms.js";
+import { useState } from "react";
+import { useRecoilState } from "recoil";
 import AbilityFilterContainer from "./AbilityFilterContainer";
 import NumberRangeContainer from "./NumberRangeContainer";
+import {
+  BottomDivider, FilterToggleHeading, MainContainer,
+  StyledInnerContainer
+} from "./Styles.js";
+import TypeFilterContainer from "./TypeFilterContainer";
 
-import { useRecoilState } from "recoil";
-import { priceFilter as priceFilterAtoms } from "atoms.js";
-import { statsFilter as statsFilterAtoms } from "atoms.js";
-import { useEffect, useState } from "react";
 
-import { RegularText, BoldRegularText, Subheading2 } from "shared/components";
 
 const SidePanel = () => {
   const [priceFilter, setPriceFilter] = useRecoilState(priceFilterAtoms);

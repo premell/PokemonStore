@@ -1,9 +1,8 @@
-import { TYPES } from "shared/constants";
-
-import { useRecoilState } from "recoil";
 import { typeFilter as typeFilterAtoms } from "atoms.js";
+import { useRecoilState } from "recoil";
+import { TYPES } from "shared/constants";
 import FilterContainer from "./FilterContainer";
-import { useEffect } from "react";
+
 
 const TypeFilterContainer = ({ menuVisible, handleClick }) => {
   const [typeFilter, setTypeFilter] = useRecoilState(typeFilterAtoms);

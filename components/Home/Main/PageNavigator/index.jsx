@@ -1,17 +1,11 @@
+import { currentPage as currentPageAtoms, numberOfMatchedPokemon as numberOfMatchedPokemonAtoms, pokemonPerPage as pokemonPerPageAtoms } from "atoms.js";
+import { useEffect } from "react";
 import { useRecoilState } from "recoil";
-import { pokemonPerPage as pokemonPerPageAtoms } from "atoms.js";
-import { currentPage as currentPageAtoms } from "atoms.js";
-import { numberOfMatchedPokemon as numberOfMatchedPokemonAtoms } from "atoms.js";
-
 import {
-  PageNavigatorContainer,
-  PrevPageArrow,
-  NextPageArrow,
-  PageNumber,
+  NextPageArrow, PageNavigatorContainer, PageNumber, PrevPageArrow
 } from "./Styles";
 
-import { BoldRegularText } from "shared/components";
-import { useEffect } from "react";
+
 
 const getPagesToShow = (
   currentPage,

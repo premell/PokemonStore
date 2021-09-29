@@ -1,14 +1,11 @@
+import { showCartModal as showCartModalAtoms, showCartModalInstantly as showCartModalInstantlyAtoms } from "atoms.js";
 import { useRecoilState } from "recoil";
-import { cart as cartAtoms } from "atoms.js";
-import { showCartModal as showCartModalAtoms } from "atoms.js";
-import { showCartModalInstantly as showCartModalInstantlyAtoms } from "atoms.js";
-
-import CartModal from "./CartModal";
+import { useCartModal } from "shared/hooks";
 import CartButton from "./CartButton";
+import CartModal from "./CartModal";
 
-import { useEffect } from "react";
 
-import { useCartModal } from "shared/hooks"
+
 
 const Cart = () => {
   const { showWithTimer, showTemporarily, hideTemporarly } = useCartModal()

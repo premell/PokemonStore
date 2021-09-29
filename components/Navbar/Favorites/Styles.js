@@ -1,6 +1,6 @@
 import { useRef } from "react";
 import { useClickOutside } from "shared/hooks";
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 
 export const BackgroundBlur = styled.div`
   pointer-events: auto;

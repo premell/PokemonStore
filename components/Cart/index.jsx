@@ -1,11 +1,10 @@
+import { cart as cartAtoms, favorites as favoritesAtoms } from "atoms.js";
+import { useRecoilState } from "recoil";
 import Main from "./Main";
 import RecommendedPokemon from "./RecommendedPokemon";
-
 import * as S from "./Styles";
 
-import { useRecoilState } from "recoil";
-import { cart as cartAtoms } from "atoms.js";
-import { favorites as favoritesAtoms } from "atoms.js";
+
 
 const Cart = () => {
   const [cart, setCart] = useRecoilState(cartAtoms);

@@ -1,14 +1,12 @@
-import React, { useRef } from "react";
+import { favorites as favoritesAtoms } from "atoms.js";
 import Portal from "components/Portal";
-
-import { useClickOutside } from "shared/hooks";
-
+import React from "react";
+import { useRecoilState } from "recoil";
 import PokemonCard from "./PokemonCard";
 import * as S from "./Styles";
 
-import { BackgroundBlur, PopupContainer, FavoritePokemonCard } from "../Styles";
-import { useRecoilState } from "recoil";
-import { favorites as favoritesAtoms } from "atoms.js";
+
+
 
 const Popup = ({ show, setShow }) => {
   const [favorites, setFavorites] = useRecoilState(favoritesAtoms);

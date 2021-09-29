@@ -1,24 +1,13 @@
-import {
-  StyledPokemonCard,
-  StyledPokemonMain,
-  HeartContainer,
-} from "../Styles";
-import {
-  Button,
-  Subheading2,
-  BoldRegularText,
-  RegularText,
-  TypeFlairBox,
-} from "shared/components";
 import Image from "next/image";
 import Link from "next/link";
-import { TypeFlair } from "shared/components";
+import { AddToCartButton, FavoritesHeart, TypeFlairBox } from "shared/components";
 import { formatAsUSDWithoutTrailingZeros } from "shared/javascript";
+import {
+  HeartContainer, StyledPokemonCard,
+  StyledPokemonMain
+} from "../Styles";
 
-import { FavoritesHeart } from "shared/components";
 
-import { useCart, useCartModal } from "shared/hooks";
-import { AddToCartButton } from "shared/components";
 
 const PokemonCard = ({ pokemon }) => {
   const { name, types, price, image_url } = pokemon;

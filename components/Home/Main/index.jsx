@@ -1,18 +1,16 @@
-import * as S from "./Styles.js";
-
-import PokemonList from "./PokemonList";
-import FilterPanel from "./FilterPanel";
-import ViewPanel from "./ViewPanel";
-import { Seperator, IconThemeProvider } from "shared/components";
-
-import { useRecoilState } from "recoil";
-import { anyFilterActive as anyFilterActiveAtoms } from "atoms.js";
-import { numberOfMatchedPokemon as numberOfMatchedPokemonAtoms } from "atoms.js";
-import { useScrollPosition } from "shared/hooks";
-import { useEffect, useRef, useState } from "react";
-
-import Portal from "components/Portal";
+import { anyFilterActive as anyFilterActiveAtoms, numberOfMatchedPokemon as numberOfMatchedPokemonAtoms } from "atoms.js";
+import { useState } from "react";
 import { AiOutlineArrowUp } from "react-icons/ai";
+import { useRecoilState } from "recoil";
+import { IconThemeProvider, Seperator } from "shared/components";
+import { useScrollPosition } from "shared/hooks";
+import FilterPanel from "./FilterPanel";
+import PokemonList from "./PokemonList";
+import * as S from "./Styles.js";
+import ViewPanel from "./ViewPanel";
+
+
+
 
 const Main = ({ allPokemon }) => {
   const [anyFilterActive, setAnyFilterActive] =

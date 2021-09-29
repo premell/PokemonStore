@@ -1,25 +1,9 @@
+import { abilityFilter as abilityFilterAtoms, anyFilterActive as anyFilterActiveAtoms, priceFilter as priceFilterAtoms, searchQuery as searchQueryAtoms, statsFilter as statsFilterAtoms, typeFilter as typeFilterAtoms } from "atoms.js";
 import { useRecoilState, useResetRecoilState } from "recoil";
-import { priceFilter as priceFilterAtoms } from "atoms.js";
-import { statsFilter as statsFilterAtoms } from "atoms.js";
-import { typeFilter as typeFilterAtoms } from "atoms.js";
-import { abilityFilter as abilityFilterAtoms } from "atoms.js";
-import { searchQuery as searchQueryAtoms } from "atoms.js";
-import { anyFilterActive as anyFilterActiveAtoms } from "atoms.js";
-
-// import {
-//   PriceFilterFlair,
-//   NumberFilterFlair,
-//   FilterBox,
-//   Cross,
-//   AbilityFilterFlair,
-//   StyledFilterContainer,
-//   RemoveAllFilters,
-// } from "./Styles";
-import { TypeFlair } from "shared/components";
-import { useEffect } from "react";
-
 import { formatAsUSDWithoutTrailingZeros } from "shared/javascript";
 import * as S from "./Styles";
+
+
 
 const FilterPanel = () => {
   const [priceFilter, setPriceFilter] = useRecoilState(priceFilterAtoms);

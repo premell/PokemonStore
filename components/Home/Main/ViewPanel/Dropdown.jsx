@@ -1,7 +1,7 @@
-import { useClickOutside } from "shared/hooks";
 import { useEffect, useRef, useState } from "react";
-import * as S from "./Styles";
 import { RiArrowDropDownLine } from "react-icons/ri";
+import { useClickOutside } from "shared/hooks";
+import * as S from "./Styles";
 
 const Dropdown = ({
   labelPrefix,

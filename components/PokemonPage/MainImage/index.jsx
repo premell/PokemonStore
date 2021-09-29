@@ -1,8 +1,8 @@
 import Image from "next/image";
-
 import { FavoritesHeart } from "shared/components";
-import * as S from "./Styles";
 import * as PS from "../Styles.js";
+import * as S from "./Styles";
+
 
 const MainImage = ({ defaultImage, image, pokemon }) => {
   pokemon = { ...pokemon, image_url: defaultImage };

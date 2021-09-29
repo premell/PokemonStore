@@ -1,7 +1,6 @@
+import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 import styled from "styled-components";
-import { IoIosArrowUp, IoIosArrowDown } from "react-icons/io";
 
-import { Subheading2 } from "shared/components";
 
 export const MainContainer = styled.div`
   width: 250px;

@@ -1,21 +1,10 @@
-import { AiOutlineHeart } from "react-icons/ai";
-import * as S from "./Styles";
-import { formatAsUSDWithoutTrailingZeros } from "shared/javascript";
-import { NavButton, BoldRegularText } from "shared/components";
+import { showFavorites as showFavoritesAtoms } from "atoms.js";
 import { useRouter } from "next/router";
-import {
-  StyledCartModal,
-  ModalPokemonCard,
-  ModalPokemonCartContainer,
-  ModalPokemonCartFooter,
-  NoPokemonFoundContainer,
-} from "../Styles";
+import { AiOutlineHeart } from "react-icons/ai";
+import { useRecoilState } from "recoil";
+import { NavButton } from "shared/components";
 import Popup from "./Popup";
 
-import { useRecoilState } from "recoil";
-import { showFavorites as showFavoritesAtoms } from "atoms.js";
-import { useClickOutside } from "shared/hooks";
-import { useRef } from "react";
 
 const Favorites = () => {
   const router = useRouter();

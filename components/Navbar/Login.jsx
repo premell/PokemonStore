@@ -1,10 +1,7 @@
-import {
-  NotImplemented,
-  NavButton,
-  IconThemeProvider,
-  BoldRegularText,
-} from "shared/components";
 import { BsPerson } from "react-icons/bs";
+import {
+  NavButton
+} from "shared/components";
 
 const Login = () => {
   return (

@@ -1,6 +1,6 @@
-import { Links, BoldRegularText } from "shared/components";
-
+import { Links } from "shared/components";
 import styled from "styled-components";
+
 
 const StyledFooter = styled.div`
   background-color: ${(p) => p.theme.colors.gray_100};

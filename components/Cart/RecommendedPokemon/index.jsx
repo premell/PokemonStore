@@ -1,15 +1,15 @@
 import { useEffect, useState } from "react";
-import {
-  removeDuplicateObjectsByName,
-  removeOverlappingObjectsByName,
-} from "shared/javascript";
-
-import { IoIosArrowForward, IoIosArrowBack } from "react-icons/io";
-import * as S from "./Styles";
-
+import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { MY_PERSONAL_FAVORITE_POKEMON as myPersonalFavoritePokemon } from "shared/constants";
 import { useWindowSize } from "shared/hooks";
+import {
+  removeDuplicateObjectsByName,
+  removeOverlappingObjectsByName
+} from "shared/javascript";
 import PokemonCard from "./PokemonCard";
+import * as S from "./Styles";
+
+
 
 const RecommendedPokemon = ({ cartPokemon, favoritePokemon }) => {
   //each point represents one pokemon

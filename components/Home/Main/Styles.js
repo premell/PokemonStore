@@ -1,12 +1,9 @@
-import styled, { css } from "styled-components";
-
 import { formatAsUSDWithoutTrailingZeros } from "shared/javascript";
+import styled from "styled-components";
 
-import { RegularText, BoldRegularText } from "shared/components";
 
-import { useEffect, useRef, useState } from "react";
 
-import Portal from "components/Portal";
+
 
 const OuterContainer = styled.div`
   flex: 1 1 auto;

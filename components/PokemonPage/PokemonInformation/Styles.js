@@ -1,5 +1,5 @@
-import styled, { css } from "styled-components";
 import { STATS } from "shared/constants";
+import styled from "styled-components";
 
 export const StyledPokemonInformation = styled.div`
   background-color: ${(p) => p.theme.colors.gray_0};

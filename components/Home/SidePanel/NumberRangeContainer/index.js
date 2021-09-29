@@ -1,10 +1,10 @@
-import React, { useCallback, useEffect, useRef, useState } from "react";
-
-import NumberRangeContainerCss from "./NumberRangeContainer.module.css";
-import { useRecoilState } from "recoil";
 import { darkThemeEnabled as darkThemeEnabledAtoms } from "atoms";
-
+import React, { useCallback, useEffect, useRef, useState } from "react";
+import { useRecoilState } from "recoil";
 import { stringToInteger } from "shared/javascript";
+import NumberRangeContainerCss from "./NumberRangeContainer.module.css";
+
+
 
 const darkColors = {
   track_color: "#38404b",

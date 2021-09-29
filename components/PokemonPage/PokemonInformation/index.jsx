@@ -1,7 +1,6 @@
-import * as S from "./Styles.js";
-import { TypeFlair, AddToCartButton } from "shared/components";
+import { AddToCartButton, TypeFlair } from "shared/components";
 import { formatAsUSDWithoutTrailingZeros } from "shared/javascript.js";
-import { useEffect } from "react";
+import * as S from "./Styles.js";
 
 const PokemonInformation = ({ pokemon }) => {
   const { name, stats, price, types, abilities, image_urls } = pokemon;
