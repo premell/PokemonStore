@@ -28,8 +28,6 @@ export const getStaticPaths = async () => {
   const defaultPokemonRefs = await fetchData(
     BASE_URL + "pokemon?offset=0&limit=950"
   );
-  console.log(defaultPokemonRefs);
-
   //The totem pokemon have no images available on the api
   //If it was a bigger problem I would do it programmatically intead of manually
   const filteredPokemonRefs = defaultPokemonRefs.results.filter(
