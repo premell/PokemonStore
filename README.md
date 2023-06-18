@@ -2,9 +2,8 @@
 
 JigglyStore is your favorite local Pokemon store, developed as a way to showcase my skills in web development. This project utilizes the latest technologies and follows best practices for an optimized user experience.
 
-#### Demo
-
-Experience the JigglyStore in action [<img alt="alt_text" width="500px" src="./images/jigglystore.png" />](https://github.com/premell/pokemon_store_nextjs)
+#### Demo: Experience the JigglyStore in action
+[<img alt="alt_text" width="500px" src="./static/jigglystore.png" />](https://github.com/premell/pokemon_store_nextjs)
 
 
 #### Technology Stack
@@ -36,6 +35,8 @@ State management is handled by Recoil, providing a flexible and efficient state 
 
 #### Contact Information
 email: elmer.lingestal@live.se
+
+linkeldn: [www.linkeldn.com](https://www.linkedin.com/in/elmer-lingest%C3%A5l-3571021a8/)
 
 #### Acknowledgements
 
