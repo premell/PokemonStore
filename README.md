@@ -4,6 +4,7 @@ JigglyStore is your favorite local Pokemon store, developed as a way to showcase
 
 #### Demo: Experience the JigglyStore in action
 [<img alt="alt_text" width="500px" src="./static/jigglystore.png" />](https://pokemon-store-nextjs.vercel.app/)
+[<img alt="alt_text" width="500px" src="./static/jigglystore_darkmode2.png" />](https://pokemon-store-nextjs.vercel.app/)
 
 
 #### Technology Stack
