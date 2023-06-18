@@ -1,6 +1,6 @@
 ### JigglyStore :grinning:
 
-JigglyStore is your favorite local Pokemon store, developed as a way to showcase my skills in web development. This project utilizes the latest technologies and follows best practices for an optimized user experience.
+JigglyStore is your favorite local Pokemon store, developed as a way to showcase my skills in web development.  This project utilizes the latest technologies and follows best practices for an optimized user experience.
 
 #### Demo: Experience the JigglyStore in action
 [<img alt="alt_text" width="500px" src="./static/jigglystore.png" />](https://pokemon-store-nextjs.vercel.app/)
@@ -27,7 +27,7 @@ React, Next.js, Styled-components and Recoil
 
 #### Contact Information
 email: elmer.lingestal@live.se
-linkeldn: [www.linkeldn.com](https://www.linkedin.com/in/elmer-lingest%C3%A5l-3571021a8/)
+linkeldn: [Elmer Lingestål](https://www.linkedin.com/in/elmer-lingest%C3%A5l-3571021a8/)
 
 #### Acknowledgements
 
